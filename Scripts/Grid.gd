@@ -2,6 +2,9 @@ extends Node2D
 
 @onready var combo_label = $"../combo_label"
 
+@onready var hero_turn: AnimationPlayer = $"../Hero Phase/hero phase"
+@onready var enemy_turn: AnimationPlayer = $"../Enemy Phase/enemy phase"
+
 @onready var trump_attack = $TrumpAttack
 @onready var xi_attack = $XiAttack
 @onready var kim_attack = $KimAttack
@@ -35,6 +38,10 @@ extends Node2D
 var heroes = []  # List of hero nodes
 var zombies: Array = []  # List to store zombies
 var hero_damage = {}  # To store attack damage for each hero
+
+# Turn states: "hero" or "zombie"
+var current_turn: String = "hero"
+var bodyguard_hp: int = 4  # Maximum bodyguard HP
 
 @onready var possible_dots = [
 	preload("res://Scenes/Dots/blue_dot.tscn"),
@@ -91,7 +98,7 @@ var matches_being_destroyed = false
 var sprite_destroyed_count  ={
 	"fries" = 0,
 	"bomb" = 0,
-	"body_guard" = 0,
+	"body_guard" = 4,
 	"virus" = 0,
 	"pudding" = 0
 }
@@ -242,6 +249,49 @@ func reset_labels() -> void:
 	label_pudding.text = "%d" %sprite_destroyed_count["pudding"]
 	
 	print("All hero labels and damage value reset.")
+	
+	switch_turn()
+
+func switch_turn():
+	if current_turn == "hero":
+		current_turn = "zombie"
+		enemy_phase()
+	else:
+		current_turn = "hero"
+		hero_phase()
+
+func hero_phase():
+	print("Hero Phase!")
+	# Reset or prepare for hero actions here
+	hero_turn.play_animation_herophase()
+
+func enemy_phase():
+	print("Enemy Phase!")
+	
+	# Play the enemy phase animation
+	enemy_turn.play_animation_enemyphase()
+	
+	# Wait for the animation to finish before proceeding
+	enemy_turn.connect("animation_finished", Callable(self, "_on_enemy_phase_animation_finished"))
+
+func _on_enemy_phase_animation_finished(anim_name: String):
+	# Process each zombie's attack after the animation
+	print("zombie attack test")
+	for zombie in zombies:
+		if bodyguard_hp > 0:
+			bodyguard_hp -= 1
+			label_bodyguard.text = str(bodyguard_hp)
+			print("Zombie attacked! Bodyguard HP:", bodyguard_hp)
+			
+			# Call the zombie's attack animation
+			if zombie.has_method("zombie_attack"):
+				zombie.zombie_attack()  # Trigger attack animation
+		else:
+			print("Game Over!")
+			
+	# Delay before switching the turn
+	await get_tree().create_timer(0.5).timeout
+	switch_turn()
 
 # Function to spawn zombies
 func spawn_zombie(zombie_position: Vector2):
@@ -280,7 +330,7 @@ var label_display
 
 
 func _ready() -> void:
-	
+
 	setup_timers() # Connects timers to their respective callback functions and sets wait times
 	# Ensure display_score_timer is added to the scene tree
 	if display_score_timer.get_parent() == null:
@@ -302,6 +352,8 @@ func _ready() -> void:
 	if not audio_player:
 		audio_player = AudioStreamPlayer.new()
 		add_child(audio_player)  # Add the player to the scene if not already added
+	
+	label_bodyguard.text = str(bodyguard_hp)
 	
 	# Spawn enemies
 	var _zombie1 = spawn_zombie(Vector2(275, 266))
@@ -595,8 +647,10 @@ func destroy_matches():
 				"yellow": "body_guard"
 			}
 			# Trigger special animations under certain requirements
-			if dot.color in color_map and sprite_destroyed_count[color_map[dot.color]] >= 4:
+			if dot.color in color_map and sprite_destroyed_count[color_map[dot.color]] == 4:
 				number_of_destroy(dot.color)
+			elif dot.color in color_map and sprite_destroyed_count[color_map[dot.color]] >= 5:
+				number_of_destroy2(dot.color)
 			
 			# Play animation for the current dot
 			var anim_player = dot.get_node_or_null("AnimationPlayer")
@@ -740,3 +794,10 @@ func number_of_destroy(target_color):
 		
 	if target_color == "pink" :
 		trump_attack.play_animation_trump()
+
+func number_of_destroy2(target_color):
+	if target_color == "red" :
+		xi_attack.play_animation_xi2()
+		
+	if target_color == "pink" :
+		trump_attack.play_animation_trump2()

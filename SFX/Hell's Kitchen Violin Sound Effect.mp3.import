@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c33hy3ms0oxaf"
+path="res://.godot/imported/Hell's Kitchen Violin Sound Effect.mp3-46387a900e5e0566aa82d46a0e40ad95.mp3str"
+
+[deps]
+
+source_file="res://SFX/Hell's Kitchen Violin Sound Effect.mp3"
+dest_files=["res://.godot/imported/Hell's Kitchen Violin Sound Effect.mp3-46387a900e5e0566aa82d46a0e40ad95.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

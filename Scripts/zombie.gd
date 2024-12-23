@@ -103,18 +103,9 @@ func take_damage(amount, hero_type):
 			zombie_animation.play("death")
 		else:
 			zombie_animation.play(animation_type)
-		
-		"""hp -= amount
-		if hp <= 0:
-			# Hide the label immediately when the zombie starts its "death" animation
-			zombie_label.hide()
-			emit_signal("zombie_destroyed", self) # Notify to other heroes
-			zombie_animation.play("death")
-		else:
-			zombie_animation.play("attacked")
-	if zombie_label:
-		zombie_label.text = str(hp)  # Update the label text
-			#print("Zombie HP updated to:", hp)"""
+
+func zombie_attack():
+	zombie_animation.play("attack")
 
 func _on_animation_finished(anim_name):
 	if anim_name == "death":

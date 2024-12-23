@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dduedpq45ldhj"]
+[gd_scene load_steps=17 format=3 uid="uid://dduedpq45ldhj"]
 
 [ext_resource type="Texture2D" uid="uid://cu1llmox44mlj" path="res://Sprites/zombie1.png" id="1_leviq"]
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_xbqkw"]
@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bc86oekfbrr3l" path="res://Sprites/zombie3.png" id="3_58gkt"]
 [ext_resource type="FontFile" uid="uid://clg5yxaemtrnq" path="res://Font/Pixeled.ttf" id="5_eo1ex"]
 [ext_resource type="AudioStream" uid="uid://d3o1fbiwtkvlg" path="res://SFX/attackSound.MP3" id="6_4yhp2"]
-[ext_resource type="AudioStream" uid="uid://crh1bxf7juo3f" path="res://SFX/gta 5 death (sound effect).mp3" id="7_75w0g"]
+[ext_resource type="AudioStream" uid="uid://om1hr7axv7xk" path="res://SFX/zombie attack.MP3" id="6_q3kwm"]
 [ext_resource type="AudioStream" uid="uid://cedtntmwbcyux" path="res://SFX/Squeaky Toy Sound Effect.mp3" id="7_yy2eu"]
+[ext_resource type="AudioStream" uid="uid://c2vdavqfehx5i" path="res://SFX/Taco Bell Bong - Sound Effect (HD).mp3" id="8_es87q"]
 
 [sub_resource type="Animation" id="Animation_caf6a"]
 length = 0.001
@@ -78,6 +79,18 @@ tracks/5/path = NodePath("attacked2:playing")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("attack:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -216,9 +229,38 @@ tracks/4/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_c2khg"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("attack:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1msum"]
 _data = {
 "RESET": SubResource("Animation_caf6a"),
+"attack": SubResource("Animation_c2khg"),
 "attacked": SubResource("Animation_h0eg1"),
 "attacked_2": SubResource("Animation_i3yul"),
 "death": SubResource("Animation_cyp2w")
@@ -280,6 +322,10 @@ scroll_active = false
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_q3kwm")
+volume_db = 7.0
+
 [node name="attacked" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_4yhp2")
 volume_db = 15.459
@@ -289,7 +335,7 @@ stream = ExtResource("7_yy2eu")
 volume_db = 15.036
 
 [node name="dead" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_75w0g")
+stream = ExtResource("8_es87q")
 volume_db = 5.098
 
 [node name="Camera2D" type="Camera2D" parent="."]

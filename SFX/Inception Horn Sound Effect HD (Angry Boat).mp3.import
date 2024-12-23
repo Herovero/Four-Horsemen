@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://p0ii4f6eb1c0"
+path="res://.godot/imported/Inception Horn Sound Effect HD (Angry Boat).mp3-74ceaf4e51e0e428378f9ded63a703f9.mp3str"
+
+[deps]
+
+source_file="res://SFX/Inception Horn Sound Effect HD (Angry Boat).mp3"
+dest_files=["res://.godot/imported/Inception Horn Sound Effect HD (Angry Boat).mp3-74ceaf4e51e0e428378f9ded63a703f9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

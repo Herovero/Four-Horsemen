@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://be8yah8g20647"
+path="res://.godot/imported/Donald Trump to CNN reporter_ Not you, your organization terrible! You're fake news!.mp3-9c2b83293b0f5c3003413fb43007823a.mp3str"
+
+[deps]
+
+source_file="res://SFX/Donald Trump to CNN reporter_ Not you, your organization terrible! You're fake news!.mp3"
+dest_files=["res://.godot/imported/Donald Trump to CNN reporter_ Not you, your organization terrible! You're fake news!.mp3-9c2b83293b0f5c3003413fb43007823a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

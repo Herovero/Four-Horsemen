@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://beftem5x0v5w"
+path="res://.godot/imported/hero phase.MP3-8b8ad27caa2504fb7aa1d79daa9a801f.mp3str"
+
+[deps]
+
+source_file="res://SFX/hero phase.MP3"
+dest_files=["res://.godot/imported/hero phase.MP3-8b8ad27caa2504fb7aa1d79daa9a801f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

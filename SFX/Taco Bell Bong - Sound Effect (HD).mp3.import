@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c2vdavqfehx5i"
+path="res://.godot/imported/Taco Bell Bong - Sound Effect (HD).mp3-c500c2f4832b1057f0d4a558c5d3f1f9.mp3str"
+
+[deps]
+
+source_file="res://SFX/Taco Bell Bong - Sound Effect (HD).mp3"
+dest_files=["res://.godot/imported/Taco Bell Bong - Sound Effect (HD).mp3-c500c2f4832b1057f0d4a558c5d3f1f9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

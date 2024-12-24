@@ -116,13 +116,19 @@ func update_sprite_destroyed_count(current_color):
 		# print("%s number is now %d" % [color_map[current_color], sprite_destroyed_count[color_map[current_color]]])
 
 func update_labels():
-	# print("Labels updated: ", sprite_destroyed_count)  # Debugging line
+	# Debugging log to see sprite counts before update
+	print("Sprite counts before update:", sprite_destroyed_count)
+	
+	# Update labels for all sprites
 	label_fries.text = "%d" %sprite_destroyed_count["fries"]
 	label_bomb.text = "%d" %sprite_destroyed_count["bomb"]
 	#label_bodyguard.text = "%d" %sprite_destroyed_count["body_guard"]
-	label_bodyguard.text = "%d" % min(sprite_destroyed_count["body_guard"], 4)  # Cap bodyguard value at 4
+	#label_bodyguard.text = "%d" % min(sprite_destroyed_count["body_guard"], 4)  # Cap bodyguard value at 4
 	label_virus.text = "%d" %sprite_destroyed_count["virus"]
 	label_pudding.text = "%d" %sprite_destroyed_count["pudding"]
+	
+	# Update bodyguard label only based on bodyguard_hp (not sprite count)
+	label_bodyguard.text = "%d" % min(bodyguard_hp, 4)
 	
 	# Update hero damage values dynamically based on labels
 	hero_damage["Hero1"] = int(label_pudding.text) if label_pudding.text != "" else 0
@@ -135,6 +141,7 @@ func update_labels():
 	print("Hero2 damage: ", hero_damage["Hero2"])
 	print("Hero3 damage: ", hero_damage["Hero3"])
 	print("Hero4 damage: ", hero_damage["Hero4"])
+	print("Bodyguard HP: ", bodyguard_hp)
 
 func heroes_attack():
 	if zombies.size() == 0:
@@ -228,8 +235,8 @@ func wait_for_animation_to_finish(hero_name: String) -> void:
 func reset_labels() -> void:
 	# Reset the sprite_destroyed_count dictionary
 	for key in sprite_destroyed_count.keys():
-		if key != "body_guard":  # Skip resetting "bodyguard"
-			sprite_destroyed_count[key] = 0
+		#if key != "body_guard":  # Skip resetting "bodyguard"
+		sprite_destroyed_count[key] = 0
 
 	# Reset labels
 	label_pudding.text = "0"
@@ -656,6 +663,14 @@ func destroy_matches():
 			var anim_player = dot.get_node_or_null("AnimationPlayer")
 			if anim_player:
 				anim_player.play("disappear")
+			
+			# Update the bodyguard HP if a bodyguard dot is destroyed
+			if dot.color == "yellow":
+				# Make sure bodyguard HP does not exceed 4
+				if sprite_destroyed_count["body_guard"] < 4:
+					sprite_destroyed_count["body_guard"] += 1
+				bodyguard_hp = min(sprite_destroyed_count["body_guard"], 4)
+				label_bodyguard.text = "Bodyguard HP: %d" % bodyguard_hp
 		
 		update_labels()  # Update any other labels, such as score or time
 		

@@ -181,16 +181,10 @@ func attack_hero(hero_name: String) -> void:
 			# Pass the hero type to the zombie's take_damage function
 			zombies[0].take_damage(hero_damage[hero_name], hero_type)
 			
-			"""var target_zombie = zombies[0]
-			target_zombie.take_damage(hero_damage[hero_name])
-			
-			# Connect to the zombie_destroyed signal
-			target_zombie.connect("zombie_destroyed", Callable(self, "_on_zombie_destroyed"))"""
-			
 		# Play attack animation
 		match hero_name:
 			"Hero1":
-				label_pudding_animation.play("pudding_attack")
+				label_pudding_animation.play("pudding_attack")  # Now play pudding_attack
 			"Hero2":
 				label_bomb_animation.play("bomb_attack")
 			"Hero3":
@@ -257,13 +251,23 @@ func reset_labels() -> void:
 	
 	switch_turn()
 
+var phase_switching = false  # Flag to indicate if phase switching is in progress
+
 func switch_turn():
+	if phase_switching:
+		return  # Prevent switching while already switching phases
+	
+	phase_switching = true  # Set the flag to indicate phase switching is in progress
+	
 	if current_turn == "hero":
 		current_turn = "zombie"
 		enemy_phase()
 	else:
 		current_turn = "hero"
 		hero_phase()
+	
+	# After the phase switch completes, reset the flag
+	phase_switching = false
 
 func hero_phase():
 	print("Hero Phase!")

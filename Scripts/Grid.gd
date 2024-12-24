@@ -159,8 +159,6 @@ func heroes_attack():
 			break
 	
 	reset_labels()
-	
-	can_touch_input = true  # Restore touch input
 
 # Individual hero attack with animation
 func attack_hero(hero_name: String) -> void:
@@ -271,6 +269,12 @@ func hero_phase():
 	print("Hero Phase!")
 	# Reset or prepare for hero actions here
 	hero_turn.play_animation_herophase()
+	
+	hero_turn.connect("animation_finished", Callable(self, "_on_hero_phase_animation_finished"))
+
+func _on_hero_phase_animation_finished(anim_name):
+	print("can touch input")
+	can_touch_input = true
 
 func enemy_phase():
 	print("Enemy Phase!")

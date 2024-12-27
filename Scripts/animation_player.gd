@@ -19,8 +19,14 @@ func play_animation_xi2():
 func play_animation_kim():
 	play("KimAnimation1")
 
+func play_animation_kim2():
+	play("KimAnimation2")
+
 func play_animation_putin():
 	play("PutinAnimation1")
+
+func play_animation_putin2():
+	play("PutinAnimation2")
 
 func play_animation_herophase():
 	play("Hero Phase")

@@ -165,35 +165,70 @@ func attack_hero(hero_name: String) -> void:
 	if hero_name in hero_damage and hero_damage[hero_name] > 0:
 		print("%s attacks dealing %d damage" % [hero_name, hero_damage[hero_name]])
 		
+		# Play hero animation first
+		match hero_name:
+			"Hero1":
+				if int(label_pudding.text) == 4:
+					putin_attack.play_animation_putin()  # Add your hero animation node
+					await putin_attack.animation_finished
+				elif int(label_pudding.text) >= 5:
+					putin_attack.play_animation_putin2()  # Add your hero animation node
+					await putin_attack.animation_finished
+			"Hero2":
+				if int(label_bomb.text) == 4:
+					kim_attack.play_animation_kim() # Add your hero animation node
+					await kim_attack.animation_finished
+				elif int(label_bomb.text) >= 5:
+					kim_attack.play_animation_kim2() # Add your hero animation node
+					await kim_attack.animation_finished
+			"Hero3":
+				if int(label_virus.text) == 4:
+					xi_attack.play_animation_xi()  # Add your hero animation node
+					await xi_attack.animation_finished
+				elif int(label_virus.text) >= 5:
+					xi_attack.play_animation_xi2()  # Add your hero animation node
+					await xi_attack.animation_finished
+			"Hero4":
+				if int(label_fries.text) == 4: # and int(label_fries.text) < 7:
+					trump_attack.play_animation_trump()  # Add your hero animation node
+					await trump_attack.animation_finished
+				elif int(label_fries.text) >= 5:
+					trump_attack.play_animation_trump2()  # Add your hero animation node
+					await trump_attack.animation_finished
+					
 		# Assuming zombies[0] is the target for simplicity
 		if zombies.size() > 0:
 			var hero_type = ""
 			match hero_name:
 				"Hero1":
 					hero_type = "pudding"
+					label_pudding_animation.play("pudding_attack")
 				"Hero2":
 					hero_type = "bomb"
+					label_bomb_animation.play("bomb_attack")
 				"Hero3":
 					hero_type = "virus"
+					label_virus_animation.play("virus_attack")
 				"Hero4":
 					hero_type = "fries"
+					label_fries_animation.play("fries_attack")
 			
 			# Pass the hero type to the zombie's take_damage function
 			zombies[0].take_damage(hero_damage[hero_name], hero_type)
 			
-		# Play attack animation
-		match hero_name:
-			"Hero1":
-				label_pudding_animation.play("pudding_attack")  # Now play pudding_attack
-			"Hero2":
-				label_bomb_animation.play("bomb_attack")
-			"Hero3":
-				label_virus_animation.play("virus_attack")
-			"Hero4":
-				label_fries_animation.play("fries_attack")
-		
-		# Wait until the animation is finished using signal
-		await wait_for_animation_to_finish(hero_name)
+			# Wait for both animations to finish
+			var current_label_animation
+			match hero_name:
+				"Hero1":
+					current_label_animation = label_pudding_animation
+				"Hero2": 
+					current_label_animation = label_bomb_animation
+				"Hero3": 
+					current_label_animation = label_virus_animation
+				"Hero4": 
+					current_label_animation = label_fries_animation
+			
+			await current_label_animation.animation_finished
 		
 		# Reset animation after it finishes
 		match hero_name:
@@ -205,23 +240,6 @@ func attack_hero(hero_name: String) -> void:
 				label_virus_animation.play("RESET")
 			"Hero4":
 				label_fries_animation.play("RESET")
-		
-		#await get_tree().create_timer(0.1).timeout  # Wait 1 second after the attack animation
-	else:
-		print("%s has no attack damage to deal." % hero_name)
-	#await get_tree().create_timer(0.1).timeout
-
-# Function to wait for the animation to finish
-func wait_for_animation_to_finish(hero_name: String) -> void:
-	match hero_name:
-		"Hero1":
-			await label_pudding_animation.animation_finished
-		"Hero2":
-			await label_bomb_animation.animation_finished
-		"Hero3":
-			await label_virus_animation.animation_finished
-		"Hero4":
-			await label_fries_animation.animation_finished
 
 # Reset hero labels after attacks
 func reset_labels() -> void:
@@ -662,10 +680,10 @@ func destroy_matches():
 				"yellow": "body_guard"
 			}
 			# Trigger special animations under certain requirements
-			if dot.color in color_map and sprite_destroyed_count[color_map[dot.color]] == 4:
-				number_of_destroy(dot.color)
-			elif dot.color in color_map and sprite_destroyed_count[color_map[dot.color]] >= 5:
-				number_of_destroy2(dot.color)
+			#if dot.color in color_map and sprite_destroyed_count[color_map[dot.color]] == 4:
+				#number_of_destroy(dot.color)
+			#elif dot.color in color_map and sprite_destroyed_count[color_map[dot.color]] >= 5:
+				#number_of_destroy2(dot.color)
 			
 			# Play animation for the current dot
 			var anim_player = dot.get_node_or_null("AnimationPlayer")

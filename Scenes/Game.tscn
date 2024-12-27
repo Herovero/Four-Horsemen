@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bn68vxvojvert"]
+[gd_scene load_steps=68 format=3 uid="uid://bn68vxvojvert"]
 
 [ext_resource type="Script" path="res://Scripts/Grid.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://do1trrd35reag" path="res://Assets/trump.png" id="2_ar7mw"]
@@ -26,6 +26,10 @@
 [ext_resource type="AudioStream" uid="uid://cdku4jovxpeqq" path="res://SFX/PutinAttack1.MP3" id="19_b0k6h"]
 [ext_resource type="AudioStream" uid="uid://cnxsidgl13k2n" path="res://SFX/xi skill 2.MP3" id="20_c0tj0"]
 [ext_resource type="AudioStream" uid="uid://dff6gs1bnp7om" path="res://SFX/bgm.MP3" id="22_06hhv"]
+[ext_resource type="Texture2D" uid="uid://do6qfos3h5han" path="res://Assets/kim attack2.png" id="22_mq0kq"]
+[ext_resource type="AudioStream" uid="uid://ceprtfla730o" path="res://SFX/kim skill 2.MP3" id="24_oi34p"]
+[ext_resource type="Texture2D" uid="uid://dx8wefqvxheku" path="res://Assets/putin attack2.png" id="24_wa7js"]
+[ext_resource type="AudioStream" uid="uid://c1on3fjsj56fg" path="res://SFX/putin skill 2.MP3" id="26_5xd3t"]
 [ext_resource type="Texture2D" uid="uid://1ahyvv5lnt0n" path="res://Assets/Hero Phase.png" id="27_tbxo7"]
 [ext_resource type="AudioStream" uid="uid://beftem5x0v5w" path="res://SFX/hero phase.MP3" id="28_0i118"]
 [ext_resource type="Texture2D" uid="uid://x1jvku7gbip3" path="res://Assets/Enemy Phase.png" id="29_hpl7u"]
@@ -457,10 +461,87 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Kim2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1401, 218)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Kim2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("KimVoice2:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_se0yy"]
+resource_name = "KimAnimation2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kim2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.27826e-06, 0.700003, 1.43333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1393, 223), Vector2(540, 329), Vector2(495, 350), Vector2(67, 530)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Kim2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.43333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KimVoice2:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3bip2"]
 _data = {
 "KimAnimation1": SubResource("Animation_2b3ib"),
+"KimAnimation2": SubResource("Animation_se0yy"),
 "RESET": SubResource("Animation_qmdkk")
 }
 
@@ -542,10 +623,87 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Putin2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(523, -256)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Putin2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PutinVoice2:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5cr1j"]
+resource_name = "PutinAnimation2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Putin2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.43333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(512, -268), Vector2(512, 324), Vector2(512, 356), Vector2(512, 868)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Putin2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.43333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PutinVoice2:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pkda3"]
 _data = {
 "PutinAnimation1": SubResource("Animation_ktb31"),
+"PutinAnimation2": SubResource("Animation_5cr1j"),
 "RESET": SubResource("Animation_rrd5d")
 }
 
@@ -1090,6 +1248,12 @@ position = Vector2(1393, 223)
 scale = Vector2(0.857978, 0.857978)
 texture = ExtResource("16_dis88")
 
+[node name="Kim2" type="Sprite2D" parent="Grid"]
+z_index = 1
+position = Vector2(1401, 218)
+scale = Vector2(0.57528, 0.57528)
+texture = ExtResource("22_mq0kq")
+
 [node name="KimAttack" type="AnimationPlayer" parent="Grid"]
 libraries = {
 "": SubResource("AnimationLibrary_3bip2")
@@ -1100,12 +1264,22 @@ script = ExtResource("6_tdh47")
 stream = ExtResource("17_3lymp")
 volume_db = 16.865
 
+[node name="KimVoice2" type="AudioStreamPlayer2D" parent="Grid"]
+stream = ExtResource("24_oi34p")
+volume_db = 15.036
+
 [node name="Putin" type="Sprite2D" parent="Grid"]
 modulate = Color(1, 1, 1, 0)
 z_index = 1
 position = Vector2(512, -268)
 scale = Vector2(0.774688, 0.774688)
 texture = ExtResource("18_3poj8")
+
+[node name="Putin2" type="Sprite2D" parent="Grid"]
+z_index = 1
+position = Vector2(523, -256)
+scale = Vector2(0.738942, 0.738942)
+texture = ExtResource("24_wa7js")
 
 [node name="PutinAttack" type="AnimationPlayer" parent="Grid"]
 libraries = {
@@ -1116,6 +1290,10 @@ script = ExtResource("6_tdh47")
 [node name="PutinVoice1" type="AudioStreamPlayer2D" parent="Grid"]
 stream = ExtResource("19_b0k6h")
 volume_db = 15.459
+
+[node name="PutinVoice2" type="AudioStreamPlayer2D" parent="Grid"]
+stream = ExtResource("26_5xd3t")
+volume_db = 9.098
 
 [node name="swapping" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_cq0i5")

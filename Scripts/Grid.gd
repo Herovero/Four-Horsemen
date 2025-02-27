@@ -38,6 +38,7 @@ extends Node2D
 var heroes = []  # List of hero nodes
 var zombies: Array = []  # List to store zombies
 var hero_damage = {}  # To store attack damage for each hero
+var is_enemy_active = true
 
 # Turn states: "hero" or "zombie"
 var current_turn: String = "hero"
@@ -301,6 +302,9 @@ func _on_hero_phase_animation_finished(anim_name):
 func enemy_phase():
 	print("Enemy Phase!")
 	
+	if is_enemy_active == false:
+		return
+		
 	# Play the enemy phase animation
 	enemy_turn.play_animation_enemyphase()
 	
@@ -355,6 +359,7 @@ func damage_zombie(zombie_instance, damage_amount, hero_type):
 func _on_zombie_destroyed(zombie_instance):
 	if zombie_instance in zombies:
 		zombies.erase(zombie_instance)  # Remove the zombie from the list
+		is_enemy_active = false
 		print("Zombie destroyed and removed from the list.")
 
 

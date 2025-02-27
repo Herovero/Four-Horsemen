@@ -45,4 +45,5 @@ animations = [{
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g7gsx")
-frame_progress = 0.093238
+frame = 5
+frame_progress = 0.378554

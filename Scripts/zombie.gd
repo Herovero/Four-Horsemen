@@ -2,10 +2,10 @@ extends Node2D
 
 # Variables
 #var hp: int = 30
-var pudding_hp: int = 10
-var bomb_hp: int = 10
-var virus_hp: int = 10
-var fries_hp: int = 10
+var pudding_hp: int = 3
+var bomb_hp: int = 3
+var virus_hp: int = 3
+var fries_hp: int = 3
 
 #@onready var zombie_label = $zombie_label
 @onready var zombie_label = $zombie_labels
@@ -98,6 +98,7 @@ func take_damage(amount, hero_type):
 
 		# Check if all HP types are 0 to trigger death animation
 		if pudding_hp == 0 and bomb_hp == 0 and virus_hp == 0 and fries_hp == 0:
+			emit_signal("zombie_destroyed", self)  # Ensure signal is emitted
 		   # All HPs depleted; start death sequence
 			zombie_label.hide()
 			zombie_animation.play("death")
@@ -111,7 +112,5 @@ func _on_animation_finished(anim_name):
 	if anim_name == "death":
 		print("Zombie has died. Removing from scene.")
 		# Remove both the zombie and its label
-		"""if zombie_label:
-			zombie_label.queue_free()"""
 		emit_signal("zombie_destroyed", self)  # Ensure signal is emitted
 		queue_free()

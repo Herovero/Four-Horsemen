@@ -338,3 +338,4 @@ stream = ExtResource("8_es87q")
 volume_db = 5.098
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-4, 4)

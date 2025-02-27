@@ -32,8 +32,8 @@ extends Node2D
 @export var y_offset: int
 
 # Starting positions of the grid, calculated from the window size.
-@onready var x_start = (get_window().size.x - (width * offset) - offset / 2)
-@onready var y_start = ((get_window().size.y / 2.0) + ((height / 2.0) * offset) - (offset / 2))
+@onready var x_start = 690
+@onready var y_start = 500
 
 var heroes = []  # List of hero nodes
 var zombies: Array = []  # List to store zombies
@@ -221,11 +221,11 @@ func attack_hero(hero_name: String) -> void:
 			match hero_name:
 				"Hero1":
 					current_label_animation = label_pudding_animation
-				"Hero2": 
+				"Hero2":
 					current_label_animation = label_bomb_animation
-				"Hero3": 
+				"Hero3":
 					current_label_animation = label_virus_animation
-				"Hero4": 
+				"Hero4":
 					current_label_animation = label_fries_animation
 			
 			await current_label_animation.animation_finished
@@ -363,6 +363,9 @@ var label_display
 
 
 func _ready() -> void:
+	# Debug grid position
+	print("x_start: ", x_start)
+	print("y_start: ", y_start)
 
 	setup_timers() # Connects timers to their respective callback functions and sets wait times
 	# Ensure display_score_timer is added to the scene tree

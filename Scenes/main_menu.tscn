@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://b575edq3ht3w2"]
+
+[ext_resource type="VideoStream" path="res://Assets/Game-intro.ogv" id="1_fvh4q"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_q6uon"]
+[ext_resource type="Texture2D" uid="uid://c7iogt4b02ka2" path="res://Assets/skip.png" id="2_7o46n"]
+
+[sub_resource type="Animation" id="Animation_toik0"]
+resource_name = "skip appear"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.53333, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j8kcq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iat1f"]
+_data = {
+"RESET": SubResource("Animation_j8kcq"),
+"skip appear": SubResource("Animation_toik0")
+}
+
+[node name="Main Menu" type="Node2D"]
+script = ExtResource("1_q6uon")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("1_fvh4q")
+autoplay = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 944.0
+offset_top = 507.0
+offset_right = 1304.0
+offset_bottom = 867.0
+scale = Vector2(0.565925, 0.565925)
+texture = ExtResource("2_7o46n")
+
+[node name="skip" type="AnimationPlayer" parent="TextureRect"]
+libraries = {
+"": SubResource("AnimationLibrary_iat1f")
+}
+autoplay = "skip appear"
+
+[node name="TextureButton" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 131.0
+offset_right = 334.0
+offset_bottom = 235.0
+action_mode = 0
+
+[connection signal="pressed" from="TextureRect/TextureButton" to="." method="_on_texture_button_pressed"]

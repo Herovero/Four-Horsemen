@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://gqvrvvab62c"
+path="res://.godot/imported/Katana Swing Cut - Sound Effect for editing.mp3-bdc6d4da4b5e8f1047b05a78568a312d.mp3str"
+
+[deps]
+
+source_file="res://SFX/Katana Swing Cut - Sound Effect for editing.mp3"
+dest_files=["res://.godot/imported/Katana Swing Cut - Sound Effect for editing.mp3-bdc6d4da4b5e8f1047b05a78568a312d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

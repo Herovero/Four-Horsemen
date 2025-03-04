@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c76k313r866bq"
+path="res://.godot/imported/Microsoft Windows XP Shutdown - Sound Effect (HD).mp3-70c1275eba5d7689514d0e3125f61185.mp3str"
+
+[deps]
+
+source_file="res://SFX/Microsoft Windows XP Shutdown - Sound Effect (HD).mp3"
+dest_files=["res://.godot/imported/Microsoft Windows XP Shutdown - Sound Effect (HD).mp3-70c1275eba5d7689514d0e3125f61185.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

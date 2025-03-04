@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://bn68vxvojvert"]
+[gd_scene load_steps=77 format=3 uid="uid://bn68vxvojvert"]
 
 [ext_resource type="Script" path="res://Scripts/Grid.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://do1trrd35reag" path="res://Assets/trump.png" id="2_ar7mw"]
@@ -34,6 +34,12 @@
 [ext_resource type="AudioStream" uid="uid://beftem5x0v5w" path="res://SFX/hero phase.MP3" id="28_0i118"]
 [ext_resource type="Texture2D" uid="uid://x1jvku7gbip3" path="res://Assets/Enemy Phase.png" id="29_hpl7u"]
 [ext_resource type="AudioStream" uid="uid://ddncxh17s78gq" path="res://SFX/Enemy phase sound.MP3" id="30_h36yn"]
+[ext_resource type="Texture2D" uid="uid://casgurie5gavp" path="res://Assets/united state flag.png" id="31_6238p"]
+[ext_resource type="Texture2D" uid="uid://clt0t4i07rh2k" path="res://Assets/north korea flag.png" id="32_3kqoi"]
+[ext_resource type="Texture2D" uid="uid://bn5bsvvggqehk" path="res://Assets/china flag.png" id="33_c537m"]
+[ext_resource type="Texture2D" uid="uid://cnutyvj4gdwx3" path="res://Assets/russia flag.png" id="34_24nes"]
+[ext_resource type="Texture2D" uid="uid://523gbnc2nbcb" path="res://Assets/battle01.png" id="35_5vqh4"]
+[ext_resource type="AudioStream" uid="uid://gqvrvvab62c" path="res://SFX/Katana Swing Cut - Sound Effect for editing.mp3" id="36_trh8a"]
 
 [sub_resource type="Animation" id="Animation_3wihk"]
 resource_name = "Animation1"
@@ -955,6 +961,283 @@ _data = {
 "fries_attack": SubResource("Animation_66be0")
 }
 
+[sub_resource type="Animation" id="Animation_feovi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Battle01:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("United State flag:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1250, -750)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("North Korea flag:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-250, -750)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("China flag:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1250, 250)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Russia flag:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-250, 250)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sword:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("United State flag:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("North Korea flag:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("China flag:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Russia flag:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Battle01:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_b8qr1"]
+resource_name = "battle01 transaction "
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Battle01:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 1.8, 2.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1, 1), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("United State flag:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 0.8, 1.8, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1250, -750), Vector2(-750, -250), Vector2(-750, -250), Vector2(-1250, -750)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("North Korea flag:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 0.8, 1.8, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-250, -750), Vector2(-750, -250), Vector2(-750, -250), Vector2(-250, -750)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("China flag:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 0.8, 1.8, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1250, 250), Vector2(-750, -250), Vector2(-750, -250), Vector2(-1250, 250)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Russia flag:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6, 0.8, 1.8, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-250, 250), Vector2(-750, -250), Vector2(-750, -250), Vector2(-250, 250)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sword:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.633333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("United State flag:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.8, 2.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("North Korea flag:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.8, 2.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("China flag:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.8, 2.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Russia flag:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.8, 2.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Battle01:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1.8, 2.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lg8kx"]
+_data = {
+"RESET": SubResource("Animation_feovi"),
+"battle01 transaction ": SubResource("Animation_b8qr1")
+}
+
 [sub_resource type="Animation" id="Animation_78pe5"]
 resource_name = "Enemy Phase"
 length = 2.0
@@ -1387,6 +1670,91 @@ theme_override_fonts/font = ExtResource("6_rbvyy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(508, 324)
+
+[node name="battle transaction" type="AnimationPlayer" parent="Camera2D"]
+libraries = {
+"": SubResource("AnimationLibrary_lg8kx")
+}
+autoplay = "battle01 transaction "
+
+[node name="United State flag" type="TextureRect" parent="Camera2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1250.0
+offset_top = -750.0
+offset_right = 250.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(750, 250)
+texture = ExtResource("31_6238p")
+
+[node name="North Korea flag" type="TextureRect" parent="Camera2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -750.0
+offset_right = 1250.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(750, 250)
+texture = ExtResource("32_3kqoi")
+
+[node name="China flag" type="TextureRect" parent="Camera2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1250.0
+offset_top = 250.0
+offset_right = 250.0
+offset_bottom = 750.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(750, 250)
+texture = ExtResource("33_c537m")
+
+[node name="Russia flag" type="TextureRect" parent="Camera2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = 250.0
+offset_right = 1250.0
+offset_bottom = 750.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(750, 250)
+texture = ExtResource("34_24nes")
+
+[node name="Battle01" type="TextureRect" parent="Camera2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -250.0
+offset_right = 750.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(750, 250)
+texture = ExtResource("35_5vqh4")
+
+[node name="sword" type="AudioStreamPlayer2D" parent="Camera2D"]
+stream = ExtResource("36_trh8a")
 
 [node name="Hero Phase" type="TextureRect" parent="."]
 offset_left = -930.0

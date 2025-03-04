@@ -4,6 +4,7 @@ extends Node2D
 
 @onready var hero_turn: AnimationPlayer = $"../Hero Phase/hero phase"
 @onready var enemy_turn: AnimationPlayer = $"../Enemy Phase/enemy phase"
+@onready var battle_transaction: AnimationPlayer = $"../Camera2D/battle transaction"
 
 @onready var trump_attack = $TrumpAttack
 @onready var xi_attack = $XiAttack
@@ -37,6 +38,7 @@ extends Node2D
 
 var heroes = []  # List of hero nodes
 var zombies: Array = []  # List to store zombies
+var bats: Array = [] # List to store bats
 var hero_damage = {}  # To store attack damage for each hero
 var is_enemy_active = true
 
@@ -145,18 +147,18 @@ func update_labels():
 	print("Bodyguard HP: ", bodyguard_hp)
 
 func heroes_attack():
-	if zombies.size() == 0:
-		print("No zombies to attack!")
+	if zombies.size() == 0 and bats.size() == 0:
+		print("No enemies to attack!")
 		return
 	
 	var hero_names = ["Hero1", "Hero2", "Hero3", "Hero4"]
 	
 	# Sequentially attack zombies
 	for hero_name in hero_names:
-		if zombies.size() > 0:  # Ensure zombie exists before attacking
+		if zombies.size() > 0 or bats.size() > 0:  # Ensure zombie exists before attacking
 			await attack_hero(hero_name)
 		else:
-			print("All zombies are defeated. Stopping attacks.")
+			print("All enemies are defeated. Stopping attacks.")
 			break
 	
 	reset_labels()
@@ -216,20 +218,38 @@ func attack_hero(hero_name: String) -> void:
 			
 			# Pass the hero type to the zombie's take_damage function
 			zombies[0].take_damage(hero_damage[hero_name], hero_type)
-			
-			# Wait for both animations to finish
-			var current_label_animation
+		elif bats.size() > 0:
+			var hero_type = ""
 			match hero_name:
 				"Hero1":
-					current_label_animation = label_pudding_animation
+					hero_type = "pudding"
+					label_pudding_animation.play("pudding_attack")
 				"Hero2":
-					current_label_animation = label_bomb_animation
+					hero_type = "bomb"
+					label_bomb_animation.play("bomb_attack")
 				"Hero3":
-					current_label_animation = label_virus_animation
+					hero_type = "virus"
+					label_virus_animation.play("virus_attack")
 				"Hero4":
-					current_label_animation = label_fries_animation
+					hero_type = "fries"
+					label_fries_animation.play("fries_attack")
 			
-			await current_label_animation.animation_finished
+			# Pass the hero type to the bat's take_damage function
+			bats[0].take_damage(hero_damage[hero_name], hero_type)
+			
+			# Wait for both animations to finish
+		var current_label_animation
+		match hero_name:
+			"Hero1":
+				current_label_animation = label_pudding_animation
+			"Hero2":
+				current_label_animation = label_bomb_animation
+			"Hero3":
+				current_label_animation = label_virus_animation
+			"Hero4":
+				current_label_animation = label_fries_animation
+			
+		await current_label_animation.animation_finished
 		
 		# Reset animation after it finishes
 		match hero_name:
@@ -302,7 +322,8 @@ func _on_hero_phase_animation_finished(anim_name):
 func enemy_phase():
 	print("Enemy Phase!")
 	
-	if is_enemy_active == false:
+	if not is_enemy_active:
+		print("Game is no longer active. Skipping enemy phase.")
 		return
 		
 	# Play the enemy phase animation
@@ -312,9 +333,11 @@ func enemy_phase():
 	enemy_turn.connect("animation_finished", Callable(self, "_on_enemy_phase_animation_finished"))
 
 func _on_enemy_phase_animation_finished(anim_name: String):
-	# Process each zombie's attack after the animation
-	print("zombie attack test")
-	for zombie in zombies:
+	print("Enemy phase animation finished. Processing attacks.")
+	
+	# Process each zombie's attack sequentially
+	for i in range(zombies.size()):
+		var zombie = zombies[i]
 		if bodyguard_hp > 0:
 			bodyguard_hp -= 1
 			label_bodyguard.text = str(bodyguard_hp)
@@ -322,10 +345,42 @@ func _on_enemy_phase_animation_finished(anim_name: String):
 			
 			# Call the zombie's attack animation
 			if zombie.has_method("zombie_attack"):
+				print("Starting zombie attack animation.")
 				zombie.zombie_attack()  # Trigger attack animation
+				
+				# Only wait for the animation to finish if this is not the last zombie
+				if i < zombies.size() - 1:
+					await zombie.get_node("zombie_animation").animation_finished  # Wait for the animation to finish
+					print("Zombie attack animation finished.")
+				else:
+					print("Last zombie attack. Skipping await.")
 		else:
 			print("Game Over!")
+			return  # Exit if the game is over
+	
+	# Process each bat's attack sequentially
+	for i in range(bats.size()):
+		var bat = bats[i]
+		if bodyguard_hp > 0:
+			bodyguard_hp -= 1
+			label_bodyguard.text = str(bodyguard_hp)
+			print("Bat attacked! Bodyguard HP:", bodyguard_hp)
 			
+			# Call the bat's attack animation
+			if bat.has_method("bat_attack"):
+				print("Starting bat attack animation.")
+				bat.bat_attack()  # Trigger attack animation
+				
+				# Only wait for the animation to finish if this is not the last bat
+				if i < bats.size() - 1:
+					await bat.get_node("AnimationPlayer").animation_finished  # Wait for the animation to finish
+					print("Bat attack animation finished.")
+				else:
+					print("Last bat attack. Skipping await.")
+		else:
+			print("Game Over!")
+			return  # Exit if the game is over
+	
 	# Delay before switching the turn
 	await get_tree().create_timer(0.5).timeout
 	switch_turn()
@@ -345,6 +400,20 @@ func spawn_zombie(zombie_position: Vector2):
 		zombie_instance.connect("zombie_destroyed", Callable(self, "_on_zombie_destroyed"))
 	else:
 		print("Zombie instantiation failed.")
+
+func spawn_bat(bat_position: Vector2):
+	var bat_scene = preload("res://Scenes/bat.tscn")  # Adjust path
+	var bat_instance = bat_scene.instantiate()
+	if bat_instance:
+		print("Bat spawned with HP: ", bat_instance)
+		add_child(bat_instance)
+		bat_instance.position = bat_position
+		bats.append(bat_instance)
+		
+		# Connect the bat_destroyed signal to the handler
+		bat_instance.connect("bat_destroyed", Callable(self, "_on_bat_destroyed"))
+	else:
+		print("Bat instantiation failed.")
 	
 # Damage the zombie
 func damage_zombie(zombie_instance, damage_amount, hero_type):
@@ -354,13 +423,35 @@ func damage_zombie(zombie_instance, damage_amount, hero_type):
 		zombie_instance.take_damage(damage_amount, hero_type)
 	else:
 		print("Zombie instance is invalid!")
+
+func damage_bat(bat_instance, damage_amount, hero_type):
+	print("Trying to damage bat")
+	if bat_instance:
+		print("Bat instance is valid. Applying damage:", damage_amount)
+		bat_instance.take_damage(damage_amount, hero_type)
+	else:
+		print("Bat instance is invalid!")
 		
 # Handle attack stop for remaining heroes when enemy dies
 func _on_zombie_destroyed(zombie_instance):
 	if zombie_instance in zombies:
 		zombies.erase(zombie_instance)  # Remove the zombie from the list
-		is_enemy_active = false
 		print("Zombie destroyed and removed from the list.")
+		
+		# Check if all enemies are dead
+		if zombies.size() == 0 and bats.size() == 0:
+			print("All enemies are dead. Stopping the game.")
+			is_enemy_active = false  # Stop the turn system
+
+func _on_bat_destroyed(bat_instance):
+	if bat_instance in bats:
+		bats.erase(bat_instance)  # Remove the bat from the list
+		print("Bat destroyed and removed from the list.")
+		
+		# Check if all enemies are dead
+		if zombies.size() == 0 and bats.size() == 0:
+			print("All enemies are dead. Stopping the game.")
+			is_enemy_active = false  # Stop the turn system
 
 
 var destroyed_count = 0
@@ -397,12 +488,20 @@ func _ready() -> void:
 	label_bodyguard.text = str(bodyguard_hp)
 	
 	# Spawn enemies
-	var _zombie1 = spawn_zombie(Vector2(275, 266))
+	var _enemy1 = spawn_zombie(Vector2(200, 266))
+	var _enemy2 = spawn_zombie(Vector2(400, 266))
+	#var _enemy2 = spawn_bat(Vector2(400, 266))  # Spawn a bat at a different position
 	if zombies.size() > 0:
 		damage_zombie(zombies[0], 0, "pudding")
 		damage_zombie(zombies[0], 0, "bomb")
 		damage_zombie(zombies[0], 0, "virus")
 		damage_zombie(zombies[0], 0, "fries")
+	
+	if bats.size() > 0:
+		damage_bat(bats[0], 0, "pudding")
+		damage_bat(bats[0], 0, "bomb")
+		damage_bat(bats[0], 0, "virus")
+		damage_bat(bats[0], 0, "fries")
 	
 func setup_timers():
 	# Manage delays between destroying matches, collapsing columns, and refilling the grid

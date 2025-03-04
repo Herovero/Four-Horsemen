@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c58m8r42rc35s"
+path="res://.godot/imported/zombie noise.MP3-1066bbd2ecd72b0e291506cb08a08908.mp3str"
+
+[deps]
+
+source_file="res://SFX/zombie noise.MP3"
+dest_files=["res://.godot/imported/zombie noise.MP3-1066bbd2ecd72b0e291506cb08a08908.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

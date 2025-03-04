@@ -27,7 +27,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(5, 5)]
+"values": [Vector2(4.5, 4.5)]
 }
 
 [sub_resource type="Animation" id="Animation_r5u22"]
@@ -55,7 +55,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.233333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(5, 5), Vector2(0.1, 0.1)]
+"values": [Vector2(4.5, 4.5), Vector2(0.1, 0.1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7rcor"]
@@ -68,7 +68,7 @@ _data = {
 color = "blue"
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(5, 5)
+scale = Vector2(4.5, 4.5)
 texture = ExtResource("2_ifwwm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]

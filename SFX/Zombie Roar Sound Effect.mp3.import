@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://glidoobjvap7"
+path="res://.godot/imported/Zombie Roar Sound Effect.mp3-bf402fa0021ceecf7f7760658754a945.mp3str"
+
+[deps]
+
+source_file="res://SFX/Zombie Roar Sound Effect.mp3"
+dest_files=["res://.godot/imported/Zombie Roar Sound Effect.mp3-bf402fa0021ceecf7f7760658754a945.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

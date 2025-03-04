@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dduedpq45ldhj"]
+[gd_scene load_steps=18 format=3 uid="uid://dduedpq45ldhj"]
 
 [ext_resource type="Texture2D" uid="uid://cu1llmox44mlj" path="res://Sprites/zombie1.png" id="1_leviq"]
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_xbqkw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bc86oekfbrr3l" path="res://Sprites/zombie3.png" id="3_58gkt"]
 [ext_resource type="FontFile" uid="uid://clg5yxaemtrnq" path="res://Font/Pixeled.ttf" id="5_eo1ex"]
 [ext_resource type="AudioStream" uid="uid://d3o1fbiwtkvlg" path="res://SFX/attackSound.MP3" id="6_4yhp2"]
+[ext_resource type="AudioStream" uid="uid://c58m8r42rc35s" path="res://SFX/zombie noise.MP3" id="6_x1f55"]
 [ext_resource type="AudioStream" uid="uid://cedtntmwbcyux" path="res://SFX/Squeaky Toy Sound Effect.mp3" id="7_yy2eu"]
 [ext_resource type="AudioStream" uid="uid://c2vdavqfehx5i" path="res://SFX/Taco Bell Bong - Sound Effect (HD).mp3" id="8_es87q"]
 
@@ -33,7 +34,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -95,6 +96,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("noise:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("zombie_labels:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_c2khg"]
 resource_name = "attack"
@@ -109,7 +134,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, 40), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -137,7 +162,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, -40), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -205,7 +230,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, -40), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -256,9 +281,50 @@ tracks/4/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_pmmmh"]
+resource_name = "appear"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("noise:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("zombie_labels:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1msum"]
 _data = {
 "RESET": SubResource("Animation_caf6a"),
+"appear": SubResource("Animation_pmmmh"),
 "attack": SubResource("Animation_c2khg"),
 "attacked": SubResource("Animation_h0eg1"),
 "attacked_2": SubResource("Animation_i3yul"),
@@ -291,6 +357,7 @@ libraries = {
 }
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_axlkb")
 autoplay = "default"
@@ -307,6 +374,7 @@ theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 
 [node name="zombie_labels" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
 offset_left = -38.0
 offset_top = -238.0
 offset_right = 62.0
@@ -320,6 +388,9 @@ scroll_active = false
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="noise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_x1f55")
 
 [node name="attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_4yhp2")

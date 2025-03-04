@@ -21,6 +21,9 @@ func _ready():
 	if zombie_animation:
 		zombie_animation.animation_finished.connect(_on_animation_finished)
 
+func zombie_appear():
+	zombie_animation.play("appear")
+
 func update_zombie_label():
 	# If the zombie label doesn't exist or is hidden, we don't need to update it
 	if not zombie_label or not zombie_label.is_visible():

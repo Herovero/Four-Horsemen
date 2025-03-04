@@ -33,7 +33,7 @@ extends Node2D
 @export var y_offset: int
 
 # Starting positions of the grid, calculated from the window size.
-@onready var x_start = 690
+@onready var x_start = 680
 @onready var y_start = 500
 
 var heroes = []  # List of hero nodes
@@ -308,6 +308,13 @@ func switch_turn():
 	# After the phase switch completes, reset the flag
 	phase_switching = false
 
+# Function to handle the battle_transaction animation_finished signal
+func _on_battle_transaction_finished(anim_name):
+	# Play the appear animation for all zombies
+	for zombie in zombies:
+		if zombie.has_method("zombie_appear"):
+			zombie.zombie_appear()
+
 func hero_phase():
 	print("Hero Phase!")
 	# Reset or prepare for hero actions here
@@ -487,9 +494,13 @@ func _ready() -> void:
 	
 	label_bodyguard.text = str(bodyguard_hp)
 	
+	# Connect the battle_transaction animation_finished signal
+	if battle_transaction:
+		battle_transaction.connect("animation_finished", Callable(self, "_on_battle_transaction_finished"))
+	
 	# Spawn enemies
-	var _enemy1 = spawn_zombie(Vector2(200, 266))
-	var _enemy2 = spawn_zombie(Vector2(400, 266))
+	var _enemy1 = spawn_zombie(Vector2(200, 300))
+	var _enemy2 = spawn_zombie(Vector2(400, 300))
 	#var _enemy2 = spawn_bat(Vector2(400, 266))  # Spawn a bat at a different position
 	if zombies.size() > 0:
 		damage_zombie(zombies[0], 0, "pudding")

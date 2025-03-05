@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://di16o4enjsc5n"
+path="res://.godot/imported/monster bat scream.mp3-89840eecae74e004d1a54c0c699dbefe.mp3str"
+
+[deps]
+
+source_file="res://SFX/monster bat scream.mp3"
+dest_files=["res://.godot/imported/monster bat scream.mp3-89840eecae74e004d1a54c0c699dbefe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

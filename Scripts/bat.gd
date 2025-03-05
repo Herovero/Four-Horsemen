@@ -20,6 +20,9 @@ func _ready():
 	if bat_animation:
 		bat_animation.animation_finished.connect(_on_animation_finished)
 
+func bat_appear():
+	bat_animation.play("appear")
+
 func update_bat_label():
 	# If the bat label doesn't exist or is hidden, we don't need to update it
 	if not bat_label or not bat_label.is_visible():

@@ -41,6 +41,7 @@ var zombies: Array = []  # List to store zombies
 var bats: Array = [] # List to store bats
 var hero_damage = {}  # To store attack damage for each hero
 var is_enemy_active = true
+var current_battle_stage = 1
 
 # Turn states: "hero" or "zombie"
 var current_turn: String = "hero"
@@ -288,7 +289,9 @@ func reset_labels() -> void:
 	
 	print("All hero labels and damage value reset.")
 	
-	switch_turn()
+	# Only switch turn if enemies are still active
+	if is_enemy_active:
+		switch_turn()
 
 var phase_switching = false  # Flag to indicate if phase switching is in progress
 
@@ -309,11 +312,37 @@ func switch_turn():
 	phase_switching = false
 
 # Function to handle the battle_transaction animation_finished signal
-func _on_battle_transaction_finished(anim_name):
+func _on_battle_transaction_finished(_anim_name):
 	# Play the appear animation for all zombies
 	for zombie in zombies:
 		if zombie.has_method("zombie_appear"):
 			zombie.zombie_appear()
+	for bat in bats:
+		if bat.has_method("bat_appear"):
+			bat.bat_appear()
+				
+func _on_battle02_transaction_finished(_anim_name):
+	if current_battle_stage == 2:
+		print("Battle02 transaction completed. Spawning new enemies.")
+		spawn_battle02_enemies()
+		
+		# Directly set to hero turn without playing animation
+		current_turn = "hero"
+		can_touch_input = true
+		print("Battle02 started. Hero Phase activated.")
+
+func check_battle_stage_transition():
+	# Only transition if we're in battle stage 1
+	if current_battle_stage == 1 and zombies.size() == 0 and bats.size() == 0:
+		is_enemy_active = false
+		await get_tree().create_timer(1.5).timeout
+		current_battle_stage = 2
+		print("Battle01 completed. Preparing for Battle02.")
+		
+		# Play the battle02 transaction animation
+		if battle_transaction:
+			battle_transaction.play("battle02_transaction")
+			battle_transaction.connect("animation_finished", Callable(self, "_on_battle02_transaction_finished"))
 
 func hero_phase():
 	print("Hero Phase!")
@@ -322,24 +351,20 @@ func hero_phase():
 	
 	hero_turn.connect("animation_finished", Callable(self, "_on_hero_phase_animation_finished"))
 
-func _on_hero_phase_animation_finished(anim_name):
+func _on_hero_phase_animation_finished(_anim_name):
 	print("can touch input")
 	can_touch_input = true
 
 func enemy_phase():
 	print("Enemy Phase!")
 	
-	if not is_enemy_active:
-		print("Game is no longer active. Skipping enemy phase.")
-		return
-		
 	# Play the enemy phase animation
 	enemy_turn.play_animation_enemyphase()
 	
 	# Wait for the animation to finish before proceeding
 	enemy_turn.connect("animation_finished", Callable(self, "_on_enemy_phase_animation_finished"))
 
-func _on_enemy_phase_animation_finished(anim_name: String):
+func _on_enemy_phase_animation_finished(_anim_name: String):
 	print("Enemy phase animation finished. Processing attacks.")
 	
 	# Process each zombie's attack sequentially
@@ -380,7 +405,7 @@ func _on_enemy_phase_animation_finished(anim_name: String):
 				
 				# Only wait for the animation to finish if this is not the last bat
 				if i < bats.size() - 1:
-					await bat.get_node("AnimationPlayer").animation_finished  # Wait for the animation to finish
+					await bat.get_node("bat_animation").animation_finished  # Wait for the animation to finish
 					print("Bat attack animation finished.")
 				else:
 					print("Last bat attack. Skipping await.")
@@ -392,6 +417,17 @@ func _on_enemy_phase_animation_finished(anim_name: String):
 	await get_tree().create_timer(0.5).timeout
 	switch_turn()
 
+# New function to spawn battle02 enemies
+func spawn_battle02_enemies():
+	print("Spawning Battle02 Enemies")
+	# Spawn two new enemy types in battle02
+	var _enemy1 = spawn_bat(Vector2(200, 300))
+	var _enemy2 = spawn_bat(Vector2(400, 300))
+	is_enemy_active = true
+	for bat in bats:
+		if bat.has_method("bat_appear"):
+			bat.bat_appear()
+
 # Function to spawn zombies
 func spawn_zombie(zombie_position: Vector2):
 	var zombie_scene = preload("res://Sprites/zombie.tscn")  # Adjust path
@@ -401,7 +437,6 @@ func spawn_zombie(zombie_position: Vector2):
 		add_child(zombie_instance)
 		zombie_instance.position = zombie_position
 		zombies.append(zombie_instance)
-		#print("Zombie spawned with HP:", zombie_instance.hp)
 		
 		# Connect the zombie_destroyed signal to the handler
 		zombie_instance.connect("zombie_destroyed", Callable(self, "_on_zombie_destroyed"))
@@ -446,9 +481,8 @@ func _on_zombie_destroyed(zombie_instance):
 		print("Zombie destroyed and removed from the list.")
 		
 		# Check if all enemies are dead
-		if zombies.size() == 0 and bats.size() == 0:
-			print("All enemies are dead. Stopping the game.")
-			is_enemy_active = false  # Stop the turn system
+		check_battle_stage_transition()
+
 
 func _on_bat_destroyed(bat_instance):
 	if bat_instance in bats:
@@ -456,9 +490,7 @@ func _on_bat_destroyed(bat_instance):
 		print("Bat destroyed and removed from the list.")
 		
 		# Check if all enemies are dead
-		if zombies.size() == 0 and bats.size() == 0:
-			print("All enemies are dead. Stopping the game.")
-			is_enemy_active = false  # Stop the turn system
+		check_battle_stage_transition()
 
 
 var destroyed_count = 0
@@ -500,8 +532,8 @@ func _ready() -> void:
 	
 	# Spawn enemies
 	var _enemy1 = spawn_zombie(Vector2(200, 300))
-	var _enemy2 = spawn_zombie(Vector2(400, 300))
-	#var _enemy2 = spawn_bat(Vector2(400, 266))  # Spawn a bat at a different position
+	var _enemy2 = spawn_bat(Vector2(400, 300))
+	
 	if zombies.size() > 0:
 		damage_zombie(zombies[0], 0, "pudding")
 		damage_zombie(zombies[0], 0, "bomb")

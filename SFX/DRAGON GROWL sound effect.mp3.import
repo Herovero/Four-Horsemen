@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dy78sn05tad0b"
+path="res://.godot/imported/DRAGON GROWL sound effect.mp3-aba3b52fca4ca595dee6ded5920307e1.mp3str"
+
+[deps]
+
+source_file="res://SFX/DRAGON GROWL sound effect.mp3"
+dest_files=["res://.godot/imported/DRAGON GROWL sound effect.mp3-aba3b52fca4ca595dee6ded5920307e1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

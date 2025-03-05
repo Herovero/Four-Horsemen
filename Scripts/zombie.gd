@@ -2,9 +2,9 @@ extends Node2D
 
 # Variables
 #var hp: int = 30
-var pudding_hp: int = 0
-var bomb_hp: int = 0
-var virus_hp: int = 0
+var pudding_hp: int = 3
+var bomb_hp: int = 3
+var virus_hp: int = 3
 var fries_hp: int = 3
 
 #@onready var zombie_label = $zombie_label
@@ -23,6 +23,11 @@ func _ready():
 
 func zombie_appear():
 	zombie_animation.play("appear")
+
+func get_rect() -> Rect2:
+	# Adjust the size of the rectangle based on the enemy's sprite size
+	var rect_size = Vector2(100, 100)  # Adjust this to match your enemy's size
+	return Rect2(position - rect_size / 2, rect_size)
 
 func update_zombie_label():
 	# If the zombie label doesn't exist or is hidden, we don't need to update it

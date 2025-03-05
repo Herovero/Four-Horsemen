@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var combo_label = $"../combo_label"
 
+@onready var target_pointer = preload("res://Scenes/target_pointer.tscn").instantiate()  # Adjust the path to your gun pointer scene
+
 @onready var hero_turn: AnimationPlayer = $"../Hero Phase/hero phase"
 @onready var enemy_turn: AnimationPlayer = $"../Enemy Phase/enemy phase"
 @onready var battle_transaction: AnimationPlayer = $"../Camera2D/battle transaction"
@@ -23,6 +25,8 @@ extends Node2D
 @onready var label_virus: Label = $"../labelVirus"
 
 @onready var swapping = $"../swapping"
+@onready var target_pointing: AudioStreamPlayer2D = $"../target pointing"
+@onready var target_pointing_2: AudioStreamPlayer2D = $"../target pointing 2"
 
 # Dimensions of the grid in terms of cells
 @export var width: int
@@ -43,8 +47,8 @@ var hero_damage = {}  # To store attack damage for each hero
 var is_enemy_active = true
 var current_battle_stage = 1
 
-# Turn states: "hero" or "zombie"
-var current_turn: String = "hero"
+var current_turn: String = "hero" # Turn states: "hero" or "enemy"
+var current_target = null  # Track the currently targeted enemy
 var bodyguard_hp: int = 4  # Maximum bodyguard HP
 
 @onready var possible_dots = [
@@ -147,25 +151,50 @@ func update_labels():
 	print("Hero4 damage: ", hero_damage["Hero4"])
 	print("Bodyguard HP: ", bodyguard_hp)
 
+func target_enemy(enemy):
+	if current_target == enemy:
+		# If the same enemy is clicked again, remove the target
+		target_pointer.hide()
+		target_pointing_2.play()
+		current_target = null
+	else:
+		# Set the new target and move the gun pointer to it
+		current_target = enemy
+		target_pointing.play()
+		target_pointer.position = enemy.position
+		target_pointer.show()
+
 func heroes_attack():
+	target_pointer.hide()
 	if zombies.size() == 0 and bats.size() == 0:
 		print("No enemies to attack!")
 		return
 	
 	var hero_names = ["Hero1", "Hero2", "Hero3", "Hero4"]
 	
-	# Sequentially attack zombies
-	for hero_name in hero_names:
-		if zombies.size() > 0 or bats.size() > 0:  # Ensure zombie exists before attacking
-			await attack_hero(hero_name)
-		else:
-			print("All enemies are defeated. Stopping attacks.")
-			break
+	# Attack the targeted enemy first if it exists
+	if current_target:
+		for hero_name in hero_names:
+			if current_target and (current_target in zombies or current_target in bats):
+				await attack_hero(hero_name, current_target)
+			else:
+				break
+	else:
+	   # If no target, attack the leftmost enemy
+		var leftmost_enemy = null
+		if zombies.size() > 0:
+			leftmost_enemy = zombies[0]
+		elif bats.size() > 0:
+			leftmost_enemy = bats[0]
+		
+		if leftmost_enemy:
+			for hero_name in hero_names:
+				await attack_hero(hero_name, leftmost_enemy)
 	
 	reset_labels()
 
 # Individual hero attack with animation
-func attack_hero(hero_name: String) -> void:
+func attack_hero(hero_name: String, target) -> void:
 	if hero_name in hero_damage and hero_damage[hero_name] > 0:
 		print("%s attacks dealing %d damage" % [hero_name, hero_damage[hero_name]])
 		
@@ -173,35 +202,35 @@ func attack_hero(hero_name: String) -> void:
 		match hero_name:
 			"Hero1":
 				if int(label_pudding.text) == 4:
-					putin_attack.play_animation_putin()  # Add your hero animation node
+					putin_attack.play_animation_putin()
 					await putin_attack.animation_finished
 				elif int(label_pudding.text) >= 5:
-					putin_attack.play_animation_putin2()  # Add your hero animation node
+					putin_attack.play_animation_putin2()
 					await putin_attack.animation_finished
 			"Hero2":
 				if int(label_bomb.text) == 4:
-					kim_attack.play_animation_kim() # Add your hero animation node
+					kim_attack.play_animation_kim()
 					await kim_attack.animation_finished
 				elif int(label_bomb.text) >= 5:
-					kim_attack.play_animation_kim2() # Add your hero animation node
+					kim_attack.play_animation_kim2()
 					await kim_attack.animation_finished
 			"Hero3":
 				if int(label_virus.text) == 4:
-					xi_attack.play_animation_xi()  # Add your hero animation node
+					xi_attack.play_animation_xi()
 					await xi_attack.animation_finished
 				elif int(label_virus.text) >= 5:
-					xi_attack.play_animation_xi2()  # Add your hero animation node
+					xi_attack.play_animation_xi2()
 					await xi_attack.animation_finished
 			"Hero4":
-				if int(label_fries.text) == 4: # and int(label_fries.text) < 7:
-					trump_attack.play_animation_trump()  # Add your hero animation node
+				if int(label_fries.text) == 4:
+					trump_attack.play_animation_trump()
 					await trump_attack.animation_finished
 				elif int(label_fries.text) >= 5:
-					trump_attack.play_animation_trump2()  # Add your hero animation node
+					trump_attack.play_animation_trump2()
 					await trump_attack.animation_finished
-					
-		# Assuming zombies[0] is the target for simplicity
-		if zombies.size() > 0:
+		
+		# Attack the target
+		if target in zombies:
 			var hero_type = ""
 			match hero_name:
 				"Hero1":
@@ -217,9 +246,8 @@ func attack_hero(hero_name: String) -> void:
 					hero_type = "fries"
 					label_fries_animation.play("fries_attack")
 			
-			# Pass the hero type to the zombie's take_damage function
-			zombies[0].take_damage(hero_damage[hero_name], hero_type)
-		elif bats.size() > 0:
+			target.take_damage(hero_damage[hero_name], hero_type)
+		elif target in bats:
 			var hero_type = ""
 			match hero_name:
 				"Hero1":
@@ -235,10 +263,9 @@ func attack_hero(hero_name: String) -> void:
 					hero_type = "fries"
 					label_fries_animation.play("fries_attack")
 			
-			# Pass the hero type to the bat's take_damage function
-			bats[0].take_damage(hero_damage[hero_name], hero_type)
-			
-			# Wait for both animations to finish
+			target.take_damage(hero_damage[hero_name], hero_type)
+		
+		# Wait for both animations to finish
 		var current_label_animation
 		match hero_name:
 			"Hero1":
@@ -249,7 +276,7 @@ func attack_hero(hero_name: String) -> void:
 				current_label_animation = label_virus_animation
 			"Hero4":
 				current_label_animation = label_fries_animation
-			
+		
 		await current_label_animation.animation_finished
 		
 		# Reset animation after it finishes
@@ -422,8 +449,11 @@ func spawn_battle02_enemies():
 	print("Spawning Battle02 Enemies")
 	# Spawn two new enemy types in battle02
 	var _enemy1 = spawn_bat(Vector2(200, 300))
-	var _enemy2 = spawn_bat(Vector2(400, 300))
+	var _enemy2 = spawn_zombie(Vector2(400, 300))
 	is_enemy_active = true
+	for zombie in zombies:
+		if zombie.has_method("zombie_appear"):
+			zombie.zombie_appear()
 	for bat in bats:
 		if bat.has_method("bat_appear"):
 			bat.bat_appear()
@@ -525,6 +555,10 @@ func _ready() -> void:
 		add_child(audio_player)  # Add the player to the scene if not already added
 	
 	label_bodyguard.text = str(bodyguard_hp)
+	
+	# Add the gun pointer to the scene
+	add_child(target_pointer)
+	target_pointer.hide()  # Initially hide the gun pointer
 	
 	# Connect the battle_transaction animation_finished signal
 	if battle_transaction:
@@ -660,6 +694,19 @@ func touch_input():
 		
 		# If a touch begins (ui_touch pressed), records the grid position
 		var touch_pos = get_global_mouse_position()
+		
+		# Check if an enemy is clicked
+		for zombie in zombies:
+			if zombie.get_rect().has_point(touch_pos):
+				target_enemy(zombie)
+				return
+		
+		for bat in bats:
+			if bat.get_rect().has_point(touch_pos):
+				target_enemy(bat)
+				return
+		
+		# If no enemy is clicked, proceed with normal touch input
 		if is_in_grid(pixel_to_grid(touch_pos.x,touch_pos.y)):
 			first_touch = pixel_to_grid(touch_pos.x, touch_pos.y)
 			dot_one = all_dots[first_touch.x][first_touch.y]

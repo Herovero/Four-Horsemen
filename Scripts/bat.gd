@@ -23,6 +23,11 @@ func _ready():
 func bat_appear():
 	bat_animation.play("appear")
 
+func get_rect() -> Rect2:
+	# Adjust the size of the rectangle based on the enemy's sprite size
+	var rect_size = Vector2(100, 100)  # Adjust this to match your enemy's size
+	return Rect2(position - rect_size / 2, rect_size)
+
 func update_bat_label():
 	# If the bat label doesn't exist or is hidden, we don't need to update it
 	if not bat_label or not bat_label.is_visible():

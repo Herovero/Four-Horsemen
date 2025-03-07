@@ -175,27 +175,33 @@ func heroes_attack():
 	if current_target:
 		for hero_name in hero_names:
 			if current_target and (current_target in zombies or current_target in bats):
-				await attack_hero(hero_name, current_target)
+				await attack_hero(hero_name, current_target, 1.0)
 			else:
 				break
 	else:
-	   # If no target, attack the leftmost enemy
-		var leftmost_enemy = null
-		if zombies.size() > 0:
-			leftmost_enemy = zombies[0]
-		elif bats.size() > 0:
-			leftmost_enemy = bats[0]
+	   # If no target is selected, attack all enemies in sequence
+		var all_enemies = zombies + bats  # Combine zombies and bats into one list
+		all_enemies.sort_custom(func(a, b): return a.position.x < b.position.x)  # Sort enemies by their x-position (left to right)
 		
-		if leftmost_enemy:
+		# Calculate the number of enemies
+		var num_enemies = all_enemies.size()
+		if num_enemies == 0:
+			return  # No enemies to attack
+		
+		# Calculate the damage multiplier (half damage per enemy)
+		var damage_multiplier = 1.0 / num_enemies
+		
+		for enemy in all_enemies:
 			for hero_name in hero_names:
-				await attack_hero(hero_name, leftmost_enemy)
+				await attack_hero(hero_name, enemy, damage_multiplier)  # Split damage
 	
 	reset_labels()
 
 # Individual hero attack with animation
-func attack_hero(hero_name: String, target) -> void:
+func attack_hero(hero_name: String, target, damage_multiplier: float = 1.0) -> void:
 	if hero_name in hero_damage and hero_damage[hero_name] > 0:
-		print("%s attacks dealing %d damage" % [hero_name, hero_damage[hero_name]])
+		var damage_amount = hero_damage[hero_name] * damage_multiplier
+		print("%s attacks dealing %d damage (multiplier: %.2f)" % [hero_name, damage_amount, damage_multiplier])
 		
 		# Play hero animation first
 		match hero_name:
@@ -245,7 +251,7 @@ func attack_hero(hero_name: String, target) -> void:
 					hero_type = "fries"
 					label_fries_animation.play("fries_attack")
 			
-			target.take_damage(hero_damage[hero_name], hero_type)
+			target.take_damage(damage_amount, hero_type)
 		elif target in bats:
 			var hero_type = ""
 			match hero_name:
@@ -262,7 +268,7 @@ func attack_hero(hero_name: String, target) -> void:
 					hero_type = "fries"
 					label_fries_animation.play("fries_attack")
 			
-			target.take_damage(hero_damage[hero_name], hero_type)
+			target.take_damage(damage_amount, hero_type)
 		
 		# Wait for both animations to finish
 		var current_label_animation

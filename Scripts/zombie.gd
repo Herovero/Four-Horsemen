@@ -2,10 +2,10 @@ extends Node2D
 
 # Variables
 #var hp: int = 30
-var pudding_hp: int = 3
-var bomb_hp: int = 3
-var virus_hp: int = 3
-var fries_hp: int = 3
+var pudding_hp: float = 10
+var bomb_hp: float = 10
+var virus_hp: float = 10
+var fries_hp: float = 10
 
 #@onready var zombie_label = $zombie_label
 @onready var zombie_label = $zombie_labels
@@ -41,16 +41,16 @@ func update_zombie_label():
 	var all_hp_zero = true  # Flag to check if all HPs are zero
 	
 	if pudding_hp > 0:
-		bbcode += "[img=50]" + images[0] + "[/img] " + str(pudding_hp)
+		bbcode += "[img=50]" + images[0] + "[/img] " + str(pudding_hp) + "\n"
 		all_hp_zero = false
 	if bomb_hp > 0:
-		bbcode += "[img=50]" + images[1] + "[/img] " + str(bomb_hp)
+		bbcode += "[img=50]" + images[1] + "[/img] " + str(bomb_hp) + "\n"
 		all_hp_zero = false
 	if virus_hp > 0:
-		bbcode += "[img=50]" + images[2] + "[/img] " + str(virus_hp)
+		bbcode += "[img=50]" + images[2] + "[/img] " + str(virus_hp) + "\n"
 		all_hp_zero = false
 	if fries_hp > 0:
-		bbcode += "[img=50]" + images[3] + "[/img] " + str(fries_hp)
+		bbcode += "[img=50]" + images[3] + "[/img] " + str(fries_hp) + "\n"
 		all_hp_zero = false
 	
 	# If all HPs are zero, display a "Zombie Dead" message

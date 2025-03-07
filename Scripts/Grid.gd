@@ -165,7 +165,6 @@ func target_enemy(enemy):
 		target_pointer.show()
 
 func heroes_attack():
-	target_pointer.hide()
 	if zombies.size() == 0 and bats.size() == 0:
 		print("No enemies to attack!")
 		return
@@ -315,6 +314,9 @@ func reset_labels() -> void:
 	label_pudding.text = "%d" %sprite_destroyed_count["pudding"]
 	
 	print("All hero labels and damage value reset.")
+	
+	target_pointer.hide()
+	current_target = null
 	
 	# Only switch turn if enemies are still active
 	if is_enemy_active:

@@ -1637,13 +1637,13 @@ y_offset = -2
 
 [node name="Trump" type="Sprite2D" parent="Grid"]
 modulate = Color(1, 1, 1, 0)
-z_index = 1
+z_index = 2
 position = Vector2(-324, 216)
 scale = Vector2(0.203254, 0.203254)
 texture = ExtResource("5_4prdl")
 
 [node name="Trump2" type="Sprite2D" parent="Grid"]
-z_index = 1
+z_index = 2
 position = Vector2(-406, 212)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("13_jbxfc")
@@ -1664,14 +1664,14 @@ volume_db = 15.0
 
 [node name="Xi" type="Sprite2D" parent="Grid"]
 modulate = Color(1, 1, 1, 0)
-z_index = 1
+z_index = 2
 position = Vector2(528, 803)
 scale = Vector2(1.22727, 1.22727)
 texture = ExtResource("14_hr4mk")
 
 [node name="Xi2" type="Sprite2D" parent="Grid"]
 modulate = Color(1, 1, 1, 0)
-z_index = 1
+z_index = 2
 position = Vector2(528, 843)
 scale = Vector2(0.923928, 0.923928)
 texture = ExtResource("18_7iyvm")
@@ -1692,13 +1692,13 @@ volume_db = 10.024
 
 [node name="Kim" type="Sprite2D" parent="Grid"]
 modulate = Color(1, 1, 1, 0)
-z_index = 1
+z_index = 2
 position = Vector2(1393, 223)
 scale = Vector2(0.857978, 0.857978)
 texture = ExtResource("16_dis88")
 
 [node name="Kim2" type="Sprite2D" parent="Grid"]
-z_index = 1
+z_index = 2
 position = Vector2(1401, 218)
 scale = Vector2(0.57528, 0.57528)
 texture = ExtResource("22_mq0kq")
@@ -1719,13 +1719,13 @@ volume_db = 15.036
 
 [node name="Putin" type="Sprite2D" parent="Grid"]
 modulate = Color(1, 1, 1, 0)
-z_index = 1
+z_index = 2
 position = Vector2(512, -268)
 scale = Vector2(0.774688, 0.774688)
 texture = ExtResource("18_3poj8")
 
 [node name="Putin2" type="Sprite2D" parent="Grid"]
-z_index = 1
+z_index = 2
 position = Vector2(523, -256)
 scale = Vector2(0.738942, 0.738942)
 texture = ExtResource("24_wa7js")

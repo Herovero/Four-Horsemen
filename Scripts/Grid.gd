@@ -191,9 +191,91 @@ func heroes_attack():
 		# Calculate the damage multiplier (half damage per enemy)
 		var damage_multiplier = 1.0 / num_enemies
 		
-		for enemy in all_enemies:
-			for hero_name in hero_names:
-				await attack_hero(hero_name, enemy, damage_multiplier)  # Split damage
+		# Have each hero attack all enemies before moving to the next hero
+		for hero_name in hero_names:
+			var hero_animation_played = false  # Flag to track if animation has played
+			
+			for enemy in all_enemies:
+				if hero_damage[hero_name] > 0:
+					# Only play the hero animation once before attacking any enemies
+					if not hero_animation_played:
+						match hero_name:
+							"Hero1":
+								if int(label_pudding.text) == 4:
+									putin_attack.play_animation_putin()
+									await putin_attack.animation_finished
+								elif int(label_pudding.text) >= 5:
+									putin_attack.play_animation_putin2()
+									await putin_attack.animation_finished
+							"Hero2":
+								if int(label_bomb.text) == 4:
+									kim_attack.play_animation_kim()
+									await kim_attack.animation_finished
+								elif int(label_bomb.text) >= 5:
+									kim_attack.play_animation_kim2()
+									await kim_attack.animation_finished
+							"Hero3":
+								if int(label_virus.text) == 4:
+									xi_attack.play_animation_xi()
+									await xi_attack.animation_finished
+								elif int(label_virus.text) >= 5:
+									xi_attack.play_animation_xi2()
+									await xi_attack.animation_finished
+							"Hero4":
+								if int(label_fries.text) == 4:
+									trump_attack.play_animation_trump()
+									await trump_attack.animation_finished
+								elif int(label_fries.text) >= 5:
+									trump_attack.play_animation_trump2()
+									await trump_attack.animation_finished
+						hero_animation_played = true
+					
+					# Now attack the enemy (without playing the hero animation again)
+					var hero_type = ""
+					match hero_name:
+						"Hero1":
+							hero_type = "pudding"
+							label_pudding_animation.play("pudding_attack")
+						"Hero2":
+							hero_type = "bomb"
+							label_bomb_animation.play("bomb_attack")
+						"Hero3":
+							hero_type = "virus"
+							label_virus_animation.play("virus_attack")
+						"Hero4":
+							hero_type = "fries"
+							label_fries_animation.play("fries_attack")
+					
+					# Apply damage to the enemy
+					if enemy in zombies:
+						enemy.take_damage(hero_damage[hero_name] * damage_multiplier, hero_type)
+					elif enemy in bats:
+						enemy.take_damage(hero_damage[hero_name] * damage_multiplier, hero_type)
+					
+					# Wait for label animation to finish
+					var current_label_animation
+					match hero_name:
+						"Hero1":
+							current_label_animation = label_pudding_animation
+						"Hero2":
+							current_label_animation = label_bomb_animation
+						"Hero3":
+							current_label_animation = label_virus_animation
+						"Hero4":
+							current_label_animation = label_fries_animation
+					
+					await current_label_animation.animation_finished
+					
+					# Reset animation after it finishes
+					match hero_name:
+						"Hero1":
+							label_pudding_animation.play("RESET")
+						"Hero2":
+							label_bomb_animation.play("RESET")
+						"Hero3":
+							label_virus_animation.play("RESET")
+						"Hero4":
+							label_fries_animation.play("RESET")
 	
 	reset_labels()
 

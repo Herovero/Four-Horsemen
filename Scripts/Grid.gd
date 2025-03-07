@@ -377,8 +377,6 @@ func hero_phase():
 	print("Hero Phase!")
 	# Reset or prepare for hero actions here
 	hero_turn.play_animation_herophase()
-	
-	hero_turn.connect("animation_finished", Callable(self, "_on_hero_phase_animation_finished"))
 
 func _on_hero_phase_animation_finished(_anim_name):
 	print("can touch input")
@@ -389,9 +387,6 @@ func enemy_phase():
 	
 	# Play the enemy phase animation
 	enemy_turn.play_animation_enemyphase()
-	
-	# Wait for the animation to finish before proceeding
-	enemy_turn.connect("animation_finished", Callable(self, "_on_enemy_phase_animation_finished"))
 
 func _on_enemy_phase_animation_finished(_anim_name: String):
 	print("Enemy phase animation finished. Processing attacks.")
@@ -565,6 +560,12 @@ func _ready() -> void:
 	# Connect the battle_transaction animation_finished signal
 	if battle_transaction:
 		battle_transaction.connect("animation_finished", Callable(self, "_on_battle_transaction_finished"))
+	
+	# Connect the hero and enemy phase animation_finished signals
+	if hero_turn:
+		hero_turn.connect("animation_finished", Callable(self, "_on_hero_phase_animation_finished"))
+	if enemy_turn:
+		enemy_turn.connect("animation_finished", Callable(self, "_on_enemy_phase_animation_finished"))
 	
 	# Spawn enemies
 	var _enemy1 = spawn_zombie(Vector2(200, 300))

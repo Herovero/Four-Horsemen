@@ -2,15 +2,15 @@ extends Node2D
 
 # Variables
 #var hp: int = 30
-var pudding_hp: float = 10
-var bomb_hp: float = 10
-var virus_hp: float = 10
-var fries_hp: float = 10
+var pudding_hp: float = 0
+var bomb_hp: float = 0
+var virus_hp: float = 0
+var fries_hp: float = 1
 
 @onready var bat_label = $bat_labels
 @onready var bat_animation = $bat_animation
 
-# Signal to notify when zombie is destroyed
+# Signal to notify when bat is destroyed
 signal bat_destroyed
 
 func _ready():
@@ -52,16 +52,16 @@ func update_bat_label():
 		bbcode += "[img=50]" + images[3] + "[/img] " + str(fries_hp) + "\n"
 		all_hp_zero = false
 	
-	# If all HPs are zero, display a "Zombie Dead" message
+	# If all HPs are zero, display a "Bat Dead" message
 	if all_hp_zero:
-		bbcode = "[center][b]Zombie Dead[/b][/center]"
+		bbcode = "[center][b]Bat Dead[/b][/center]"
 	
 	# Set the bbcode text to update the label only if it's still valid and visible
 	if bat_label and bat_label.is_visible():
 		bat_label.bbcode_text = bbcode
 
 func take_damage(amount, hero_type):
-	print("zombie take damage")
+	print("bat take damage")
 	
 	# Check if the HP for the hero type is already 0
 	var hp_before_damage = 0

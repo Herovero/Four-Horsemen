@@ -1,37 +1,35 @@
 extends Node2D
 
 # Variables
-#var hp: int = 30
 var pudding_hp: float = 0
 var bomb_hp: float = 0
 var virus_hp: float = 0
 var fries_hp: float = 1
 
-#@onready var zombie_label = $zombie_label
-@onready var zombie_label = $zombie_labels
-@onready var zombie_animation = $zombie_animation
+@onready var ghoul_label = $ghoul_labels
+@onready var ghoul_animation = $ghoul_animation
 
-# Signal to notify when zombie is destroyed
-signal zombie_destroyed
+# Signal to notify when ghoul is destroyed
+signal ghoul_destroyed
 
 func _ready():
-	zombie_label.bbcode_enabled = true
-	update_zombie_label()
+	ghoul_label.bbcode_enabled = true
+	update_ghoul_label()
 	# Connect the animation_finished signal
-	if zombie_animation:
-		zombie_animation.animation_finished.connect(_on_animation_finished)
+	if ghoul_animation:
+		ghoul_animation.animation_finished.connect(_on_animation_finished)
 
-func zombie_appear():
-	zombie_animation.play("appear")
+func ghoul_appear():
+	ghoul_animation.play("appear")
 
 func get_rect() -> Rect2:
 	# Adjust the size of the rectangle based on the enemy's sprite size
 	var rect_size = Vector2(100, 100)  # Adjust this to match your enemy's size
 	return Rect2(position - rect_size / 2, rect_size)
 
-func update_zombie_label():
-	# If the zombie label doesn't exist or is hidden, we don't need to update it
-	if not zombie_label or not zombie_label.is_visible():
+func update_ghoul_label():
+	# If the ghoul label doesn't exist or is hidden, we don't need to update it
+	if not ghoul_label or not ghoul_label.is_visible():
 		return
 		
 	var images = ["res://Sprites/Pudding.png", "res://Sprites/Nuclear bomb.png", "res://Sprites/virus.png", "res://Sprites/Mcdonald.png"]
@@ -53,16 +51,16 @@ func update_zombie_label():
 		bbcode += "[img=50]" + images[3] + "[/img] " + str(fries_hp) + "\n"
 		all_hp_zero = false
 	
-	# If all HPs are zero, display a "Zombie Dead" message
+	# If all HPs are zero, display a "Ghoul Dead" message
 	if all_hp_zero:
-		bbcode = "[center][b]Zombie Dead[/b][/center]"
+		bbcode = "[center][b]Ghoul Dead[/b][/center]"
 	
 	# Set the bbcode text to update the label only if it's still valid and visible
-	if zombie_label and zombie_label.is_visible():
-		zombie_label.bbcode_text = bbcode
+	if ghoul_label and ghoul_label.is_visible():
+		ghoul_label.bbcode_text = bbcode
 
 func take_damage(amount, hero_type):
-	print("zombie take damage")
+	print("ghoul take damage")
 	
 	# Check if the HP for the hero type is already 0
 	var hp_before_damage = 0
@@ -102,23 +100,23 @@ func take_damage(amount, hero_type):
 				if fries_hp < 0:
 					fries_hp = 0  # Prevent going below 0
 				
-		update_zombie_label()
+		update_ghoul_label()
 
 		# Check if all HP types are 0 to trigger death animation
 		if pudding_hp == 0 and bomb_hp == 0 and virus_hp == 0 and fries_hp == 0:
-			emit_signal("zombie_destroyed", self)  # Ensure signal is emitted
+			emit_signal("ghoul_destroyed", self)  # Ensure signal is emitted
 		   # All HPs depleted; start death sequence
-			zombie_label.hide()
-			zombie_animation.play("death")
+			ghoul_label.hide()
+			ghoul_animation.play("death")
 		else:
-			zombie_animation.play(animation_type)
+			ghoul_animation.play(animation_type)
 
-func zombie_attack():
-	zombie_animation.play("attack")
+func ghoul_attack():
+	ghoul_animation.play("attack")
 
 func _on_animation_finished(anim_name):
 	if anim_name == "death":
-		print("Zombie has died. Removing from scene.")
-		# Remove both the zombie and its label
-		emit_signal("zombie_destroyed", self)  # Ensure signal is emitted
+		print("Ghoul has died. Removing from scene.")
+		# Remove both the ghoul and its label
+		emit_signal("ghoul_destroyed", self)  # Ensure signal is emitted
 		queue_free()

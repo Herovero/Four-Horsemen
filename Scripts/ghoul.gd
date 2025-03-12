@@ -39,16 +39,16 @@ func update_ghoul_label():
 	var all_hp_zero = true  # Flag to check if all HPs are zero
 	
 	if pudding_hp > 0:
-		bbcode += "[img=50]" + images[0] + "[/img] " + str(pudding_hp) + "\n"
+		bbcode += "[img=50]" + images[0] + "[/img] " + str(round(pudding_hp * 100) / 100) + "\n"
 		all_hp_zero = false
 	if bomb_hp > 0:
-		bbcode += "[img=50]" + images[1] + "[/img] " + str(bomb_hp) + "\n"
+		bbcode += "[img=50]" + images[1] + "[/img] " + str(round(bomb_hp * 100) / 100) + "\n"
 		all_hp_zero = false
 	if virus_hp > 0:
-		bbcode += "[img=50]" + images[2] + "[/img] " + str(virus_hp) + "\n"
+		bbcode += "[img=50]" + images[2] + "[/img] " + str(round(virus_hp * 100) / 100) + "\n"
 		all_hp_zero = false
 	if fries_hp > 0:
-		bbcode += "[img=50]" + images[3] + "[/img] " + str(fries_hp) + "\n"
+		bbcode += "[img=50]" + images[3] + "[/img] " + str(round(fries_hp * 100) / 100) + "\n"
 		all_hp_zero = false
 	
 	# If all HPs are zero, display a "Ghoul Dead" message

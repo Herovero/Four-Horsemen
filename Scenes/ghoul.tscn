@@ -381,7 +381,7 @@ modulate = Color(1, 1, 1, 0)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_axlkb")
 autoplay = "default"
-frame_progress = 0.212336
+frame_progress = 0.322267
 
 [node name="ghoul_labels" type="RichTextLabel" parent="."]
 modulate = Color(1, 1, 1, 0)

@@ -450,23 +450,19 @@ func switch_turn():
 
 # Function to handle the battle_transaction animation_finished signal
 func _on_battle_transaction_finished(_anim_name):
-	# Play the appear animation for all enemies
-	for zombie in zombies:
-		if zombie.has_method("zombie_appear"):
-			zombie.zombie_appear()
-	for bat in bats:
-		if bat.has_method("bat_appear"):
-			bat.bat_appear()
-	for ghoul in ghouls:
-		if ghoul.has_method("ghoul_appear"):
-			ghoul.ghoul_appear()
-				
+	play_appear_animations(zombies, "zombie_appear")
+	play_appear_animations(bats, "bat_appear")
+	play_appear_animations(ghouls, "ghoul_appear")
+
+func play_appear_animations(enemies: Array, method_name: String):
+	for enemy in enemies:
+		if enemy.has_method(method_name):
+			enemy.call(method_name)
+
 func _on_battle02_transaction_finished(_anim_name):
 	if current_battle_stage == 2:
 		print("Battle02 transaction completed. Spawning new enemies.")
-		spawn_battle02_enemies()
-		
-		# Directly set to hero turn without playing animation
+		spawn_battle_enemies(2)
 		current_turn = "hero"
 		can_touch_input = true
 		print("Battle02 started. Hero Phase activated.")
@@ -474,9 +470,7 @@ func _on_battle02_transaction_finished(_anim_name):
 func _on_battle03_transaction_finished(_anim_name):
 	if current_battle_stage == 3:
 		print("Battle03 transaction completed. Spawning new enemies.")
-		spawn_battle03_enemies()
-		
-		# Directly set to hero turn without playing animation
+		spawn_battle_enemies(3)
 		current_turn = "hero"
 		can_touch_input = true
 		print("Battle03 started. Hero Phase activated.")
@@ -484,9 +478,7 @@ func _on_battle03_transaction_finished(_anim_name):
 func _on_battle04_transaction_finished(_anim_name):
 	if current_battle_stage == 4:
 		print("Battle04 transaction completed. Spawning new enemies.")
-		spawn_battle04_enemies()
-		
-		# Directly set to hero turn without playing animation
+		spawn_battle_enemies(4)
 		current_turn = "hero"
 		can_touch_input = true
 		print("Battle04 started. Hero Phase activated.")
@@ -494,53 +486,52 @@ func _on_battle04_transaction_finished(_anim_name):
 func _on_battle05_transaction_finished(_anim_name):
 	if current_battle_stage == 5:
 		print("Battle05 transaction completed. Spawning new enemies.")
-		spawn_battle05_enemies()
-		
-		# Directly set to hero turn without playing animation
+		spawn_battle_enemies(5)
 		current_turn = "hero"
 		can_touch_input = true
 		print("Battle05 started. Hero Phase activated.")
 
+func spawn_battle_enemies(stage: int):
+	print("Spawning Battle%02d Enemies" % stage)
+	match stage:
+		2:
+			var _enemy1 = spawn_bat(Vector2(200, 300))
+			var _enemy2 = spawn_bat(Vector2(400, 300))
+		3:
+			var _enemy1 = spawn_ghoul(Vector2(200, 300))
+			var _enemy2 = spawn_ghoul(Vector2(400, 300))
+		4:
+			var _enemy1 = spawn_zombie(Vector2(100, 300))
+			var _enemy2 = spawn_ghoul(Vector2(300, 300))
+			var _enemy3 = spawn_bat(Vector2(500, 300))
+		5:
+			var _enemy1 = spawn_bat(Vector2(200, 300))
+			var _enemy2 = spawn_bat(Vector2(400, 300))
+	
+	is_enemy_active = true
+	play_appear_animations(zombies, "zombie_appear")
+	play_appear_animations(bats, "bat_appear")
+	play_appear_animations(ghouls, "ghoul_appear")
+
 func check_battle_stage_transition():
-	# Only transition if we're in battle stage 1
-	if current_battle_stage == 1 and zombies.size() == 0 and bats.size() == 0 and ghouls.size() == 0:
+	if zombies.size() == 0 and bats.size() == 0 and ghouls.size() == 0:
 		is_enemy_active = false
 		await get_tree().create_timer(1.5).timeout
-		current_battle_stage = 2
-		print("Battle01 completed. Preparing for Battle02.")
-		
-		# Play the battle02 transaction animation
-		if battle_transaction:
-			battle_transaction.play("battle02_transaction")
-			battle_transaction.connect("animation_finished", Callable(self, "_on_battle02_transaction_finished"))
-	elif current_battle_stage == 2 and zombies.size() == 0 and bats.size() == 0 and ghouls.size() == 0:
-		is_enemy_active = false
-		await get_tree().create_timer(1.5).timeout
-		current_battle_stage = 3
-		print("Battle02 completed. Preparing for Battle03.")
-		
-		# Play the battle03 transaction animation
-		if battle_transaction:
-			battle_transaction.play("battle03_transaction")
-			battle_transaction.connect("animation_finished", Callable(self, "_on_battle03_transaction_finished"))
-	elif current_battle_stage == 3 and zombies.size() == 0 and bats.size() == 0 and ghouls.size() == 0:
-		is_enemy_active = false
-		await get_tree().create_timer(1.5).timeout
-		current_battle_stage = 4
-		print("Battle03 completed. Preparing for Battle04.")
-		
-		if battle_transaction:
-			battle_transaction.play("battle04_transaction")
-			battle_transaction.connect("animation_finished", Callable(self, "_on_battle04_transaction_finished"))
-	elif current_battle_stage == 4 and zombies.size() == 0 and bats.size() == 0 and ghouls.size() == 0:
-		is_enemy_active = false
-		await get_tree().create_timer(1.5).timeout
-		current_battle_stage = 5
-		print("Battle04 completed. Preparing for Battle05.")
-		
-		if battle_transaction:
-			battle_transaction.play("battle05_transaction")
-			battle_transaction.connect("animation_finished", Callable(self, "_on_battle05_transaction_finished"))
+		transition_to_next_battle_stage()
+
+func transition_to_next_battle_stage():
+	var next_stage = current_battle_stage + 1
+	if next_stage > 5:
+		return  # No more stages beyond 5
+	
+	print("Battle%02d completed. Preparing for Battle%02d." % [current_battle_stage, next_stage])
+	current_battle_stage = next_stage
+	
+	if battle_transaction:
+		var animation_name = "battle%02d_transaction" % next_stage
+		var callback_name = "_on_battle%02d_transaction_finished" % next_stage
+		battle_transaction.play(animation_name)
+		battle_transaction.connect("animation_finished", Callable(self, callback_name))
 
 func hero_phase():
 	print("Hero Phase!")
@@ -632,68 +623,6 @@ func _on_enemy_phase_animation_finished(_anim_name: String):
 	# Delay before switching the turn
 	await get_tree().create_timer(0.5).timeout
 	switch_turn()
-
-# Function to spawn battle02 enemies
-func spawn_battle02_enemies():
-	print("Spawning Battle02 Enemies")
-	var _enemy1 = spawn_bat(Vector2(200, 300))
-	var _enemy2 = spawn_bat(Vector2(400, 300))
-	is_enemy_active = true
-	for zombie in zombies:
-		if zombie.has_method("zombie_appear"):
-			zombie.zombie_appear()
-	for bat in bats:
-		if bat.has_method("bat_appear"):
-			bat.bat_appear()
-	for ghoul in ghouls:
-		if ghoul.has_method("ghoul_appear"):
-			ghoul.ghoul_appear()
-
-func spawn_battle03_enemies():
-	print("Spawning Battle03 Enemies")
-	var _enemy1 = spawn_ghoul(Vector2(200, 300))
-	var _enemy2 = spawn_ghoul(Vector2(400, 300))
-	is_enemy_active = true
-	for zombie in zombies:
-		if zombie.has_method("zombie_appear"):
-			zombie.zombie_appear()
-	for bat in bats:
-		if bat.has_method("bat_appear"):
-			bat.bat_appear()
-	for ghoul in ghouls:
-		if ghoul.has_method("ghoul_appear"):
-			ghoul.ghoul_appear()
-
-func spawn_battle04_enemies():
-	print("Spawning Battle04 Enemies")
-	var _enemy1 = spawn_zombie(Vector2(100, 300))
-	var _enemy2 = spawn_ghoul(Vector2(300, 300))
-	var _enemy3 = spawn_bat(Vector2(500, 300))
-	is_enemy_active = true
-	for zombie in zombies:
-		if zombie.has_method("zombie_appear"):
-			zombie.zombie_appear()
-	for bat in bats:
-		if bat.has_method("bat_appear"):
-			bat.bat_appear()
-	for ghoul in ghouls:
-		if ghoul.has_method("ghoul_appear"):
-			ghoul.ghoul_appear()
-
-func spawn_battle05_enemies():
-	print("Spawning Battle05 Enemies")
-	var _enemy1 = spawn_bat(Vector2(200, 300))
-	var _enemy2 = spawn_bat(Vector2(400, 300))
-	is_enemy_active = true
-	for zombie in zombies:
-		if zombie.has_method("zombie_appear"):
-			zombie.zombie_appear()
-	for bat in bats:
-		if bat.has_method("bat_appear"):
-			bat.bat_appear()
-	for ghoul in ghouls:
-		if ghoul.has_method("ghoul_appear"):
-			ghoul.ghoul_appear()
 
 # Function to spawn zombies
 func spawn_zombie(zombie_position: Vector2):

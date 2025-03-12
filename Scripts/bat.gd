@@ -114,6 +114,7 @@ func take_damage(amount, hero_type):
 
 func bat_attack():
 	bat_animation.play("attack")
+	await bat_animation.animation_finished
 	
 func _on_animation_finished(anim_name):
 	if anim_name == "death":

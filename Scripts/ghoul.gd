@@ -113,6 +113,7 @@ func take_damage(amount, hero_type):
 
 func ghoul_attack():
 	ghoul_animation.play("attack")
+	await ghoul_animation.animation_finished
 
 func _on_animation_finished(anim_name):
 	if anim_name == "death":

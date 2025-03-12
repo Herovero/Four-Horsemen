@@ -115,6 +115,7 @@ func take_damage(amount, hero_type):
 
 func zombie_attack():
 	zombie_animation.play("attack")
+	await zombie_animation.animation_finished
 
 func _on_animation_finished(anim_name):
 	if anim_name == "death":

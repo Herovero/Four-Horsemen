@@ -496,16 +496,21 @@ func spawn_battle_enemies(stage: int):
 	match stage:
 		2:
 			var _enemy1 = spawn_bat(Vector2(200, 300))
+			await get_tree().create_timer(1).timeout
 			var _enemy2 = spawn_bat(Vector2(400, 300))
 		3:
 			var _enemy1 = spawn_ghoul(Vector2(200, 300))
+			await get_tree().create_timer(1).timeout
 			var _enemy2 = spawn_ghoul(Vector2(400, 300))
 		4:
 			var _enemy1 = spawn_zombie(Vector2(100, 300))
+			await get_tree().create_timer(1).timeout
 			var _enemy2 = spawn_ghoul(Vector2(300, 300))
+			await get_tree().create_timer(1).timeout
 			var _enemy3 = spawn_bat(Vector2(500, 300))
 		5:
 			var _enemy1 = spawn_bat(Vector2(200, 300))
+			await get_tree().create_timer(1).timeout
 			var _enemy2 = spawn_bat(Vector2(400, 300))
 	
 	is_enemy_active = true
@@ -551,77 +556,40 @@ func enemy_phase():
 func _on_enemy_phase_animation_finished(_anim_name: String):
 	print("Enemy phase animation finished. Processing attacks.")
 	
-	# Process each zombie's attack sequentially
-	for i in range(zombies.size()):
-		var zombie = zombies[i]
+	# Combine all enemies into a single list
+	var all_enemies = zombies + bats + ghouls
+	
+	# Sort enemies by their x-position (left to right)
+	all_enemies.sort_custom(func(a, b): return a.position.x < b.position.x)
+	
+	# Process each enemy's attack sequentially
+	for i in range(all_enemies.size()):
+		var enemy = all_enemies[i]
 		if bodyguard_hp > 0:
 			bodyguard_hp -= 1
 			label_bodyguard.text = str(bodyguard_hp)
-			print("Zombie attacked! Bodyguard HP:", bodyguard_hp)
+			print("%s attacked! Bodyguard HP: %d" % [enemy.name, bodyguard_hp])
 			
-			# Call the zombie's attack animation
-			if zombie.has_method("zombie_attack"):
+			# Call the enemy's attack animation
+			if enemy.has_method("zombie_attack"):
 				print("Starting zombie attack animation.")
-				zombie.zombie_attack()  # Trigger attack animation
-				
-				# Only wait for the animation to finish if this is not the last zombie
-				if i < zombies.size() - 1:
-					await zombie.get_node("zombie_animation").animation_finished  # Wait for the animation to finish
-					print("Zombie attack animation finished.")
-				else:
-					print("Last zombie attack. Skipping await.")
-		else:
-			print("Game Over!")
-			return  # Exit if the game is over
-	
-	# Process each bat's attack sequentially
-	for i in range(bats.size()):
-		var bat = bats[i]
-		if bodyguard_hp > 0:
-			bodyguard_hp -= 1
-			label_bodyguard.text = str(bodyguard_hp)
-			print("Bat attacked! Bodyguard HP:", bodyguard_hp)
-			
-			# Call the bat's attack animation
-			if bat.has_method("bat_attack"):
+				enemy.zombie_attack()  # Trigger attack animation
+				await enemy.get_node("zombie_animation").animation_finished  # Wait for the animation to finish
+				print("Zombie attack animation finished.")
+			elif enemy.has_method("bat_attack"):
 				print("Starting bat attack animation.")
-				bat.bat_attack()  # Trigger attack animation
-				
-				# Only wait for the animation to finish if this is not the last bat
-				if i < bats.size() - 1:
-					await bat.get_node("bat_animation").animation_finished  # Wait for the animation to finish
-					print("Bat attack animation finished.")
-				else:
-					print("Last bat attack. Skipping await.")
-		else:
-			print("Game Over!")
-			return  # Exit if the game is over
-
-	# Process each ghoul's attack sequentially
-	for i in range(ghouls.size()):
-		var ghoul = ghouls[i]
-		if bodyguard_hp > 0:
-			bodyguard_hp -= 1
-			label_bodyguard.text = str(bodyguard_hp)
-			print("Ghoul attacked! Bodyguard HP:", bodyguard_hp)
-			
-			# Call the bat's attack animation
-			if ghoul.has_method("ghoul_attack"):
+				enemy.bat_attack()  # Trigger attack animation
+				await enemy.get_node("bat_animation").animation_finished  # Wait for the animation to finish
+				print("Bat attack animation finished.")
+			elif enemy.has_method("ghoul_attack"):
 				print("Starting ghoul attack animation.")
-				ghoul.ghoul_attack()  # Trigger attack animation
-				
-				# Only wait for the animation to finish if this is not the last ghoul
-				if i < ghouls.size() - 1:
-					await ghoul.get_node("ghoul_animation").animation_finished  # Wait for the animation to finish
-					print("Ghoul attack animation finished.")
-				else:
-					print("Last ghoul attack. Skipping await.")
+				enemy.ghoul_attack()  # Trigger attack animation
+				await enemy.get_node("ghoul_animation").animation_finished  # Wait for the animation to finish
+				print("Ghoul attack animation finished.")
 		else:
 			print("Game Over!")
 			return  # Exit if the game is over
-	
-	# Delay before switching the turn
-	await get_tree().create_timer(0.5).timeout
+			
 	switch_turn()
 
 # Function to spawn zombies

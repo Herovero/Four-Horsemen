@@ -1,5 +1,8 @@
 extends Node2D
 
+@onready var bgm = $"../bgm"
+@onready var background_animation = $"../background/background_animation"
+
 @onready var combo_label = $"../combo_label"
 
 @onready var target_pointer = preload("res://Scenes/target_pointer.tscn").instantiate()  # Adjust the path to your gun pointer scene
@@ -7,6 +10,7 @@ extends Node2D
 @onready var hero_turn: AnimationPlayer = $"../Hero Phase/hero phase"
 @onready var enemy_turn: AnimationPlayer = $"../Enemy Phase/enemy phase"
 @onready var battle_transaction: AnimationPlayer = $"../Camera2D/battle transaction"
+@onready var spinning_slot_poke = $"../Camera2D/spinning slot poke"
 
 @onready var trump_attack = $TrumpAttack
 @onready var xi_attack = $XiAttack
@@ -44,6 +48,7 @@ var heroes = []  # List of hero nodes
 var zombies: Array = []  # List to store zombies
 var bats: Array = [] # List to store bats
 var ghouls: Array = [] # List to store ghouls
+var giratinas: Array = [] # List to store giratinas
 var hero_damage = {}  # To store attack damage for each hero
 var is_enemy_active = true
 var current_battle_stage = 1
@@ -166,7 +171,7 @@ func target_enemy(enemy):
 		target_pointer.show()
 
 func heroes_attack():
-	if zombies.size() == 0 and bats.size() == 0 and ghouls.size() == 0:
+	if zombies.size() == 0 and bats.size() == 0 and ghouls.size() == 0 and giratinas.size() == 0:
 		print("No enemies to attack!")
 		return
 	
@@ -175,13 +180,13 @@ func heroes_attack():
 	# Attack the targeted enemy first if it exists
 	if current_target:
 		for hero_name in hero_names:
-			if current_target and (current_target in zombies or current_target in bats or current_target in ghouls):
+			if current_target and (current_target in zombies or current_target in bats or current_target in ghouls or current_target in giratinas):
 				await attack_hero(hero_name, current_target, 1.0)
 			else:
 				break
 	else:
 	   # If no target is selected, attack all enemies in sequence
-		var all_enemies = zombies + bats + ghouls  # Combine all enemies into one list
+		var all_enemies = zombies + bats + ghouls + giratinas  # Combine all enemies into one list
 		all_enemies.sort_custom(func(a, b): return a.position.x < b.position.x)  # Sort enemies by their x-position (left to right)
 		
 		# Calculate the number of enemies
@@ -253,6 +258,8 @@ func heroes_attack():
 					elif enemy in bats:
 						enemy.take_damage(hero_damage[hero_name] * damage_multiplier, hero_type)
 					elif enemy in ghouls:
+						enemy.take_damage(hero_damage[hero_name] * damage_multiplier, hero_type)
+					elif enemy in giratinas:
 						enemy.take_damage(hero_damage[hero_name] * damage_multiplier, hero_type)
 					
 					# Wait for label animation to finish
@@ -371,6 +378,23 @@ func attack_hero(hero_name: String, target, damage_multiplier: float = 1.0) -> v
 					label_fries_animation.play("fries_attack")
 			
 			target.take_damage(damage_amount, hero_type)
+		elif target in giratinas:
+			var hero_type = ""
+			match hero_name:
+				"Hero1":
+					hero_type = "pudding"
+					label_pudding_animation.play("pudding_attack")
+				"Hero2":
+					hero_type = "bomb"
+					label_bomb_animation.play("bomb_attack")
+				"Hero3":
+					hero_type = "virus"
+					label_virus_animation.play("virus_attack")
+				"Hero4":
+					hero_type = "fries"
+					label_fries_animation.play("fries_attack")
+			
+			target.take_damage(damage_amount, hero_type)
 		
 		# Wait for both animations to finish
 		var current_label_animation
@@ -453,6 +477,7 @@ func _on_battle_transaction_finished(_anim_name):
 	play_appear_animations(zombies, "zombie_appear")
 	play_appear_animations(bats, "bat_appear")
 	play_appear_animations(ghouls, "ghoul_appear")
+	play_appear_animations(giratinas, "giratina_appear")
 
 func play_appear_animations(enemies: Array, method_name: String):
 	for enemy in enemies:
@@ -491,35 +516,37 @@ func _on_battle05_transaction_finished(_anim_name):
 		can_touch_input = true
 		print("Battle05 started. Hero Phase activated.")
 
+func _on_spinning_slot_poke_finished(_anim_name):
+	print("Boss fight intro animation finished. Starting boss fight.")
+	spawn_battle_enemies(5)  # Spawn enemies for the boss fight
+	current_turn = "hero"
+	can_touch_input = true
+	print("Boss fight started. Hero Phase activated.")
+
 func spawn_battle_enemies(stage: int):
 	print("Spawning Battle%02d Enemies" % stage)
 	match stage:
 		2:
 			var _enemy1 = spawn_bat(Vector2(200, 300))
-			await get_tree().create_timer(1).timeout
-			var _enemy2 = spawn_bat(Vector2(400, 300))
+			#var _enemy2 = spawn_bat(Vector2(400, 300))
 		3:
 			var _enemy1 = spawn_ghoul(Vector2(200, 300))
-			await get_tree().create_timer(1).timeout
-			var _enemy2 = spawn_ghoul(Vector2(400, 300))
+			#var _enemy2 = spawn_ghoul(Vector2(400, 300))
 		4:
 			var _enemy1 = spawn_zombie(Vector2(100, 300))
-			await get_tree().create_timer(1).timeout
-			var _enemy2 = spawn_ghoul(Vector2(300, 300))
-			await get_tree().create_timer(1).timeout
-			var _enemy3 = spawn_bat(Vector2(500, 300))
+			#var _enemy2 = spawn_ghoul(Vector2(300, 300))
+			#var _enemy3 = spawn_bat(Vector2(500, 300))
 		5:
-			var _enemy1 = spawn_bat(Vector2(200, 300))
-			await get_tree().create_timer(1).timeout
-			var _enemy2 = spawn_bat(Vector2(400, 300))
+			var _enemy1 = spawn_giratina(Vector2(300, 200))
 	
 	is_enemy_active = true
 	play_appear_animations(zombies, "zombie_appear")
 	play_appear_animations(bats, "bat_appear")
 	play_appear_animations(ghouls, "ghoul_appear")
+	play_appear_animations(giratinas, "giratina_appear")
 
 func check_battle_stage_transition():
-	if zombies.size() == 0 and bats.size() == 0 and ghouls.size() == 0:
+	if zombies.size() == 0 and bats.size() == 0 and ghouls.size() == 0 and giratinas.size() == 0:
 		is_enemy_active = false
 		await get_tree().create_timer(1.5).timeout
 		transition_to_next_battle_stage()
@@ -533,10 +560,19 @@ func transition_to_next_battle_stage():
 	current_battle_stage = next_stage
 	
 	if battle_transaction:
-		var animation_name = "battle%02d_transaction" % next_stage
-		var callback_name = "_on_battle%02d_transaction_finished" % next_stage
-		battle_transaction.play(animation_name)
-		battle_transaction.connect("animation_finished", Callable(self, callback_name))
+		if next_stage == 5:
+			# Play the boss fight intro animation for battle05
+			bgm.stop()
+			background_animation.play("darken")
+			await get_tree().create_timer(1).timeout
+			spinning_slot_poke.play()
+			spinning_slot_poke.connect("animation_finished", Callable(self, "_on_spinning_slot_poke_finished"))
+		else:
+			# Play the regular battle transaction animation for other stages
+			var animation_name = "battle%02d_transaction" % next_stage
+			var callback_name = "_on_battle%02d_transaction_finished" % next_stage
+			battle_transaction.play(animation_name)
+			battle_transaction.connect("animation_finished", Callable(self, callback_name))
 
 func hero_phase():
 	print("Hero Phase!")
@@ -557,7 +593,7 @@ func _on_enemy_phase_animation_finished(_anim_name: String):
 	print("Enemy phase animation finished. Processing attacks.")
 	
 	# Combine all enemies into a single list
-	var all_enemies = zombies + bats + ghouls
+	var all_enemies = zombies + bats + ghouls + giratinas
 	
 	# Sort enemies by their x-position (left to right)
 	all_enemies.sort_custom(func(a, b): return a.position.x < b.position.x)
@@ -586,6 +622,11 @@ func _on_enemy_phase_animation_finished(_anim_name: String):
 				enemy.ghoul_attack()  # Trigger attack animation
 				await enemy.get_node("ghoul_animation").animation_finished  # Wait for the animation to finish
 				print("Ghoul attack animation finished.")
+			elif enemy.has_method("giratina_attack"):
+				print("Starting giratina attack animation.")
+				enemy.giratina_attack()  # Trigger attack animation
+				await enemy.get_node("giratina_animation").animation_finished  # Wait for the animation to finish
+				print("Giratina attack animation finished.")
 		else:
 			print("Game Over!")
 			return  # Exit if the game is over
@@ -634,6 +675,20 @@ func spawn_ghoul(ghoul_position: Vector2):
 		ghoul_instance.connect("ghoul_destroyed", Callable(self, "_on_ghoul_destroyed"))
 	else:
 		print("Ghoul instantiation failed.")
+
+func spawn_giratina(giratina_position: Vector2):
+	var giratina_scene = preload("res://Scenes/giratina.tscn")  # Adjust path
+	var giratina_instance = giratina_scene.instantiate()
+	if giratina_instance:
+		print("Giratina spawned with HP: ", giratina_instance)
+		add_child(giratina_instance)
+		giratina_instance.position = giratina_position
+		giratinas.append(giratina_instance)
+		
+		# Connect the giratina_destroyed signal to the handler
+		giratina_instance.connect("giratina_destroyed", Callable(self, "_on_giratina_destroyed"))
+	else:
+		print("Giratina instantiation failed.")
 	
 # Damage the zombie
 func damage_zombie(zombie_instance, damage_amount, hero_type):
@@ -659,6 +714,14 @@ func damage_ghoul(ghoul_instance, damage_amount, hero_type):
 		ghoul_instance.take_damage(damage_amount, hero_type)
 	else:
 		print("Ghoul instance is invalid!")
+
+func damage_giratina(giratina_instance, damage_amount, hero_type):
+	print("Trying to damage giratina")
+	if giratina_instance:
+		print("Giratina instance is valid. Applying damage:", damage_amount)
+		giratina_instance.take_damage(damage_amount, hero_type)
+	else:
+		print("Giratina instance is invalid!")
 		
 # Handle attack stop for remaining heroes when enemy dies
 func _on_zombie_destroyed(zombie_instance):
@@ -681,6 +744,14 @@ func _on_ghoul_destroyed(ghoul_instance):
 	if ghoul_instance in ghouls:
 		ghouls.erase(ghoul_instance)  # Remove the ghoul from the list
 		print("Ghoul destroyed and removed from the list.")
+		
+		# Check if all enemies are dead
+		check_battle_stage_transition()
+
+func _on_giratina_destroyed(giratina_instance):
+	if giratina_instance in giratinas:
+		giratinas.erase(giratina_instance)  # Remove the giratina from the list
+		print("Giratina destroyed and removed from the list.")
 		
 		# Check if all enemies are dead
 		check_battle_stage_transition()
@@ -735,7 +806,7 @@ func _ready() -> void:
 	
 	# Spawn enemies
 	var _enemy1 = spawn_zombie(Vector2(200, 300))
-	var _enemy2 = spawn_zombie(Vector2(400, 300))
+	#var _enemy2 = spawn_zombie(Vector2(400, 300))
 	
 	if zombies.size() > 0:
 		damage_zombie(zombies[0], 0, "pudding")
@@ -754,6 +825,12 @@ func _ready() -> void:
 		damage_ghoul(ghouls[0], 0, "bomb")
 		damage_ghoul(ghouls[0], 0, "virus")
 		damage_ghoul(ghouls[0], 0, "fries")
+	
+	if giratinas.size() > 0:
+		damage_giratina(giratinas[0], 0, "pudding")
+		damage_giratina(giratinas[0], 0, "bomb")
+		damage_giratina(giratinas[0], 0, "virus")
+		damage_giratina(giratinas[0], 0, "fries")
 	
 func setup_timers():
 	# Manage delays between destroying matches, collapsing columns, and refilling the grid
@@ -884,6 +961,11 @@ func touch_input():
 		for ghoul in ghouls:
 			if ghoul.get_rect().has_point(touch_pos):
 				target_enemy(ghoul)
+				return
+		
+		for giratina in giratinas:
+			if giratina.get_rect().has_point(touch_pos):
+				target_enemy(giratina)
 				return
 		
 		# If no enemy is clicked, proceed with normal touch input

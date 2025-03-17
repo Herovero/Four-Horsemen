@@ -2,10 +2,10 @@ extends Node2D
 
 # Variables
 #var hp: int = 30
-var pudding_hp: float = 0
+var pudding_hp: float = 1
 var bomb_hp: float = 0
 var virus_hp: float = 0
-var fries_hp: float = 1
+var fries_hp: float = 0
 
 #@onready var zombie_label = $zombie_label
 @onready var zombie_label = $zombie_labels

@@ -1,10 +1,10 @@
 extends Node2D
 
 # Variables
-var pudding_hp: float = 0
+var pudding_hp: float = 1
 var bomb_hp: float = 0
 var virus_hp: float = 0
-var fries_hp: float = 1
+var fries_hp: float = 0
 
 @onready var ghoul_label = $ghoul_labels
 @onready var ghoul_animation = $ghoul_animation

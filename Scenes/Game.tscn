@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://bn68vxvojvert"]
+[gd_scene load_steps=92 format=3 uid="uid://bn68vxvojvert"]
 
 [ext_resource type="Script" path="res://Scripts/Grid.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://d12hsv3vihms0" path="res://Background/game background stage.png" id="1_ccvu5"]
@@ -46,6 +46,43 @@
 [ext_resource type="Texture2D" uid="uid://dx1uye8tkw2af" path="res://Assets/battle03.png" id="39_rlwqs"]
 [ext_resource type="Texture2D" uid="uid://dyb40swk3jasg" path="res://Assets/battle04.png" id="40_uglac"]
 [ext_resource type="Texture2D" uid="uid://wvg4cvi6eyqv" path="res://Assets/battle05.png" id="41_ws65f"]
+[ext_resource type="VideoStream" path="res://Assets/spinning-slot-pokemon.ogv" id="42_7di08"]
+
+[sub_resource type="Animation" id="Animation_lxur6"]
+resource_name = "darken"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yxto0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ygitc"]
+_data = {
+"RESET": SubResource("Animation_yxto0"),
+"darken": SubResource("Animation_lxur6")
+}
 
 [sub_resource type="Animation" id="Animation_3wihk"]
 resource_name = "Animation1"
@@ -1902,6 +1939,9 @@ tracks/12/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_cmtwx"]
+resource_name = "spinning_slot_giratina"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lg8kx"]
 _data = {
 "RESET": SubResource("Animation_feovi"),
@@ -1909,7 +1949,8 @@ _data = {
 "battle02_transaction": SubResource("Animation_ojht6"),
 "battle03_transaction": SubResource("Animation_kefc4"),
 "battle04_transaction": SubResource("Animation_qpm6g"),
-"battle05_transaction": SubResource("Animation_w3s8l")
+"battle05_transaction": SubResource("Animation_w3s8l"),
+"spinning_slot_giratina": SubResource("Animation_cmtwx")
 }
 
 [sub_resource type="Animation" id="Animation_78pe5"]
@@ -1997,7 +2038,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Enemy Phase/Enemy Phase sound:playing")
+tracks/2/path = NodePath("Hero Phase/Hero Phase sound:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2009,7 +2050,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Hero Phase/Hero Phase sound:playing")
+tracks/3/path = NodePath("Enemy Phase/Enemy Phase sound:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -2057,6 +2098,11 @@ offset_right = 921.0
 offset_bottom = 572.0
 scale = Vector2(1.16724, 1.16724)
 texture = ExtResource("1_ccvu5")
+
+[node name="background_animation" type="AnimationPlayer" parent="background"]
+libraries = {
+"": SubResource("AnimationLibrary_ygitc")
+}
 
 [node name="combo_label" type="Label" parent="."]
 offset_left = 760.0
@@ -2499,6 +2545,22 @@ grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(750, 250)
 texture = ExtResource("41_ws65f")
+
+[node name="spinning slot poke" type="VideoStreamPlayer" parent="Camera2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -950.0
+offset_top = -488.0
+offset_right = 490.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.453056, 0.453056)
+pivot_offset = Vector2(738, 382)
+stream = ExtResource("42_7di08")
 
 [node name="sword" type="AudioStreamPlayer2D" parent="Camera2D"]
 stream = ExtResource("36_trh8a")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b0bvtdvrif884"
+path="res://.godot/imported/Battle! Giratina   Pokémon Platinum Music Extended.mp3-ef5fdcb22b8362d225939d3d1d8a6a03.mp3str"
+
+[deps]
+
+source_file="res://SFX/Battle! Giratina   Pokémon Platinum Music Extended.mp3"
+dest_files=["res://.godot/imported/Battle! Giratina   Pokémon Platinum Music Extended.mp3-ef5fdcb22b8362d225939d3d1d8a6a03.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

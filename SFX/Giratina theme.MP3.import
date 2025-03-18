@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://do7dyho1t3emk"
+path="res://.godot/imported/Giratina theme.MP3-c3ef9475e8b19fde34dc9a8869c60433.mp3str"
+
+[deps]
+
+source_file="res://SFX/Giratina theme.MP3"
+dest_files=["res://.godot/imported/Giratina theme.MP3-c3ef9475e8b19fde34dc9a8869c60433.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

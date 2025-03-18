@@ -1,7 +1,8 @@
-[gd_scene load_steps=92 format=3 uid="uid://bn68vxvojvert"]
+[gd_scene load_steps=95 format=3 uid="uid://bn68vxvojvert"]
 
 [ext_resource type="Script" path="res://Scripts/Grid.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://d12hsv3vihms0" path="res://Background/game background stage.png" id="1_ccvu5"]
+[ext_resource type="Texture2D" uid="uid://di1jqvvohfeer" path="res://Background/distortion world.jpg" id="1_onmvx"]
 [ext_resource type="Texture2D" uid="uid://do1trrd35reag" path="res://Assets/trump.png" id="2_ar7mw"]
 [ext_resource type="AudioStream" uid="uid://ihy7t4spn85t" path="res://SFX/move sound effect.MP3" id="3_cq0i5"]
 [ext_resource type="Texture2D" uid="uid://cgkotgkrilmuw" path="res://Sprites/Mcdonald.png" id="3_rln0p"]
@@ -40,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://clt0t4i07rh2k" path="res://Assets/north korea flag.png" id="32_3kqoi"]
 [ext_resource type="Texture2D" uid="uid://bn5bsvvggqehk" path="res://Assets/china flag.png" id="33_c537m"]
 [ext_resource type="Texture2D" uid="uid://cnutyvj4gdwx3" path="res://Assets/russia flag.png" id="34_24nes"]
+[ext_resource type="AudioStream" uid="uid://do7dyho1t3emk" path="res://SFX/Giratina theme.MP3" id="34_52uw7"]
 [ext_resource type="Texture2D" uid="uid://523gbnc2nbcb" path="res://Assets/battle01.png" id="35_5vqh4"]
 [ext_resource type="Texture2D" uid="uid://c0fso33aiowch" path="res://Assets/battle02.png" id="36_f6vsh"]
 [ext_resource type="AudioStream" uid="uid://gqvrvvab62c" path="res://SFX/Katana Swing Cut - Sound Effect for editing.mp3" id="36_trh8a"]
@@ -47,21 +49,6 @@
 [ext_resource type="Texture2D" uid="uid://dyb40swk3jasg" path="res://Assets/battle04.png" id="40_uglac"]
 [ext_resource type="Texture2D" uid="uid://wvg4cvi6eyqv" path="res://Assets/battle05.png" id="41_ws65f"]
 [ext_resource type="VideoStream" path="res://Assets/spinning-slot-pokemon.ogv" id="42_7di08"]
-
-[sub_resource type="Animation" id="Animation_lxur6"]
-resource_name = "darken"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_yxto0"]
 length = 0.001
@@ -77,11 +64,66 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../background:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_lxur6"]
+resource_name = "lighten"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../background:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+
+[sub_resource type="Animation" id="Animation_safp3"]
+resource_name = "darken"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ygitc"]
 _data = {
 "RESET": SubResource("Animation_yxto0"),
-"darken": SubResource("Animation_lxur6")
+"darken": SubResource("Animation_safp3"),
+"lighten": SubResource("Animation_lxur6")
 }
 
 [sub_resource type="Animation" id="Animation_3wihk"]
@@ -1941,6 +1983,19 @@ tracks/12/keys = {
 
 [sub_resource type="Animation" id="Animation_cmtwx"]
 resource_name = "spinning_slot_giratina"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spinning slot poke:autoplay")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lg8kx"]
 _data = {
@@ -2090,6 +2145,19 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.16463, 1.16463)
 color = Color(0, 0, 0, 1)
+
+[node name="background2" type="TextureRect" parent="."]
+offset_left = -396.0
+offset_top = -173.0
+offset_right = 884.0
+offset_bottom = 547.0
+scale = Vector2(1.16724, 1.16724)
+texture = ExtResource("1_onmvx")
+
+[node name="background2_animation" type="AnimationPlayer" parent="background2"]
+libraries = {
+"": SubResource("AnimationLibrary_ygitc")
+}
 
 [node name="background" type="TextureRect" parent="."]
 offset_left = -68.0
@@ -2315,6 +2383,9 @@ stream = ExtResource("22_06hhv")
 volume_db = -4.685
 autoplay = true
 parameters/looping = true
+
+[node name="giratina_theme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("34_52uw7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

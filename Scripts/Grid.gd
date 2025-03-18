@@ -1,7 +1,10 @@
 extends Node2D
 
 @onready var bgm = $"../bgm"
+@onready var giratina_theme = $"../giratina_theme"
+
 @onready var background_animation = $"../background/background_animation"
+@onready var background_2_animation = $"../background2/background2_animation"
 
 @onready var combo_label = $"../combo_label"
 
@@ -516,11 +519,13 @@ func _on_battle05_transaction_finished(_anim_name):
 		can_touch_input = true
 		print("Battle05 started. Hero Phase activated.")
 
-func _on_spinning_slot_poke_finished(_anim_name):
+func _on_spinning_slot_giratina_finished():
 	print("Boss fight intro animation finished. Starting boss fight.")
 	spawn_battle_enemies(5)  # Spawn enemies for the boss fight
 	current_turn = "hero"
+	await get_tree().create_timer(2.5).timeout
 	can_touch_input = true
+	giratina_theme.play()
 	print("Boss fight started. Hero Phase activated.")
 
 func spawn_battle_enemies(stage: int):
@@ -564,9 +569,12 @@ func transition_to_next_battle_stage():
 			# Play the boss fight intro animation for battle05
 			bgm.stop()
 			background_animation.play("darken")
-			await get_tree().create_timer(1).timeout
+			await get_tree().create_timer(1.5).timeout
 			spinning_slot_poke.play()
-			spinning_slot_poke.connect("animation_finished", Callable(self, "_on_spinning_slot_poke_finished"))
+			await get_tree().create_timer(5.5).timeout
+			background_2_animation.play("lighten")
+			await get_tree().create_timer(1).timeout
+			_on_spinning_slot_giratina_finished()
 		else:
 			# Play the regular battle transaction animation for other stages
 			var animation_name = "battle%02d_transaction" % next_stage
@@ -806,7 +814,7 @@ func _ready() -> void:
 	
 	# Spawn enemies
 	var _enemy1 = spawn_zombie(Vector2(200, 300))
-	#var _enemy2 = spawn_zombie(Vector2(400, 300))
+	var _enemy2 = spawn_zombie(Vector2(400, 300))
 	
 	if zombies.size() > 0:
 		damage_zombie(zombies[0], 0, "pudding")

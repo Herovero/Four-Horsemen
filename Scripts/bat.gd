@@ -3,9 +3,9 @@ extends Node2D
 # Variables
 #var hp: int = 30
 var pudding_hp: float = 0
-var bomb_hp: float = 0
+var bomb_hp: float = 1
 var virus_hp: float = 0
-var fries_hp: float = 1
+var fries_hp: float = 0
 
 @onready var bat_label = $bat_labels
 @onready var bat_animation = $bat_animation

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3dhmwlr5jptx"
+path="res://.godot/imported/heart encounter.MP3-688fdb4a70f4886a4e753cf870b5cec8.mp3str"
+
+[deps]
+
+source_file="res://SFX/heart encounter.MP3"
+dest_files=["res://.godot/imported/heart encounter.MP3-688fdb4a70f4886a4e753cf870b5cec8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

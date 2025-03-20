@@ -2,47 +2,39 @@ extends Node2D
 
 @onready var bgm = $"../bgm"
 @onready var giratina_theme = $"../giratina_theme"
-
+@onready var sans_theme = $"../sans_theme"
 @onready var background_animation = $"../background/background_animation"
 @onready var background_2_animation = $"../background2/background2_animation"
-
+@onready var background_3_animation = $"../background3/background3_animation"
 @onready var combo_label = $"../combo_label"
-
 @onready var target_pointer = preload("res://Scenes/target_pointer.tscn").instantiate()  # Adjust the path to your gun pointer scene
-
 @onready var hero_turn: AnimationPlayer = $"../Hero Phase/hero phase"
 @onready var enemy_turn: AnimationPlayer = $"../Enemy Phase/enemy phase"
 @onready var battle_transaction: AnimationPlayer = $"../Camera2D/battle transaction"
 @onready var spinning_slot_poke = $"../Camera2D/spinning slot poke"
-
+@onready var spinning_slot_undertale = $"../Camera2D/spinning slot undertale"
 @onready var trump_attack = $TrumpAttack
 @onready var xi_attack = $XiAttack
 @onready var kim_attack = $KimAttack
 @onready var putin_attack = $PutinAttack
-
 @onready var label_pudding_animation = $"../labelPudding/labelPuddingAnimation"
 @onready var label_bomb_animation = $"../labelBomb/labelBombAnimation"
 @onready var label_virus_animation = $"../labelVirus/labelVirusAnimation"
 @onready var label_fries_animation = $"../labelFries/labelFriesAnimation"
-
 @onready var label_pudding: Label = $"../labelPudding"
 @onready var label_fries: Label = $"../labelFries"
 @onready var label_bomb: Label = $"../labelBomb"
 @onready var label_bodyguard: Label = $"../labelBodyguard"
 @onready var label_virus: Label = $"../labelVirus"
-
 @onready var swapping = $"../swapping"
 @onready var target_pointing: AudioStreamPlayer2D = $"../target pointing"
 @onready var target_pointing_2: AudioStreamPlayer2D = $"../target pointing 2"
-
 # Dimensions of the grid in terms of cells
 @export var width: int
 @export var height: int
-
 # Spacing between grid cells (distance between dots)
 @export var offset: int
 @export var y_offset: int
-
 # Starting positions of the grid, calculated from the window size.
 @onready var x_start = 680
 @onready var y_start = 500
@@ -52,10 +44,10 @@ var zombies: Array = []  # List to store zombies
 var bats: Array = [] # List to store bats
 var ghouls: Array = [] # List to store ghouls
 var giratinas: Array = [] # List to store giratinas
+var sans: Array = [] # List to store sans
 var hero_damage = {}  # To store attack damage for each hero
 var is_enemy_active = true
 var current_battle_stage = 1
-
 var current_turn: String = "hero" # Turn states: "hero" or "enemy"
 var current_target = null  # Track the currently targeted enemy
 var bodyguard_hp: int = 4  # Maximum bodyguard HP
@@ -78,40 +70,28 @@ var combo_sounds = [
 
 var combo_count = 0  # Variable to keep track of how many matches are destroyed
 var audio_player : AudioStreamPlayer  # Declare an AudioStreamPlayer node
-
 @onready var timer_label = $"../CanvasLayer/Timer_label"
-
 var destroy_timer = Timer.new()
 var collapse_timer = Timer.new()
 var refill_timer = Timer.new()
-
 var match_timer = Timer.new()
-
 var match_time_limit = 7 # Time limit in seconds
 var time_remaining = match_time_limit # Remaining time counter
 var match_timer_running = false # To check if the timer is active
-
 var display_score_timer = Timer.new()
-
 var all_dots = []
-
 # Track two dots being swapped by the player
 var dot_one = null
 var dot_two = null
-
 var last_place = Vector2(0,0)
 var last_direction = Vector2(0,0)
-
 # Track the grid positions of the player's initial and final touch during a swipe
 var first_touch = Vector2(0,0)
 var final_touch = Vector2(0,0)
-
 # Tracks if the player is actively interacting.
 var controlling = false
-
 # New mechanic
 var matches_being_destroyed = false
-
 var sprite_destroyed_count  ={
 	"fries" = 0,
 	"bomb" = 0,
@@ -130,24 +110,14 @@ func update_sprite_destroyed_count(current_color):
 	}
 	if current_color in color_map:
 		sprite_destroyed_count[color_map[current_color]] += 1
-		# print("%s number is now %d" % [color_map[current_color], sprite_destroyed_count[color_map[current_color]]])
 
 func update_labels():
-	# Debugging log to see sprite counts before update
 	print("Sprite counts before update:", sprite_destroyed_count)
-	
-	# Update labels for all sprites
 	label_fries.text = "%d" %sprite_destroyed_count["fries"]
 	label_bomb.text = "%d" %sprite_destroyed_count["bomb"]
-	#label_bodyguard.text = "%d" %sprite_destroyed_count["body_guard"]
-	#label_bodyguard.text = "%d" % min(sprite_destroyed_count["body_guard"], 4)  # Cap bodyguard value at 4
 	label_virus.text = "%d" %sprite_destroyed_count["virus"]
 	label_pudding.text = "%d" %sprite_destroyed_count["pudding"]
-	
-	# Update bodyguard label only based on bodyguard_hp (not sprite count)
 	label_bodyguard.text = "%d" % min(bodyguard_hp, 4)
-	
-	# Update hero damage values dynamically based on labels
 	hero_damage["Hero1"] = int(label_pudding.text) if label_pudding.text != "" else 0
 	hero_damage["Hero2"] = int(label_bomb.text) if label_bomb.text != "" else 0
 	hero_damage["Hero3"] = int(label_virus.text) if label_virus.text != "" else 0
@@ -173,37 +143,37 @@ func target_enemy(enemy):
 		target_pointer.position = enemy.position
 		target_pointer.show()
 
+func has_enemies() -> bool:
+	return zombies.size() > 0 or bats.size() > 0 or ghouls.size() > 0 or giratinas.size() > 0 or sans.size() > 0
+
+func is_enemy(target) -> bool:
+	return target in zombies or target in bats or target in ghouls or target in giratinas or target in sans
+
 func heroes_attack():
-	if zombies.size() == 0 and bats.size() == 0 and ghouls.size() == 0 and giratinas.size() == 0:
+	if not has_enemies():
 		print("No enemies to attack!")
 		return
 	
 	var hero_names = ["Hero1", "Hero2", "Hero3", "Hero4"]
 	
 	# Attack the targeted enemy first if it exists
-	if current_target:
+	if current_target and is_enemy(current_target):
 		for hero_name in hero_names:
-			if current_target and (current_target in zombies or current_target in bats or current_target in ghouls or current_target in giratinas):
-				await attack_hero(hero_name, current_target, 1.0)
-			else:
-				break
+			await attack_hero(hero_name, current_target, 1.0)
 	else:
 	   # If no target is selected, attack all enemies in sequence
-		var all_enemies = zombies + bats + ghouls + giratinas  # Combine all enemies into one list
-		all_enemies.sort_custom(func(a, b): return a.position.x < b.position.x)  # Sort enemies by their x-position (left to right)
-		
+		var all_enemies = zombies + bats + ghouls + giratinas + sans  # Combine all enemies into one list
+		# Sort enemies by their x-position (left to right)
+		all_enemies.sort_custom(func(a, b): return a.position.x < b.position.x)
 		# Calculate the number of enemies
 		var num_enemies = all_enemies.size()
 		if num_enemies == 0:
 			return  # No enemies to attack
-		
 		# Calculate the damage multiplier (half damage per enemy)
 		var damage_multiplier = 1.0 / num_enemies
-		
 		# Have each hero attack all enemies before moving to the next hero
 		for hero_name in hero_names:
 			var hero_animation_played = false  # Flag to track if animation has played
-			
 			for enemy in all_enemies:
 				if hero_damage[hero_name] > 0:
 					# Only play the hero animation once before attacking any enemies
@@ -263,6 +233,8 @@ func heroes_attack():
 					elif enemy in ghouls:
 						enemy.take_damage(hero_damage[hero_name] * damage_multiplier, hero_type)
 					elif enemy in giratinas:
+						enemy.take_damage(hero_damage[hero_name] * damage_multiplier, hero_type)
+					elif enemy in sans:
 						enemy.take_damage(hero_damage[hero_name] * damage_multiplier, hero_type)
 					
 					# Wait for label animation to finish
@@ -398,6 +370,23 @@ func attack_hero(hero_name: String, target, damage_multiplier: float = 1.0) -> v
 					label_fries_animation.play("fries_attack")
 			
 			target.take_damage(damage_amount, hero_type)
+		elif target in sans:
+			var hero_type = ""
+			match hero_name:
+				"Hero1":
+					hero_type = "pudding"
+					label_pudding_animation.play("pudding_attack")
+				"Hero2":
+					hero_type = "bomb"
+					label_bomb_animation.play("bomb_attack")
+				"Hero3":
+					hero_type = "virus"
+					label_virus_animation.play("virus_attack")
+				"Hero4":
+					hero_type = "fries"
+					label_fries_animation.play("fries_attack")
+			
+			target.take_damage(damage_amount, hero_type)
 		
 		# Wait for both animations to finish
 		var current_label_animation
@@ -426,6 +415,7 @@ func attack_hero(hero_name: String, target, damage_multiplier: float = 1.0) -> v
 
 # Reset hero labels after attacks
 func reset_labels() -> void:
+	print("labels reset")
 	# Reset the sprite_destroyed_count dictionary
 	for key in sprite_destroyed_count.keys():
 		#if key != "body_guard":  # Skip resetting "bodyguard"
@@ -481,6 +471,7 @@ func _on_battle_transaction_finished(_anim_name):
 	play_appear_animations(bats, "bat_appear")
 	play_appear_animations(ghouls, "ghoul_appear")
 	play_appear_animations(giratinas, "giratina_appear")
+	play_appear_animations(sans, "sans_appear")
 
 func play_appear_animations(enemies: Array, method_name: String):
 	for enemy in enemies:
@@ -528,6 +519,17 @@ func _on_spinning_slot_giratina_finished():
 	giratina_theme.play()
 	print("Boss fight started. Hero Phase activated.")
 
+func _on_spinning_slot_sans_finished():
+	print("Boss fight intro animation finished. Starting boss fight.")
+	spawn_battle_enemies(5)  # Spawn enemies for the boss fight
+	current_turn = "hero"
+	await get_tree().create_timer(15).timeout
+	background_3_animation.play("RESET")
+	await get_tree().create_timer(1).timeout
+	can_touch_input = true
+	sans_theme.play()
+	print("Boss fight started. Hero Phase activated.")
+
 func spawn_battle_enemies(stage: int):
 	print("Spawning Battle%02d Enemies" % stage)
 	match stage:
@@ -539,19 +541,21 @@ func spawn_battle_enemies(stage: int):
 			#var _enemy2 = spawn_ghoul(Vector2(400, 300))
 		4:
 			var _enemy1 = spawn_zombie(Vector2(100, 300))
-			#var _enemy2 = spawn_ghoul(Vector2(300, 300))
-			#var _enemy3 = spawn_bat(Vector2(500, 300))
+			var _enemy2 = spawn_ghoul(Vector2(300, 300))
+			var _enemy3 = spawn_bat(Vector2(500, 300))
 		5:
-			var _enemy1 = spawn_giratina(Vector2(300, 200))
+			#var _enemy1 = spawn_giratina(Vector2(300, 200))
+			var _enemy1 = spawn_sans(Vector2(300, 300))
 	
 	is_enemy_active = true
 	play_appear_animations(zombies, "zombie_appear")
 	play_appear_animations(bats, "bat_appear")
 	play_appear_animations(ghouls, "ghoul_appear")
 	play_appear_animations(giratinas, "giratina_appear")
+	play_appear_animations(sans, "sans_appear")
 
 func check_battle_stage_transition():
-	if zombies.size() == 0 and bats.size() == 0 and ghouls.size() == 0 and giratinas.size() == 0:
+	if zombies.size() == 0 and bats.size() == 0 and ghouls.size() == 0 and giratinas.size() == 0 and sans.size() == 0:
 		is_enemy_active = false
 		await get_tree().create_timer(1.5).timeout
 		transition_to_next_battle_stage()
@@ -570,11 +574,14 @@ func transition_to_next_battle_stage():
 			bgm.stop()
 			background_animation.play("darken")
 			await get_tree().create_timer(1.5).timeout
-			spinning_slot_poke.play()
+			#spinning_slot_poke.play()
+			spinning_slot_undertale.play()
 			await get_tree().create_timer(5.5).timeout
-			background_2_animation.play("lighten")
+			#background_2_animation.play("lighten")
+			background_3_animation.play("lighten")
 			await get_tree().create_timer(1).timeout
-			_on_spinning_slot_giratina_finished()
+			#_on_spinning_slot_giratina_finished()
+			_on_spinning_slot_sans_finished()
 		else:
 			# Play the regular battle transaction animation for other stages
 			var animation_name = "battle%02d_transaction" % next_stage
@@ -601,7 +608,7 @@ func _on_enemy_phase_animation_finished(_anim_name: String):
 	print("Enemy phase animation finished. Processing attacks.")
 	
 	# Combine all enemies into a single list
-	var all_enemies = zombies + bats + ghouls + giratinas
+	var all_enemies = zombies + bats + ghouls + giratinas + sans
 	
 	# Sort enemies by their x-position (left to right)
 	all_enemies.sort_custom(func(a, b): return a.position.x < b.position.x)
@@ -635,6 +642,11 @@ func _on_enemy_phase_animation_finished(_anim_name: String):
 				enemy.giratina_attack()  # Trigger attack animation
 				await enemy.get_node("giratina_animation").animation_finished  # Wait for the animation to finish
 				print("Giratina attack animation finished.")
+			elif enemy.has_method("sans_attack"):
+				print("Starting sans attack animation.")
+				enemy.sans_attack()  # Trigger attack animation
+				await enemy.get_node("sans_animation").animation_finished  # Wait for the animation to finish
+				print("Sans attack animation finished.")
 		else:
 			print("Game Over!")
 			return  # Exit if the game is over
@@ -697,6 +709,20 @@ func spawn_giratina(giratina_position: Vector2):
 		giratina_instance.connect("giratina_destroyed", Callable(self, "_on_giratina_destroyed"))
 	else:
 		print("Giratina instantiation failed.")
+
+func spawn_sans(sans_position: Vector2):
+	var sans_scene = preload("res://Scenes/sans.tscn")  # Adjust path
+	var sans_instance = sans_scene.instantiate()
+	if sans_instance:
+		print("Sans spawned with HP: ", sans_instance)
+		add_child(sans_instance)
+		sans_instance.position = sans_position
+		sans.append(sans_instance)
+		
+		# Connect the sans_destroyed signal to the handler
+		sans_instance.connect("sans_destroyed", Callable(self, "_on_sans_destroyed"))
+	else:
+		print("Sans instantiation failed.")
 	
 # Damage the zombie
 func damage_zombie(zombie_instance, damage_amount, hero_type):
@@ -730,6 +756,14 @@ func damage_giratina(giratina_instance, damage_amount, hero_type):
 		giratina_instance.take_damage(damage_amount, hero_type)
 	else:
 		print("Giratina instance is invalid!")
+
+func damage_sans(sans_instance, damage_amount, hero_type):
+	print("Trying to damage sans")
+	if sans_instance:
+		print("Sans instance is valid. Applying damage:", damage_amount)
+		sans_instance.take_damage(damage_amount, hero_type)
+	else:
+		print("Sans instance is invalid!")
 		
 # Handle attack stop for remaining heroes when enemy dies
 func _on_zombie_destroyed(zombie_instance):
@@ -760,6 +794,14 @@ func _on_giratina_destroyed(giratina_instance):
 	if giratina_instance in giratinas:
 		giratinas.erase(giratina_instance)  # Remove the giratina from the list
 		print("Giratina destroyed and removed from the list.")
+		
+		# Check if all enemies are dead
+		check_battle_stage_transition()
+
+func _on_sans_destroyed(sans_instance):
+	if sans_instance in sans:
+		sans.erase(sans_instance)  # Remove the sans from the list
+		print("Sans destroyed and removed from the list.")
 		
 		# Check if all enemies are dead
 		check_battle_stage_transition()
@@ -839,6 +881,12 @@ func _ready() -> void:
 		damage_giratina(giratinas[0], 0, "bomb")
 		damage_giratina(giratinas[0], 0, "virus")
 		damage_giratina(giratinas[0], 0, "fries")
+	
+	if sans.size() > 0:
+		damage_sans(sans[0], 0, "pudding")
+		damage_sans(sans[0], 0, "bomb")
+		damage_sans(sans[0], 0, "virus")
+		damage_sans(sans[0], 0, "fries")
 	
 func setup_timers():
 	# Manage delays between destroying matches, collapsing columns, and refilling the grid
@@ -974,6 +1022,11 @@ func touch_input():
 		for giratina in giratinas:
 			if giratina.get_rect().has_point(touch_pos):
 				target_enemy(giratina)
+				return
+		
+		for sans in sans:
+			if sans.get_rect().has_point(touch_pos):
+				target_enemy(sans)
 				return
 		
 		# If no enemy is clicked, proceed with normal touch input

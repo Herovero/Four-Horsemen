@@ -1,0 +1,1753 @@
+[gd_scene load_steps=262 format=3 uid="uid://sili2mjo1ts"]
+
+[ext_resource type="Script" path="res://Scripts/sans.gd" id="1_44wnc"]
+[ext_resource type="Texture2D" uid="uid://ytq88klqnnvl" path="res://Assets/sans/sans-fight-export1.png" id="2_2yqtj"]
+[ext_resource type="Texture2D" uid="uid://h5pgc5s05dqg" path="res://Assets/sans/sans-fight-export2.png" id="3_nsrxu"]
+[ext_resource type="Texture2D" uid="uid://ddn7xgr30rw5h" path="res://Assets/sans/sans-fight-export3.png" id="4_us2uf"]
+[ext_resource type="FontFile" uid="uid://clg5yxaemtrnq" path="res://Font/Pixeled.ttf" id="5_eo1ex"]
+[ext_resource type="Texture2D" uid="uid://q4x7gwtqk0es" path="res://Assets/sans/sans-fight-export4.png" id="5_vpdaw"]
+[ext_resource type="AudioStream" uid="uid://d3o1fbiwtkvlg" path="res://SFX/attackSound.MP3" id="6_4yhp2"]
+[ext_resource type="Texture2D" uid="uid://ckjqmtgq2bp27" path="res://Assets/sans/sans-fight-export5.png" id="6_u1r18"]
+[ext_resource type="AudioStream" uid="uid://c58m8r42rc35s" path="res://SFX/zombie noise.MP3" id="6_x1f55"]
+[ext_resource type="Texture2D" uid="uid://df8j5ew0lpe7n" path="res://Assets/sans/sans-fight-export6.png" id="7_d1nds"]
+[ext_resource type="AudioStream" uid="uid://cedtntmwbcyux" path="res://SFX/Squeaky Toy Sound Effect.mp3" id="7_yy2eu"]
+[ext_resource type="Texture2D" uid="uid://lxkmnno8c6p5" path="res://Assets/sans/sans-fight-export7.png" id="8_7qy8g"]
+[ext_resource type="AudioStream" uid="uid://c2vdavqfehx5i" path="res://SFX/Taco Bell Bong - Sound Effect (HD).mp3" id="8_es87q"]
+[ext_resource type="Texture2D" uid="uid://dcexdr26trhwn" path="res://Assets/sans/sans-fight-export8.png" id="9_2wfjh"]
+[ext_resource type="Texture2D" uid="uid://c5acn15t6tqal" path="res://Assets/sans/sans-fight-export9.png" id="10_q7dkc"]
+[ext_resource type="Texture2D" uid="uid://727yvpiqokax" path="res://Assets/sans/sans-fight-export10.png" id="11_mv5pr"]
+[ext_resource type="Texture2D" uid="uid://bwuvs22kl6xuv" path="res://Assets/sans/sans-fight-export11.png" id="12_vulpf"]
+[ext_resource type="Texture2D" uid="uid://r0op87i1d8u5" path="res://Assets/sans/sans-fight-export12.png" id="13_obu5d"]
+[ext_resource type="Texture2D" uid="uid://c7gd8ugn0rlsa" path="res://Assets/sans/sans-fight-export13.png" id="14_qblao"]
+[ext_resource type="Texture2D" uid="uid://cbaw6kr40tppy" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export1.png" id="15_dngqa"]
+[ext_resource type="Texture2D" uid="uid://y53os0ktrexu" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export2.png" id="16_ehnc2"]
+[ext_resource type="Texture2D" uid="uid://bv5blw8matxfm" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export3.png" id="17_88iis"]
+[ext_resource type="Texture2D" uid="uid://b4w1x5gmyyo41" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export4.png" id="18_ktymu"]
+[ext_resource type="Texture2D" uid="uid://dg7ot4na14j52" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export5.png" id="19_r1t3q"]
+[ext_resource type="Texture2D" uid="uid://x3pn303r6l4v" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export6.png" id="20_ygwxx"]
+[ext_resource type="Texture2D" uid="uid://brhp8deb344jw" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export7.png" id="21_xpoyp"]
+[ext_resource type="Texture2D" uid="uid://4foprc42fs2h" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export8.png" id="22_8b681"]
+[ext_resource type="Texture2D" uid="uid://dcn18veqloifu" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export9.png" id="23_lprfl"]
+[ext_resource type="Texture2D" uid="uid://cyfie0pxhte61" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export10.png" id="24_yqrpe"]
+[ext_resource type="Texture2D" uid="uid://dwajbk7gxse3u" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export11.png" id="25_jqp55"]
+[ext_resource type="Texture2D" uid="uid://4vngfc6q1ri2" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export12.png" id="26_2qe51"]
+[ext_resource type="Texture2D" uid="uid://ddhutvxelckuf" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export13.png" id="27_1mmm0"]
+[ext_resource type="Texture2D" uid="uid://c2mm23us1rnhj" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export14.png" id="28_axrac"]
+[ext_resource type="Texture2D" uid="uid://bsgy5x4kqkd5q" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export15.png" id="29_q5gs7"]
+[ext_resource type="Texture2D" uid="uid://cqagb11tib51d" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export16.png" id="30_ihn7r"]
+[ext_resource type="Texture2D" uid="uid://5xtv3g4map55" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export17.png" id="31_uboc3"]
+[ext_resource type="Texture2D" uid="uid://cc1gv0hk7dvb1" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export18.png" id="32_2skr4"]
+[ext_resource type="Texture2D" uid="uid://cm1g21rwnkj4j" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export19.png" id="33_8jttg"]
+[ext_resource type="Texture2D" uid="uid://dpehpatbe3fpy" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export20.png" id="34_ut1qy"]
+[ext_resource type="Texture2D" uid="uid://dwagaheqywggx" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export21.png" id="35_e51jh"]
+[ext_resource type="Texture2D" uid="uid://b7j8ussqnk5iq" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export22.png" id="36_lm1ow"]
+[ext_resource type="Texture2D" uid="uid://b2a3ld4uf56yh" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export23.png" id="37_6gqp4"]
+[ext_resource type="Texture2D" uid="uid://bw7uagk8mk3mt" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export24.png" id="38_8fhqc"]
+[ext_resource type="Texture2D" uid="uid://cy3sx5oxcki40" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export25.png" id="39_mxrer"]
+[ext_resource type="Texture2D" uid="uid://c23mraeq7dv64" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export26.png" id="40_4eoyw"]
+[ext_resource type="Texture2D" uid="uid://kf5l554kn1s6" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export27.png" id="41_1p5v4"]
+[ext_resource type="Texture2D" uid="uid://c37upycix0ono" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export28.png" id="42_rmw23"]
+[ext_resource type="Texture2D" uid="uid://yvj35r40xjmo" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export29.png" id="43_f2irh"]
+[ext_resource type="Texture2D" uid="uid://bvhv4ecypn2mo" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export30.png" id="44_e3jve"]
+[ext_resource type="Texture2D" uid="uid://oe43waoit5o2" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export31.png" id="45_ve1ab"]
+[ext_resource type="Texture2D" uid="uid://baf8qq0oysd58" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export32.png" id="46_a0e5x"]
+[ext_resource type="Texture2D" uid="uid://dnqh7qw00urla" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export33.png" id="47_fyfn4"]
+[ext_resource type="Texture2D" uid="uid://b5ccpiom5uk3u" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export34.png" id="48_0w11a"]
+[ext_resource type="Texture2D" uid="uid://caite8djhhthd" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export35.png" id="49_pe8nn"]
+[ext_resource type="Texture2D" uid="uid://dewuooedx0dff" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export36.png" id="50_a6dts"]
+[ext_resource type="Texture2D" uid="uid://c44hyt8fxfs6m" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export37.png" id="51_twwiw"]
+[ext_resource type="Texture2D" uid="uid://b2tqjbngm0dbh" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export38.png" id="52_q35yt"]
+[ext_resource type="Texture2D" uid="uid://c7jr4tr5qt0t2" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export39.png" id="53_8r8pn"]
+[ext_resource type="Texture2D" uid="uid://b5tkc1kp82sxj" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export40.png" id="54_kmrsf"]
+[ext_resource type="Texture2D" uid="uid://oi1jiom1o5lt" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export41.png" id="55_md8mm"]
+[ext_resource type="Texture2D" uid="uid://c38ewalapkteq" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export42.png" id="56_6qajg"]
+[ext_resource type="Texture2D" uid="uid://dmyd0cw70k08g" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export43.png" id="57_tohyh"]
+[ext_resource type="Texture2D" uid="uid://cm60n2dg2xmx8" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export44.png" id="58_0ajux"]
+[ext_resource type="Texture2D" uid="uid://cvky8jbqav8uk" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export45.png" id="59_obult"]
+[ext_resource type="Texture2D" uid="uid://d0vnr5hktg61x" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export46.png" id="60_lmmea"]
+[ext_resource type="Texture2D" uid="uid://hl6l52ig2e8c" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export47.png" id="61_eev77"]
+[ext_resource type="Texture2D" uid="uid://dn358btfva8oc" path="res://Assets/sans text box/it's a beautiful day outside/undertale_text_box-export48.png" id="62_25vts"]
+[ext_resource type="Texture2D" uid="uid://c4gmhigaklja8" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export1.png" id="63_dbsy2"]
+[ext_resource type="Texture2D" uid="uid://drssrbgylorcw" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export2.png" id="64_15qsq"]
+[ext_resource type="Texture2D" uid="uid://bipd6oelgvng2" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export3.png" id="65_qh0r1"]
+[ext_resource type="Texture2D" uid="uid://cx2eah54gv44m" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export4.png" id="66_kmagb"]
+[ext_resource type="Texture2D" uid="uid://b4kwbb3cm51y0" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export5.png" id="67_xxkdw"]
+[ext_resource type="Texture2D" uid="uid://b30oqecgvtat7" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export6.png" id="68_ycind"]
+[ext_resource type="Texture2D" uid="uid://dhndwdnibueqx" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export7.png" id="69_d55mq"]
+[ext_resource type="Texture2D" uid="uid://c65rne7uxxtvy" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export8.png" id="70_bgstf"]
+[ext_resource type="Texture2D" uid="uid://drj4k6vyqgms0" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export9.png" id="71_0niid"]
+[ext_resource type="Texture2D" uid="uid://betxt7e3n7otd" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export10.png" id="72_t8dta"]
+[ext_resource type="Texture2D" uid="uid://c15ffweqji712" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export11.png" id="73_ooi0a"]
+[ext_resource type="Texture2D" uid="uid://bqwux4825j0cb" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export12.png" id="74_bo566"]
+[ext_resource type="Texture2D" uid="uid://c2o6rbt5vw6ix" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export13.png" id="75_8upld"]
+[ext_resource type="Texture2D" uid="uid://b86ihk5qie8m3" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export14.png" id="76_utg3e"]
+[ext_resource type="Texture2D" uid="uid://gyqb6fya8nhg" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export15.png" id="77_ibho7"]
+[ext_resource type="Texture2D" uid="uid://bc3kk2sn3bou8" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export16.png" id="78_j4qlx"]
+[ext_resource type="Texture2D" uid="uid://dj1pqdti6a0i3" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export17.png" id="79_p18b0"]
+[ext_resource type="Texture2D" uid="uid://byw8wcb362cl4" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export18.png" id="80_ralon"]
+[ext_resource type="Texture2D" uid="uid://byddfg37b8iox" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export19.png" id="81_angsf"]
+[ext_resource type="Texture2D" uid="uid://hix7i3u5863k" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export20.png" id="82_eydke"]
+[ext_resource type="Texture2D" uid="uid://punpjdt7oauw" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export21.png" id="83_8tomc"]
+[ext_resource type="Texture2D" uid="uid://bkketoxkyoec4" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export22.png" id="84_qp4bk"]
+[ext_resource type="Texture2D" uid="uid://dkfxlild5r4m0" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export23.png" id="85_t28yd"]
+[ext_resource type="Texture2D" uid="uid://bfvk8ryktkr0g" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export24.png" id="86_at1py"]
+[ext_resource type="Texture2D" uid="uid://djvvtc7u1jdt" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export25.png" id="87_50e7o"]
+[ext_resource type="Texture2D" uid="uid://cq7b85414ww7e" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export26.png" id="88_q3x5o"]
+[ext_resource type="Texture2D" uid="uid://dvbhhu84iecag" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export27.png" id="89_5dt40"]
+[ext_resource type="Texture2D" uid="uid://dywkogd3psuoa" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export28.png" id="90_h2lcc"]
+[ext_resource type="Texture2D" uid="uid://cqecg7iq80sfw" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export29.png" id="91_lub8o"]
+[ext_resource type="Texture2D" uid="uid://35t5lih5xxxk" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export30.png" id="92_84wef"]
+[ext_resource type="Texture2D" uid="uid://c7rva4r2ucneq" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export31.png" id="93_y5pqm"]
+[ext_resource type="Texture2D" uid="uid://c6p3hblikdg3y" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export32.png" id="94_tb8vg"]
+[ext_resource type="Texture2D" uid="uid://b1b2rslkb7s48" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export33.png" id="95_20d1e"]
+[ext_resource type="Texture2D" uid="uid://cdlf6q1o0t8jg" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export34.png" id="96_honvp"]
+[ext_resource type="Texture2D" uid="uid://brlewr1a1rw1n" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export35.png" id="97_unb2a"]
+[ext_resource type="Texture2D" uid="uid://hbr32w8mbegk" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export36.png" id="98_dt68f"]
+[ext_resource type="Texture2D" uid="uid://cedscsmj7mpem" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export37.png" id="99_pflfi"]
+[ext_resource type="Texture2D" uid="uid://btqnngyh36rqs" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export38.png" id="100_lt8r6"]
+[ext_resource type="Texture2D" uid="uid://b0tur1ervkh21" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export39.png" id="101_iuvx8"]
+[ext_resource type="Texture2D" uid="uid://bfhq4idw0yo1s" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export40.png" id="102_x2ohj"]
+[ext_resource type="Texture2D" uid="uid://bacy6tshxf63h" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export41.png" id="103_86vfq"]
+[ext_resource type="Texture2D" uid="uid://c53vfrq6celxg" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export42.png" id="104_ghx6d"]
+[ext_resource type="Texture2D" uid="uid://bv7slsitj7ejp" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export43.png" id="105_djhwq"]
+[ext_resource type="Texture2D" uid="uid://dalk1dtoah14x" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export44.png" id="106_41086"]
+[ext_resource type="Texture2D" uid="uid://djidh4m2ch6tk" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export45.png" id="107_du321"]
+[ext_resource type="Texture2D" uid="uid://btmfs22t21m62" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export46.png" id="108_xa5t0"]
+[ext_resource type="Texture2D" uid="uid://cdo4a2uptak64" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export47.png" id="109_5630h"]
+[ext_resource type="Texture2D" uid="uid://3k1vmddo66oc" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export48.png" id="110_d8u7v"]
+[ext_resource type="Texture2D" uid="uid://cbu0qt7qlm7l3" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export49.png" id="111_3dt67"]
+[ext_resource type="Texture2D" uid="uid://h6fj7r64yaus" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export50.png" id="112_k55h6"]
+[ext_resource type="Texture2D" uid="uid://opcg6g6s4vqh" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export51.png" id="113_0lp1r"]
+[ext_resource type="Texture2D" uid="uid://dxf3jndisweqa" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export52.png" id="114_h8q6k"]
+[ext_resource type="Texture2D" uid="uid://bmkx1xmxdiiv5" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export53.png" id="115_aitgh"]
+[ext_resource type="Texture2D" uid="uid://cadwdk3wuhfg7" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export54.png" id="116_le8xw"]
+[ext_resource type="Texture2D" uid="uid://45fkg8dwhomh" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export55.png" id="117_u052p"]
+[ext_resource type="Texture2D" uid="uid://dtc7af7ancnqy" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export56.png" id="118_jte0h"]
+[ext_resource type="Texture2D" uid="uid://mnpooybrs5ys" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export57.png" id="119_2lw7r"]
+[ext_resource type="Texture2D" uid="uid://bp8jalb1owjm6" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export58.png" id="120_3ddtv"]
+[ext_resource type="Texture2D" uid="uid://cpicayqhb70c6" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export59.png" id="121_n6jib"]
+[ext_resource type="Texture2D" uid="uid://b0tq4na65obqu" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export60.png" id="122_tn1mj"]
+[ext_resource type="Texture2D" uid="uid://buevyygi8mbrj" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export61.png" id="123_32k8g"]
+[ext_resource type="Texture2D" uid="uid://d3qao8axbwb8s" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export62.png" id="124_k7udd"]
+[ext_resource type="Texture2D" uid="uid://btvvjqlohwq85" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export63.png" id="125_r6vp3"]
+[ext_resource type="Texture2D" uid="uid://bsug317gcrl36" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export64.png" id="126_2os5s"]
+[ext_resource type="Texture2D" uid="uid://cmejhenxgqs6o" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export65.png" id="127_qc7qu"]
+[ext_resource type="Texture2D" uid="uid://b1j51tgrmu5ao" path="res://Assets/sans text box/birds are singing flowers are blooming/undertale_text_box (1)-export66.png" id="128_w4j2j"]
+[ext_resource type="Texture2D" uid="uid://dvd3o3ql3fsel" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export1.png" id="129_5xfu6"]
+[ext_resource type="Texture2D" uid="uid://xym7uejghcla" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export2.png" id="130_6ughj"]
+[ext_resource type="Texture2D" uid="uid://dlkdklw3o8r13" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export3.png" id="131_x4h4t"]
+[ext_resource type="Texture2D" uid="uid://cmrpowg0wtbs0" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export4.png" id="132_av33w"]
+[ext_resource type="Texture2D" uid="uid://bpxlb43svpru" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export5.png" id="133_nwgxq"]
+[ext_resource type="Texture2D" uid="uid://bph2fmwi7bx61" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export6.png" id="134_43qpw"]
+[ext_resource type="Texture2D" uid="uid://blluqw5javrx0" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export7.png" id="135_bb1bg"]
+[ext_resource type="Texture2D" uid="uid://blgyarl4pkjg5" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export8.png" id="136_j6n5c"]
+[ext_resource type="Texture2D" uid="uid://csvc2iq3kalob" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export9.png" id="137_3ohin"]
+[ext_resource type="Texture2D" uid="uid://bxwqal63xd6jm" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export10.png" id="138_et3tf"]
+[ext_resource type="Texture2D" uid="uid://dpyrkyh154snx" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export11.png" id="139_2d8vi"]
+[ext_resource type="Texture2D" uid="uid://c5f8xt2rhpnev" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export12.png" id="140_txhsb"]
+[ext_resource type="Texture2D" uid="uid://uto5ta153mso" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export13.png" id="141_8uxrh"]
+[ext_resource type="Texture2D" uid="uid://cfl0s4x35tovq" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export14.png" id="142_senr8"]
+[ext_resource type="Texture2D" uid="uid://cow1j8d6rfviw" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export15.png" id="143_31ilp"]
+[ext_resource type="Texture2D" uid="uid://bsxf0icg1pw7l" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export16.png" id="144_t40mi"]
+[ext_resource type="Texture2D" uid="uid://ble4om33aflrt" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export17.png" id="145_d4dfp"]
+[ext_resource type="Texture2D" uid="uid://bip8v0tamxtjq" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export18.png" id="146_48x4v"]
+[ext_resource type="Texture2D" uid="uid://bx01u8hm5kagw" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export19.png" id="147_aewxa"]
+[ext_resource type="Texture2D" uid="uid://ca1qt4cnbyjfu" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export20.png" id="148_llo45"]
+[ext_resource type="Texture2D" uid="uid://b0mxxdxw4eblr" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export21.png" id="149_owv3i"]
+[ext_resource type="Texture2D" uid="uid://dkm7hcl8bwuy1" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export22.png" id="150_l5e5e"]
+[ext_resource type="Texture2D" uid="uid://cdstvaqd0nu82" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export23.png" id="151_q4v6d"]
+[ext_resource type="Texture2D" uid="uid://b30y8j2nk8oc0" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export24.png" id="152_npmnv"]
+[ext_resource type="Texture2D" uid="uid://yndjmh0vt178" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export25.png" id="153_hvqvf"]
+[ext_resource type="Texture2D" uid="uid://badffy6130scb" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export26.png" id="154_q4625"]
+[ext_resource type="Texture2D" uid="uid://klf46jscfumr" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export27.png" id="155_48vls"]
+[ext_resource type="Texture2D" uid="uid://b3ymp2kr82h5c" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export28.png" id="156_6nd43"]
+[ext_resource type="Texture2D" uid="uid://cx8hutrh32sn4" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export29.png" id="157_w1qlo"]
+[ext_resource type="Texture2D" uid="uid://cf32asn2f53ck" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export30.png" id="158_dyd6l"]
+[ext_resource type="Texture2D" uid="uid://cfbnxbl5ljxc4" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export31.png" id="159_djqta"]
+[ext_resource type="Texture2D" uid="uid://ddn4pk4it16js" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export32.png" id="160_pnxao"]
+[ext_resource type="Texture2D" uid="uid://b1lsd0aiv3quq" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export33.png" id="161_yaeca"]
+[ext_resource type="Texture2D" uid="uid://dhfgxopkvpbtq" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export34.png" id="162_yhsj2"]
+[ext_resource type="Texture2D" uid="uid://u6dlyyds3stw" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export35.png" id="163_78ts3"]
+[ext_resource type="Texture2D" uid="uid://datwbanyncqfy" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export36.png" id="164_ny1cn"]
+[ext_resource type="Texture2D" uid="uid://dvhno03xaqrl0" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export37.png" id="165_urmuq"]
+[ext_resource type="Texture2D" uid="uid://cubddamgnackn" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export38.png" id="166_3ja28"]
+[ext_resource type="Texture2D" uid="uid://c5h6pp5oo3pyh" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export39.png" id="167_uewm3"]
+[ext_resource type="Texture2D" uid="uid://c42gj1u0m6w6c" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export40.png" id="168_qvbfe"]
+[ext_resource type="Texture2D" uid="uid://f0die7q6ffqt" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export41.png" id="169_ci8bs"]
+[ext_resource type="Texture2D" uid="uid://dywug7idrjok2" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export42.png" id="170_drk28"]
+[ext_resource type="Texture2D" uid="uid://dupncdlme71m6" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export43.png" id="171_osmlf"]
+[ext_resource type="Texture2D" uid="uid://b6u1igxd24wie" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export44.png" id="172_b5b7m"]
+[ext_resource type="Texture2D" uid="uid://bkrcc2n3wj5vl" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export45.png" id="173_mx3tc"]
+[ext_resource type="Texture2D" uid="uid://bjs1sbnh455xq" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export46.png" id="174_pgcnn"]
+[ext_resource type="Texture2D" uid="uid://cybd0gtbopth8" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export47.png" id="175_1e8m2"]
+[ext_resource type="Texture2D" uid="uid://lwwm3miayaqe" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export48.png" id="176_03lhu"]
+[ext_resource type="Texture2D" uid="uid://dhl02kbepkl18" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export49.png" id="177_i1u7u"]
+[ext_resource type="Texture2D" uid="uid://dgqmneynrhfg2" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export50.png" id="178_c6y4c"]
+[ext_resource type="Texture2D" uid="uid://o7skmco3ss5g" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export51.png" id="179_wan1p"]
+[ext_resource type="Texture2D" uid="uid://8fbf1wfvypgw" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export52.png" id="180_qmiq0"]
+[ext_resource type="Texture2D" uid="uid://bjt786e3c4mqa" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export53.png" id="181_o2or6"]
+[ext_resource type="Texture2D" uid="uid://cx0optc3vldcj" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export54.png" id="182_eospu"]
+[ext_resource type="Texture2D" uid="uid://djl8f1l1pg3ia" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export55.png" id="183_5n253"]
+[ext_resource type="Texture2D" uid="uid://dq7h06alojtcr" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export56.png" id="184_jhtj0"]
+[ext_resource type="Texture2D" uid="uid://c4evvfgmcws8y" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export57.png" id="185_ct2eb"]
+[ext_resource type="Texture2D" uid="uid://da82l1a001cke" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export58.png" id="186_jhtgc"]
+[ext_resource type="Texture2D" uid="uid://keadjun5fx2x" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export59.png" id="187_0bbbc"]
+[ext_resource type="Texture2D" uid="uid://h4g5v0xwt231" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export60.png" id="188_fipd2"]
+[ext_resource type="Texture2D" uid="uid://g7qvrj5cja5t" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export61.png" id="189_pseva"]
+[ext_resource type="Texture2D" uid="uid://dw4ayoh2qh8ih" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export62.png" id="190_h831t"]
+[ext_resource type="Texture2D" uid="uid://db2ttfwli3l0l" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export63.png" id="191_16pb4"]
+[ext_resource type="Texture2D" uid="uid://b0b7ghf7k037x" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export64.png" id="192_oe6dh"]
+[ext_resource type="Texture2D" uid="uid://dk45231gkycnc" path="res://Assets/sans text box/on days like these supremers like you/undertale_text_box (2)-export65.png" id="193_f8i7h"]
+[ext_resource type="Texture2D" uid="uid://4lvjnuqr4p65" path="res://Assets/sans text box/should be burning in hell/undertale_text_box.png" id="194_4am7p"]
+[ext_resource type="Texture2D" uid="uid://bcdf5cwgfnsta" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export1.png" id="194_ome8f"]
+[ext_resource type="Texture2D" uid="uid://76vlinv402ak" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export2.png" id="195_vfuiy"]
+[ext_resource type="Texture2D" uid="uid://blkcvrsfcrhbw" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export3.png" id="196_b0qop"]
+[ext_resource type="Texture2D" uid="uid://g38jn084bnj0" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export4.png" id="197_4dns6"]
+[ext_resource type="Texture2D" uid="uid://ccqrvsh3e0qh4" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export5.png" id="198_02gob"]
+[ext_resource type="Texture2D" uid="uid://c8qp6ll6002eo" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export6.png" id="199_ct4p0"]
+[ext_resource type="Texture2D" uid="uid://cii2axjsi1q34" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export7.png" id="200_pk5vr"]
+[ext_resource type="Texture2D" uid="uid://crbyywlh5ofr3" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export8.png" id="201_8lrlu"]
+[ext_resource type="Texture2D" uid="uid://cfadde31hxuqx" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export9.png" id="202_8uwpv"]
+[ext_resource type="Texture2D" uid="uid://qwen0r3yrbrf" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export10.png" id="203_46xnd"]
+[ext_resource type="Texture2D" uid="uid://kir1p4q1km7l" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export11.png" id="204_lgk2h"]
+[ext_resource type="Texture2D" uid="uid://ddf1ssmu3l3xj" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export12.png" id="205_87pfj"]
+[ext_resource type="Texture2D" uid="uid://c37gphemca8xl" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export13.png" id="206_6hjwo"]
+[ext_resource type="Texture2D" uid="uid://bnwvao7oyjf18" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export14.png" id="207_v7k4o"]
+[ext_resource type="Texture2D" uid="uid://bovx5s0v26qcl" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export15.png" id="208_i21qo"]
+[ext_resource type="Texture2D" uid="uid://v2rncw2ojyl8" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export16.png" id="209_snkbt"]
+[ext_resource type="Texture2D" uid="uid://ff7uqrd1wy46" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export17.png" id="210_4io2e"]
+[ext_resource type="Texture2D" uid="uid://30qhhtpwcykp" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export18.png" id="211_mlyuj"]
+[ext_resource type="Texture2D" uid="uid://pfeuy65nc5wd" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export19.png" id="212_2brsu"]
+[ext_resource type="Texture2D" uid="uid://bnvunckeb3h4j" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export20.png" id="213_1wcut"]
+[ext_resource type="Texture2D" uid="uid://dcb7515mdqy76" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export21.png" id="214_0ch4q"]
+[ext_resource type="Texture2D" uid="uid://b1wtka1yq600i" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export22.png" id="215_oqn0o"]
+[ext_resource type="Texture2D" uid="uid://bkkg3v6y3634v" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export23.png" id="216_g4w71"]
+[ext_resource type="Texture2D" uid="uid://brrd0br6pdsjm" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export24.png" id="217_p66rl"]
+[ext_resource type="Texture2D" uid="uid://xdv23hjes3jq" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export25.png" id="218_uksla"]
+[ext_resource type="Texture2D" uid="uid://phq6wxf6fw26" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export26.png" id="219_52rys"]
+[ext_resource type="Texture2D" uid="uid://byyme3323injw" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export27.png" id="220_v134c"]
+[ext_resource type="Texture2D" uid="uid://cwps51035o0wd" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export28.png" id="221_xblpj"]
+[ext_resource type="Texture2D" uid="uid://djtpu53vy577r" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export29.png" id="222_7h5lf"]
+[ext_resource type="Texture2D" uid="uid://pnq2g820ks31" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export30.png" id="223_5wuj1"]
+[ext_resource type="Texture2D" uid="uid://cfk8e7gxbishk" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export31.png" id="224_kyv5m"]
+[ext_resource type="Texture2D" uid="uid://can37fjq5mc1c" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export32.png" id="225_rkruj"]
+[ext_resource type="Texture2D" uid="uid://84rlmyyoiirj" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export33.png" id="226_njn8t"]
+[ext_resource type="Texture2D" uid="uid://cro72l8pwknvk" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export34.png" id="227_3pgok"]
+[ext_resource type="Texture2D" uid="uid://d34tyg5r1chy8" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export35.png" id="228_671s1"]
+[ext_resource type="Texture2D" uid="uid://cch2sfokticfd" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export36.png" id="229_fm4vt"]
+[ext_resource type="Texture2D" uid="uid://h2vhyj53hc0j" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export37.png" id="230_5s27u"]
+[ext_resource type="Texture2D" uid="uid://l3mrehfgiu23" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export38.png" id="231_8tixp"]
+[ext_resource type="Texture2D" uid="uid://ipe418fv3bng" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export39.png" id="232_1ofeo"]
+[ext_resource type="Texture2D" uid="uid://b0dgn21wowa0n" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export40.png" id="233_uc2sa"]
+[ext_resource type="Texture2D" uid="uid://b75lwfrd887op" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export41.png" id="234_bnp4q"]
+[ext_resource type="Texture2D" uid="uid://64g3m45coyy7" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export42.png" id="235_ow0kx"]
+[ext_resource type="Texture2D" uid="uid://bh1uldywv4pat" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export43.png" id="236_a62dp"]
+[ext_resource type="Texture2D" uid="uid://cq3m3wyf2v2jj" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export44.png" id="237_c3vd3"]
+[ext_resource type="Texture2D" uid="uid://c8d4rk6jhieho" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export45.png" id="238_nqm15"]
+[ext_resource type="Texture2D" uid="uid://dkuolcgnlltlx" path="res://Background/black screen.jpg" id="239_d25to"]
+[ext_resource type="AudioStream" uid="uid://cxvn223u1nlwe" path="res://SFX/sans_voice.MP3" id="240_ep418"]
+[ext_resource type="Texture2D" uid="uid://b8b8f4coujiau" path="res://Sprites/Undertale.png" id="241_erbwa"]
+[ext_resource type="AudioStream" uid="uid://3dhmwlr5jptx" path="res://SFX/heart encounter.MP3" id="244_da8ee"]
+
+[sub_resource type="Animation" id="Animation_caf6a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sans_idle_sprites:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sans_idle_sprites:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("attacked:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("dead:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sans_idle_sprites:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("attacked2:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("attack:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("sans_labels:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("sans_chatbox:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("sans_voice:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("sans_chatbox:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("sans_chatbox2:frame")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("sans_chatbox2:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("sans_chatbox3:frame")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("sans_chatbox3:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("black screen:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("sans_chatbox4:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("sans_chatbox4:frame")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("heart:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("heart encounter:playing")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("heart:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-314, -13)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("sans_idle_sprites:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pmmmh"]
+resource_name = "appear"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sans_idle_sprites:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sans_labels:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c2khg"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sans_idle_sprites:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 40), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("attack:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_h0eg1"]
+resource_name = "attacked"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sans_idle_sprites:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -40), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sans_idle_sprites:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(0.964706, 0.384314, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("attacked:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_i3yul"]
+resource_name = "attacked_2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sans_idle_sprites:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("attacked2:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cyp2w"]
+resource_name = "death"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sans_idle_sprites:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -40), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sans_idle_sprites:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(0.964706, 0.384314, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("attacked:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sans_idle_sprites:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("dead:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.633333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fhmph"]
+resource_name = "chatbox"
+length = 17.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sans_chatbox:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.1, 4.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 47]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sans_voice:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sans_chatbox:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.1, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sans_chatbox2:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.6, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 65]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sans_chatbox2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.6, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sans_chatbox3:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(7, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 64]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sans_chatbox3:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 7, 10.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("black screen:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 10.5333, 10.8, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("sans_chatbox4:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 10.8, 15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("sans_chatbox4:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(10.8, 11.4, 11.4333, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0, 0, 1, 45]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("heart:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 15.0333, 15.1, 15.1667, 15.2333, 15.3, 15.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("heart encounter:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(15),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("heart:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(15.3, 15.6333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-30, -13), Vector2(-30, 200)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("sans_idle_sprites:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 15.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("sans_labels:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(15.8, 16.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1msum"]
+_data = {
+"RESET": SubResource("Animation_caf6a"),
+"appear": SubResource("Animation_pmmmh"),
+"attack": SubResource("Animation_c2khg"),
+"attacked": SubResource("Animation_h0eg1"),
+"attacked_2": SubResource("Animation_i3yul"),
+"chatbox": SubResource("Animation_fhmph"),
+"death": SubResource("Animation_cyp2w")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_axlkb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2yqtj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nsrxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_us2uf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vpdaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_u1r18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_d1nds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7qy8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2wfjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_q7dkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_mv5pr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vulpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_obu5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qblao")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3t3d2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_dngqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ehnc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_88iis")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ktymu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_r1t3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ygwxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_xpoyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_8b681")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_lprfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_yqrpe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_jqp55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_2qe51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_1mmm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_axrac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_q5gs7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_ihn7r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_uboc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_2skr4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_8jttg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_ut1qy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_e51jh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_lm1ow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_6gqp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_8fhqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_mxrer")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_4eoyw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_1p5v4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_rmw23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_f2irh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_e3jve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_ve1ab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_a0e5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_fyfn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_0w11a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_pe8nn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_a6dts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_twwiw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_q35yt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_8r8pn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_kmrsf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_md8mm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_6qajg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_tohyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_0ajux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_obult")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_lmmea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_eev77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_25vts")
+}],
+"loop": false,
+"name": &"1",
+"speed": 20.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jibx8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("63_dbsy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_15qsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_qh0r1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_kmagb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_xxkdw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_ycind")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_d55mq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_bgstf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_0niid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_t8dta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_ooi0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_bo566")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_8upld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_utg3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_ibho7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_j4qlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_p18b0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_ralon")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_angsf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_eydke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_8tomc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_qp4bk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_t28yd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_at1py")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_50e7o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_q3x5o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_5dt40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_h2lcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_lub8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_84wef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_y5pqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_tb8vg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_20d1e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_honvp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_unb2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_dt68f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_pflfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_lt8r6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_iuvx8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_x2ohj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_86vfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_ghx6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_djhwq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_41086")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_du321")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_xa5t0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_5630h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_d8u7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_3dt67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_k55h6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_0lp1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_h8q6k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_aitgh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_le8xw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_u052p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_jte0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_2lw7r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_3ddtv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_n6jib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_tn1mj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_32k8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_k7udd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_r6vp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_2os5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_qc7qu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_w4j2j")
+}],
+"loop": true,
+"name": &"2",
+"speed": 20.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cn7i8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("129_5xfu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_6ughj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_x4h4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_av33w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_nwgxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_43qpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_bb1bg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("136_j6n5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_3ohin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("138_et3tf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("139_2d8vi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("140_txhsb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_8uxrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_senr8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_31ilp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_t40mi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_d4dfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_48x4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_aewxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("148_llo45")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_owv3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("150_l5e5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("151_q4v6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_npmnv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_hvqvf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_q4625")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_48vls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_6nd43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_w1qlo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_dyd6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("159_djqta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("160_pnxao")
+}, {
+"duration": 1.0,
+"texture": ExtResource("161_yaeca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("162_yhsj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("163_78ts3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("164_ny1cn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("165_urmuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("166_3ja28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("167_uewm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("168_qvbfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("169_ci8bs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("170_drk28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("171_osmlf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("172_b5b7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("173_mx3tc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("174_pgcnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("175_1e8m2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("176_03lhu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("177_i1u7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("178_c6y4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("179_wan1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("180_qmiq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("181_o2or6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("182_eospu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("183_5n253")
+}, {
+"duration": 1.0,
+"texture": ExtResource("184_jhtj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("185_ct2eb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("186_jhtgc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("187_0bbbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("188_fipd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("189_pseva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("190_h831t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("191_16pb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("192_oe6dh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("193_f8i7h")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b76hw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("194_4am7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("194_ome8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("195_vfuiy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("196_b0qop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("197_4dns6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("198_02gob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("199_ct4p0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("200_pk5vr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("201_8lrlu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("202_8uwpv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("203_46xnd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("204_lgk2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("205_87pfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("206_6hjwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("207_v7k4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("208_i21qo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("209_snkbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("210_4io2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("211_mlyuj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("212_2brsu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("213_1wcut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("214_0ch4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("215_oqn0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("216_g4w71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("217_p66rl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("218_uksla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("219_52rys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("220_v134c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("221_xblpj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("222_7h5lf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("223_5wuj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("224_kyv5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("225_rkruj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("226_njn8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("227_3pgok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("228_671s1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("229_fm4vt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("230_5s27u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("231_8tixp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("232_1ofeo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("233_uc2sa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("234_bnp4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("235_ow0kx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("236_a62dp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("237_c3vd3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("238_nqm15")
+}],
+"loop": false,
+"name": &"4",
+"speed": 10.0
+}]
+
+[node name="Sans" type="Node2D"]
+script = ExtResource("1_44wnc")
+
+[node name="sans_animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1msum")
+}
+autoplay = "chatbox"
+
+[node name="sans_idle_sprites" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 1
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_axlkb")
+autoplay = "default"
+frame_progress = 0.179085
+
+[node name="sans_chatbox" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -150)
+sprite_frames = SubResource("SpriteFrames_3t3d2")
+animation = &"1"
+
+[node name="sans_chatbox2" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -150)
+sprite_frames = SubResource("SpriteFrames_jibx8")
+animation = &"2"
+
+[node name="sans_chatbox3" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -150)
+sprite_frames = SubResource("SpriteFrames_cn7i8")
+animation = &"3"
+
+[node name="sans_chatbox4" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -150)
+sprite_frames = SubResource("SpriteFrames_b76hw")
+animation = &"4"
+
+[node name="black screen" type="TextureRect" parent="."]
+visible = false
+offset_left = -1691.0
+offset_top = -913.0
+offset_right = -411.0
+offset_bottom = -193.0
+scale = Vector2(2.6145, 2.6145)
+texture = ExtResource("239_d25to")
+
+[node name="heart" type="TextureRect" parent="."]
+visible = false
+offset_left = -30.0
+offset_top = -13.0
+offset_right = 2470.0
+offset_bottom = 1394.0
+scale = Vector2(0.022128, 0.022128)
+texture = ExtResource("241_erbwa")
+
+[node name="sans_labels" type="RichTextLabel" parent="."]
+offset_left = -38.0
+offset_top = -238.0
+offset_right = 112.0
+offset_bottom = 12.0
+scale = Vector2(0.75, 0.75)
+theme_override_fonts/normal_font = ExtResource("5_eo1ex")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+scroll_active = false
+
+[node name="sans_voice" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("240_ep418")
+volume_db = 5.0
+
+[node name="heart encounter" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("244_da8ee")
+
+[node name="noise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_x1f55")
+
+[node name="attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_4yhp2")
+volume_db = 15.459
+
+[node name="attacked" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_4yhp2")
+volume_db = 15.459
+
+[node name="attacked2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_yy2eu")
+volume_db = 15.036
+
+[node name="dead" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_es87q")
+volume_db = 5.098
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-4, 4)

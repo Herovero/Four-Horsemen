@@ -1,9 +1,10 @@
-[gd_scene load_steps=95 format=3 uid="uid://bn68vxvojvert"]
+[gd_scene load_steps=101 format=3 uid="uid://bn68vxvojvert"]
 
 [ext_resource type="Script" path="res://Scripts/Grid.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://d12hsv3vihms0" path="res://Background/game background stage.png" id="1_ccvu5"]
 [ext_resource type="Texture2D" uid="uid://di1jqvvohfeer" path="res://Background/distortion world.jpg" id="1_onmvx"]
 [ext_resource type="Texture2D" uid="uid://do1trrd35reag" path="res://Assets/trump.png" id="2_ar7mw"]
+[ext_resource type="Texture2D" uid="uid://cnu372wsbrkcs" path="res://Background/judgement hall with sans.png" id="3_axs6r"]
 [ext_resource type="AudioStream" uid="uid://ihy7t4spn85t" path="res://SFX/move sound effect.MP3" id="3_cq0i5"]
 [ext_resource type="Texture2D" uid="uid://cgkotgkrilmuw" path="res://Sprites/Mcdonald.png" id="3_rln0p"]
 [ext_resource type="Texture2D" uid="uid://c1thrd1vt48hf" path="res://Assets/xi.png" id="4_ljcvp"]
@@ -43,12 +44,14 @@
 [ext_resource type="Texture2D" uid="uid://cnutyvj4gdwx3" path="res://Assets/russia flag.png" id="34_24nes"]
 [ext_resource type="AudioStream" uid="uid://do7dyho1t3emk" path="res://SFX/Giratina theme.MP3" id="34_52uw7"]
 [ext_resource type="Texture2D" uid="uid://523gbnc2nbcb" path="res://Assets/battle01.png" id="35_5vqh4"]
+[ext_resource type="AudioStream" uid="uid://bsc48lp2003xp" path="res://SFX/Undertale - Megalovania.mp3" id="36_83thv"]
 [ext_resource type="Texture2D" uid="uid://c0fso33aiowch" path="res://Assets/battle02.png" id="36_f6vsh"]
 [ext_resource type="AudioStream" uid="uid://gqvrvvab62c" path="res://SFX/Katana Swing Cut - Sound Effect for editing.mp3" id="36_trh8a"]
 [ext_resource type="Texture2D" uid="uid://dx1uye8tkw2af" path="res://Assets/battle03.png" id="39_rlwqs"]
 [ext_resource type="Texture2D" uid="uid://dyb40swk3jasg" path="res://Assets/battle04.png" id="40_uglac"]
 [ext_resource type="Texture2D" uid="uid://wvg4cvi6eyqv" path="res://Assets/battle05.png" id="41_ws65f"]
 [ext_resource type="VideoStream" path="res://Assets/spinning-slot-pokemon.ogv" id="42_7di08"]
+[ext_resource type="VideoStream" path="res://Assets/spinning-slot-undertale_1.ogv" id="47_a08my"]
 
 [sub_resource type="Animation" id="Animation_yxto0"]
 length = 0.001
@@ -75,6 +78,21 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_safp3"]
+resource_name = "darken"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_lxur6"]
@@ -104,8 +122,15 @@ tracks/1/keys = {
 "values": [-1]
 }
 
-[sub_resource type="Animation" id="Animation_safp3"]
-resource_name = "darken"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ygitc"]
+_data = {
+"RESET": SubResource("Animation_yxto0"),
+"darken": SubResource("Animation_safp3"),
+"lighten": SubResource("Animation_lxur6")
+}
+
+[sub_resource type="Animation" id="Animation_a01bn"]
+resource_name = "lighten"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -116,14 +141,52 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ygitc"]
+[sub_resource type="Animation" id="Animation_wjsg0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e1q2i"]
 _data = {
-"RESET": SubResource("Animation_yxto0"),
-"darken": SubResource("Animation_safp3"),
-"lighten": SubResource("Animation_lxur6")
+"RESET": SubResource("Animation_wjsg0"),
+"lighten": SubResource("Animation_a01bn")
 }
 
 [sub_resource type="Animation" id="Animation_3wihk"]
@@ -2172,6 +2235,29 @@ libraries = {
 "": SubResource("AnimationLibrary_ygitc")
 }
 
+[node name="background3" type="TextureRect" parent="."]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1022.0
+offset_top = -563.0
+offset_right = 898.0
+offset_bottom = 517.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.63724, 0.63724)
+pivot_offset = Vector2(945.898, 563.551)
+texture = ExtResource("3_axs6r")
+
+[node name="background3_animation" type="AnimationPlayer" parent="background3"]
+libraries = {
+"": SubResource("AnimationLibrary_e1q2i")
+}
+
 [node name="combo_label" type="Label" parent="."]
 offset_left = 760.0
 offset_top = 25.0
@@ -2386,6 +2472,10 @@ parameters/looping = true
 
 [node name="giratina_theme" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("34_52uw7")
+
+[node name="sans_theme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("36_83thv")
+volume_db = 5.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -2632,6 +2722,22 @@ grow_vertical = 2
 scale = Vector2(0.453056, 0.453056)
 pivot_offset = Vector2(738, 382)
 stream = ExtResource("42_7di08")
+
+[node name="spinning slot undertale" type="VideoStreamPlayer" parent="Camera2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -950.0
+offset_top = -488.0
+offset_right = 490.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.453056, 0.453056)
+pivot_offset = Vector2(738, 382)
+stream = ExtResource("47_a08my")
 
 [node name="sword" type="AudioStreamPlayer2D" parent="Camera2D"]
 stream = ExtResource("36_trh8a")

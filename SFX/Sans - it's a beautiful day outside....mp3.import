@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bt5bsw47k88rm"
+path="res://.godot/imported/Sans - it's a beautiful day outside....mp3-3393d7c6105f27c955135103072d1ae7.mp3str"
+
+[deps]
+
+source_file="res://SFX/Sans - it's a beautiful day outside....mp3"
+dest_files=["res://.godot/imported/Sans - it's a beautiful day outside....mp3-3393d7c6105f27c955135103072d1ae7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

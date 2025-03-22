@@ -1664,7 +1664,6 @@ autoplay = "chatbox"
 
 [node name="sans_idle_sprites" type="AnimatedSprite2D" parent="."]
 visible = false
-z_index = 1
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_axlkb")
 autoplay = "default"

@@ -1,49 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://be1dgbmuoxlxs"]
+[gd_scene load_steps=41 format=3 uid="uid://be1dgbmuoxlxs"]
 
 [ext_resource type="Script" path="res://Scripts/title_screen.gd" id="1_cn5yt"]
 [ext_resource type="VideoStream" path="res://Background/Main-Menu_2.ogv" id="1_xd5ud"]
 [ext_resource type="Texture2D" uid="uid://dp6f10rn4qws1" path="res://Sprites/Start button.png" id="2_j035o"]
 [ext_resource type="Texture2D" uid="uid://8sysvm765bnq" path="res://Sprites/Start button two.png" id="4_w8vry"]
+[ext_resource type="Texture2D" uid="uid://shpa1ys0knej" path="res://Sprites/Exit button1.png" id="5_01xky"]
 [ext_resource type="Texture2D" uid="uid://yuskssk0judm" path="res://Background/loading background1.png" id="5_66764"]
-
-[sub_resource type="Animation" id="Animation_guse0"]
-resource_name = "switch2difficulties"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("screen:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -650)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("start_button:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("select_difficulty:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 650), Vector2(0, 0)]
-}
+[ext_resource type="Texture2D" uid="uid://da3fqpiwxy83a" path="res://Sprites/Exit button2.png" id="6_b2hfe"]
+[ext_resource type="AudioStream" uid="uid://co3rgdv6r1yuf" path="res://SFX/slide transition.MP3" id="6_ogihj"]
+[ext_resource type="Texture2D" uid="uid://rmerntbcl84" path="res://Sprites/Skill issue button1.png" id="9_olgtr"]
+[ext_resource type="Texture2D" uid="uid://cy8sly56n4oxc" path="res://Sprites/Skill issue button2.png" id="10_urgkc"]
+[ext_resource type="VideoStream" path="res://Assets/Sounds-like-Skill-Issue.ogv" id="11_6l4xw"]
+[ext_resource type="Texture2D" uid="uid://bp2jyefri43ib" path="res://Sprites/Midwest button1.png" id="11_mvb3n"]
+[ext_resource type="Texture2D" uid="uid://boe0drr5grdh4" path="res://Sprites/Midwest button2.png" id="12_0c3un"]
+[ext_resource type="Texture2D" uid="uid://dgb4gy7j8sopv" path="res://Sprites/Tryhard button1.png" id="13_neh77"]
+[ext_resource type="VideoStream" path="res://Assets/Mid.ogv" id="14_14i8s"]
+[ext_resource type="Texture2D" uid="uid://cvr2mwteim214" path="res://Sprites/Tryhard button2.png" id="14_50nms"]
+[ext_resource type="Texture2D" uid="uid://c4cpi5vyp8yvn" path="res://Sprites/Gigachad button1.png" id="15_aciea"]
+[ext_resource type="VideoStream" path="res://Assets/Sweaty-gamer-meme.ogv" id="16_4wbxw"]
+[ext_resource type="Texture2D" uid="uid://dungfg06t1cdb" path="res://Sprites/Gigachad button2.png" id="16_n7q6y"]
+[ext_resource type="VideoStream" path="res://Assets/gigachad2.ogv" id="20_jtkrk"]
 
 [sub_resource type="Animation" id="Animation_smyuu"]
 length = 0.001
@@ -83,11 +59,612 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 650)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("slide:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("exit_button:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("skill_issue_button:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-350, -100)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("midwest_button:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-350, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("tryhard_button:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-350, 300)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("gigachad_button:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-350, 400)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("skill_issue_button:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("midwest_button:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("tryhard_button:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("gigachad_button:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_guse0"]
+resource_name = "switch2difficulties"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("screen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -650)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("start_button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("select_difficulty:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 650), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("slide:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("exit_button:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("skill_issue_button:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-350, -100), Vector2(245, 100)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("midwest_button:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.2, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-350, 0), Vector2(230, 250)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("tryhard_button:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.4, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-350, 100), Vector2(230, 400)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("gigachad_button:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.6, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-350, 200), Vector2(210, 550)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("skill_issue_button:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("midwest_button:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("tryhard_button:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("gigachad_button:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5nm1d"]
+resource_name = "switch2title"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("screen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -650), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("select_difficulty:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 650)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("slide:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("skill_issue_button:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("midwest_button:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("tryhard_button:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("gigachad_button:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("start_button:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("exit_button:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ishyh"]
 _data = {
 "RESET": SubResource("Animation_smyuu"),
-"switch2difficulties": SubResource("Animation_guse0")
+"switch2difficulties": SubResource("Animation_guse0"),
+"switch2title": SubResource("Animation_5nm1d")
+}
+
+[sub_resource type="Animation" id="Animation_1f0ok"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../injustice:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1194, 180)]
+}
+
+[sub_resource type="Animation" id="Animation_w3p0d"]
+resource_name = "injustice"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../injustice:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1194, 180), Vector2(600, 180)]
+}
+
+[sub_resource type="Animation" id="Animation_a7rnn"]
+resource_name = "injustice2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../injustice:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(600, 180), Vector2(1194, 180)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f3bll"]
+_data = {
+"RESET": SubResource("Animation_1f0ok"),
+"injustice": SubResource("Animation_w3p0d"),
+"injustice2": SubResource("Animation_a7rnn")
+}
+
+[sub_resource type="Animation" id="Animation_7rp46"]
+resource_name = "midwest2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(600, 180), Vector2(1194, 180)]
+}
+
+[sub_resource type="Animation" id="Animation_y348k"]
+resource_name = "midwest"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1194, 180), Vector2(600, 180)]
+}
+
+[sub_resource type="Animation" id="Animation_gnwx1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1194, 180)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lh0ht"]
+_data = {
+"RESET": SubResource("Animation_gnwx1"),
+"midwest": SubResource("Animation_y348k"),
+"midwest2": SubResource("Animation_7rp46")
+}
+
+[sub_resource type="Animation" id="Animation_yr1rq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1200, 172)]
+}
+
+[sub_resource type="Animation" id="Animation_ujfmx"]
+resource_name = "sweaty_gamer"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1200, 172), Vector2(570, 172)]
+}
+
+[sub_resource type="Animation" id="Animation_eta0t"]
+resource_name = "sweaty_gamer2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(570, 172), Vector2(1200, 172)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cu1gd"]
+_data = {
+"RESET": SubResource("Animation_yr1rq"),
+"sweaty_gamer": SubResource("Animation_ujfmx"),
+"sweaty_gamer2": SubResource("Animation_eta0t")
+}
+
+[sub_resource type="Animation" id="Animation_hbif6"]
+resource_name = "gigachad"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1194, 180), Vector2(550, 180)]
+}
+
+[sub_resource type="Animation" id="Animation_p0mde"]
+resource_name = "gigachad2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(550, 180), Vector2(1194, 180)]
+}
+
+[sub_resource type="Animation" id="Animation_3fwgg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1194, 180)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bw77s"]
+_data = {
+"RESET": SubResource("Animation_3fwgg"),
+"gigachad": SubResource("Animation_hbif6"),
+"gigachad2": SubResource("Animation_p0mde")
 }
 
 [node name="title_screen" type="Node2D"]
@@ -118,6 +695,23 @@ pivot_offset = Vector2(29.7422, 8.66661)
 texture_normal = ExtResource("2_j035o")
 texture_hover = ExtResource("4_w8vry")
 
+[node name="exit_button" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 561.0
+offset_top = 554.0
+offset_right = 620.0
+offset_bottom = 571.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.07696, 5.07696)
+pivot_offset = Vector2(29.7422, 8.66661)
+texture_normal = ExtResource("5_01xky")
+texture_hover = ExtResource("6_b2hfe")
+
 [node name="transition" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ishyh")
@@ -130,5 +724,147 @@ offset_bottom = 1730.0
 scale = Vector2(0.606769, 0.606769)
 texture = ExtResource("5_66764")
 
+[node name="slide" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ogihj")
+
+[node name="skill_issue_button" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -100.0
+offset_right = -249.0
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.07696, 5.07696)
+pivot_offset = Vector2(50.6716, 8.92923)
+texture_normal = ExtResource("9_olgtr")
+texture_hover = ExtResource("10_urgkc")
+
+[node name="injustice" type="VideoStreamPlayer" parent="."]
+offset_left = 1194.0
+offset_top = 180.0
+offset_right = 3114.0
+offset_bottom = 1268.0
+scale = Vector2(0.266618, 0.266618)
+stream = ExtResource("11_6l4xw")
+volume_db = -10.0
+loop = true
+
+[node name="skill_issue_transition" type="AnimationPlayer" parent="injustice"]
+root_node = NodePath("../../skill_issue_button")
+libraries = {
+"": SubResource("AnimationLibrary_f3bll")
+}
+
+[node name="midwest_button" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_right = -277.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.07696, 5.07696)
+pivot_offset = Vector2(29.7422, 8.66661)
+texture_normal = ExtResource("11_mvb3n")
+texture_hover = ExtResource("12_0c3un")
+
+[node name="midwest" type="VideoStreamPlayer" parent="."]
+offset_left = 1194.0
+offset_top = 180.0
+offset_right = 2474.0
+offset_bottom = 900.0
+scale = Vector2(0.397896, 0.397896)
+stream = ExtResource("14_14i8s")
+loop = true
+
+[node name="midwest_transition" type="AnimationPlayer" parent="midwest"]
+libraries = {
+"": SubResource("AnimationLibrary_lh0ht")
+}
+
+[node name="tryhard_button" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = 300.0
+offset_right = -277.0
+offset_bottom = 317.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.07696, 5.07696)
+pivot_offset = Vector2(29.7422, 8.66661)
+texture_normal = ExtResource("13_neh77")
+texture_hover = ExtResource("14_50nms")
+
+[node name="sweaty_gamer" type="VideoStreamPlayer" parent="."]
+offset_left = 1200.0
+offset_top = 172.0
+offset_right = 2368.0
+offset_bottom = 892.0
+scale = Vector2(0.467364, 0.467364)
+stream = ExtResource("16_4wbxw")
+volume_db = -10.0
+loop = true
+
+[node name="sweaty_gamer_transition" type="AnimationPlayer" parent="sweaty_gamer"]
+libraries = {
+"": SubResource("AnimationLibrary_cu1gd")
+}
+
+[node name="gigachad_button" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = 400.0
+offset_right = -270.0
+offset_bottom = 417.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.07696, 5.07696)
+pivot_offset = Vector2(29.7422, 8.66661)
+texture_normal = ExtResource("15_aciea")
+texture_hover = ExtResource("16_n7q6y")
+
+[node name="gigachad" type="VideoStreamPlayer" parent="."]
+offset_left = 1194.0
+offset_top = 180.0
+offset_right = 2474.0
+offset_bottom = 1268.0
+scale = Vector2(0.466334, 0.466334)
+stream = ExtResource("20_jtkrk")
+volume_db = -15.0
+loop = true
+
+[node name="gigachad_transition" type="AnimationPlayer" parent="gigachad"]
+libraries = {
+"": SubResource("AnimationLibrary_bw77s")
+}
+
 [connection signal="mouse_entered" from="start_button" to="." method="_on_start_button_mouse_entered"]
-[connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="mouse_entered" from="skill_issue_button" to="." method="_on_skill_issue_button_mouse_entered"]
+[connection signal="mouse_exited" from="skill_issue_button" to="." method="_on_skill_issue_button_mouse_exited"]
+[connection signal="pressed" from="skill_issue_button" to="." method="_on_skill_issue_button_pressed"]
+[connection signal="mouse_entered" from="midwest_button" to="." method="_on_midwest_button_mouse_entered"]
+[connection signal="mouse_exited" from="midwest_button" to="." method="_on_midwest_button_mouse_exited"]
+[connection signal="pressed" from="midwest_button" to="." method="_on_midwest_button_pressed"]
+[connection signal="mouse_entered" from="tryhard_button" to="." method="_on_tryhard_button_mouse_entered"]
+[connection signal="mouse_exited" from="tryhard_button" to="." method="_on_tryhard_button_mouse_exited"]
+[connection signal="pressed" from="tryhard_button" to="." method="_on_tryhard_button_pressed"]
+[connection signal="mouse_entered" from="gigachad_button" to="." method="_on_gigachad_button_mouse_entered"]
+[connection signal="mouse_exited" from="gigachad_button" to="." method="_on_gigachad_button_mouse_exited"]
+[connection signal="pressed" from="gigachad_button" to="." method="_on_gigachad_button_pressed"]

@@ -15,6 +15,27 @@ var fries_hp: float = 1
 signal zombie_destroyed
 
 func _ready():
+	match Global.difficulty:
+		"Skill_issue":
+			pudding_hp = 0
+			bomb_hp = 3
+			virus_hp = 0
+			fries_hp = 3
+		"Midwest":
+			pudding_hp = 3
+			bomb_hp = 6
+			virus_hp = 3
+			fries_hp = 6
+		"Tryhard":
+			pudding_hp = 5
+			bomb_hp = 10
+			virus_hp = 5
+			fries_hp = 10
+		"Gigachad":
+			pudding_hp = 10
+			bomb_hp = 20
+			virus_hp = 10
+			fries_hp = 20
 	zombie_label.bbcode_enabled = true
 	update_zombie_label()
 	# Connect the animation_finished signal

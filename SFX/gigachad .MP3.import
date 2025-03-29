@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b6t4rbam3apa0"
+path="res://.godot/imported/gigachad .MP3-5dc66b9d0233c87b7434d7919afe0b8b.mp3str"
+
+[deps]
+
+source_file="res://SFX/gigachad .MP3"
+dest_files=["res://.godot/imported/gigachad .MP3-5dc66b9d0233c87b7434d7919afe0b8b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

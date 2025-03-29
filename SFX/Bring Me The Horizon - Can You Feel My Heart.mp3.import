@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b4jxmfspb86ga"
+path="res://.godot/imported/Bring Me The Horizon - Can You Feel My Heart.mp3-13fe0b34cc5dc5403600e5aa758cbbe2.mp3str"
+
+[deps]
+
+source_file="res://SFX/Bring Me The Horizon - Can You Feel My Heart.mp3"
+dest_files=["res://.godot/imported/Bring Me The Horizon - Can You Feel My Heart.mp3-13fe0b34cc5dc5403600e5aa758cbbe2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhwql366x0t1h"]
+
+[ext_resource type="Texture2D" uid="uid://bao8ceubbg10a" path="res://Sprites/Bodyguard.png" id="1_vsjw6"]
+
+[node name="TextureRect" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_vsjw6")

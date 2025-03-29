@@ -24,7 +24,7 @@ extends Node2D
 @onready var label_pudding: Label = $"../labelPudding"
 @onready var label_fries: Label = $"../labelFries"
 @onready var label_bomb: Label = $"../labelBomb"
-@onready var label_bodyguard: Label = $"../labelBodyguard"
+@onready var bodyguard_container = $"../bodyguard_container"
 @onready var label_virus: Label = $"../labelVirus"
 @onready var swapping = $"../swapping"
 @onready var target_pointing: AudioStreamPlayer2D = $"../target pointing"
@@ -51,6 +51,8 @@ var current_battle_stage = 1
 var current_turn: String = "hero" # Turn states: "hero" or "enemy"
 var current_target = null  # Track the currently targeted enemy
 var bodyguard_hp: int = 4  # Maximum bodyguard HP
+var bodyguard_sprites = []  # Array to hold the sprite references
+var bodyguard_sprite_scene = preload("res://Scenes/Dots/bodyguard.tscn")  # Path to your bodyguard sprite scene
 
 @onready var possible_dots = [
 	preload("res://Scenes/Dots/blue_dot.tscn"),
@@ -117,7 +119,7 @@ func update_labels():
 	label_bomb.text = "%d" %sprite_destroyed_count["bomb"]
 	label_virus.text = "%d" %sprite_destroyed_count["virus"]
 	label_pudding.text = "%d" %sprite_destroyed_count["pudding"]
-	label_bodyguard.text = "%d" % min(bodyguard_hp, 4)
+	update_bodyguard_display()
 	hero_damage["Hero1"] = int(label_pudding.text) if label_pudding.text != "" else 0
 	hero_damage["Hero2"] = int(label_bomb.text) if label_bomb.text != "" else 0
 	hero_damage["Hero3"] = int(label_virus.text) if label_virus.text != "" else 0
@@ -618,7 +620,7 @@ func _on_enemy_phase_animation_finished(_anim_name: String):
 		var enemy = all_enemies[i]
 		if bodyguard_hp > 0:
 			bodyguard_hp -= 1
-			label_bodyguard.text = str(bodyguard_hp)
+			update_bodyguard_display()
 			print("%s attacked! Bodyguard HP: %d" % [enemy.name, bodyguard_hp])
 			
 			# Call the enemy's attack animation
@@ -810,6 +812,10 @@ func _on_sans_destroyed(sans_instance):
 var destroyed_count = 0
 var label_display
 
+func update_bodyguard_display():
+	for i in range(bodyguard_sprites.size()):
+		bodyguard_sprites[i].visible = i < bodyguard_hp
+
 
 func _ready() -> void:
 	# Debug grid position
@@ -838,8 +844,14 @@ func _ready() -> void:
 		audio_player = AudioStreamPlayer.new()
 		add_child(audio_player)  # Add the player to the scene if not already added
 	
-	label_bodyguard.text = str(bodyguard_hp)
+	# Initialize bodyguard sprites
+	for i in range(4):  # Max HP is 4
+		var sprite = bodyguard_sprite_scene.instantiate()
+		bodyguard_container.add_child(sprite)
+		bodyguard_sprites.append(sprite)
 	
+	update_bodyguard_display()
+		
 	# Add the gun pointer to the scene
 	add_child(target_pointer)
 	target_pointer.hide()  # Initially hide the gun pointer
@@ -1216,7 +1228,7 @@ func destroy_matches():
 				if sprite_destroyed_count["body_guard"] < 4:
 					sprite_destroyed_count["body_guard"] += 1
 				bodyguard_hp = min(sprite_destroyed_count["body_guard"], 4)
-				label_bodyguard.text = "Bodyguard HP: %d" % bodyguard_hp
+				#label_bodyguard.text = "Bodyguard HP: %d" % bodyguard_hp
 		
 		update_labels()  # Update any other labels, such as score or time
 		

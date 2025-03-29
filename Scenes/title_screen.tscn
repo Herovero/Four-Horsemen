@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://be1dgbmuoxlxs"]
+[gd_scene load_steps=45 format=3 uid="uid://be1dgbmuoxlxs"]
 
 [ext_resource type="Script" path="res://Scripts/title_screen.gd" id="1_cn5yt"]
 [ext_resource type="VideoStream" path="res://Background/Main-Menu_2.ogv" id="1_xd5ud"]
@@ -8,7 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://yuskssk0judm" path="res://Background/loading background1.png" id="5_66764"]
 [ext_resource type="Texture2D" uid="uid://da3fqpiwxy83a" path="res://Sprites/Exit button2.png" id="6_b2hfe"]
 [ext_resource type="AudioStream" uid="uid://co3rgdv6r1yuf" path="res://SFX/slide transition.MP3" id="6_ogihj"]
+[ext_resource type="Texture2D" uid="uid://bu4oy8vecwsh1" path="res://Sprites/Credits.png" id="7_wiqt5"]
+[ext_resource type="Texture2D" uid="uid://ciw1t8ni0jdfe" path="res://Sprites/Credits2.png" id="8_6uwyh"]
+[ext_resource type="Texture2D" uid="uid://dytgccxlvfsqs" path="res://Sprites/settings.png" id="9_8hoga"]
 [ext_resource type="Texture2D" uid="uid://rmerntbcl84" path="res://Sprites/Skill issue button1.png" id="9_olgtr"]
+[ext_resource type="Texture2D" uid="uid://cxxnalk7w270" path="res://Sprites/settings2.png" id="10_14q46"]
 [ext_resource type="Texture2D" uid="uid://cy8sly56n4oxc" path="res://Sprites/Skill issue button2.png" id="10_urgkc"]
 [ext_resource type="VideoStream" path="res://Assets/Sounds-like-Skill-Issue.ogv" id="11_6l4xw"]
 [ext_resource type="Texture2D" uid="uid://bp2jyefri43ib" path="res://Sprites/Midwest button1.png" id="11_mvb3n"]
@@ -174,6 +178,18 @@ tracks/12/path = NodePath("gigachad_button:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("select_difficulty:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -712,6 +728,24 @@ pivot_offset = Vector2(29.7422, 8.66661)
 texture_normal = ExtResource("5_01xky")
 texture_hover = ExtResource("6_b2hfe")
 
+[node name="credit_icon" type="TextureButton" parent="."]
+offset_left = 1049.0
+offset_top = 531.0
+offset_right = 1065.0
+offset_bottom = 548.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("7_wiqt5")
+texture_hover = ExtResource("8_6uwyh")
+
+[node name="settings_icon" type="TextureButton" parent="."]
+offset_left = 967.0
+offset_top = 536.0
+offset_right = 983.0
+offset_bottom = 552.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("9_8hoga")
+texture_hover = ExtResource("10_14q46")
+
 [node name="transition" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ishyh")
@@ -745,9 +779,9 @@ texture_normal = ExtResource("9_olgtr")
 texture_hover = ExtResource("10_urgkc")
 
 [node name="injustice" type="VideoStreamPlayer" parent="."]
-offset_left = 1194.0
+offset_left = 600.0
 offset_top = 180.0
-offset_right = 3114.0
+offset_right = 2520.0
 offset_bottom = 1268.0
 scale = Vector2(0.266618, 0.266618)
 stream = ExtResource("11_6l4xw")
@@ -840,9 +874,9 @@ texture_normal = ExtResource("15_aciea")
 texture_hover = ExtResource("16_n7q6y")
 
 [node name="gigachad" type="VideoStreamPlayer" parent="."]
-offset_left = 1194.0
+offset_left = 550.0
 offset_top = 180.0
-offset_right = 2474.0
+offset_right = 1830.0
 offset_bottom = 1268.0
 scale = Vector2(0.466334, 0.466334)
 stream = ExtResource("20_jtkrk")

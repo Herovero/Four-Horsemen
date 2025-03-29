@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var start_button = $start_button
 @onready var exit_button = $exit_button
+@onready var credit_icon = $credit_icon
 @onready var transition = $transition
 @onready var skill_issue_transition = $injustice/skill_issue_transition
 @onready var sweaty_gamer_transition = $sweaty_gamer/sweaty_gamer_transition
@@ -47,7 +48,7 @@ func _on_skill_issue_button_mouse_exited():
 
 func _on_skill_issue_button_pressed():
 	Global.difficulty = "Skill_issue"
-	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
+	get_tree().change_scene_to_file("res://Scenes/loading.tscn")
 
 func _on_tryhard_button_mouse_entered():
 	sweaty_gamer.play()
@@ -60,7 +61,7 @@ func _on_tryhard_button_mouse_exited():
 
 func _on_tryhard_button_pressed():
 	Global.difficulty = "Tryhard"
-	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
+	get_tree().change_scene_to_file("res://Scenes/loading.tscn")
 	
 func _on_midwest_button_mouse_entered():
 	midwest.play()
@@ -73,7 +74,7 @@ func _on_midwest_button_mouse_exited():
 
 func _on_midwest_button_pressed():
 	Global.difficulty = "Midwest"
-	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
+	get_tree().change_scene_to_file("res://Scenes/loading.tscn")
 
 func _on_gigachad_button_mouse_entered():
 	gigachad.play()
@@ -86,4 +87,4 @@ func _on_gigachad_button_mouse_exited():
 
 func _on_gigachad_button_pressed():
 	Global.difficulty = "Gigachad"
-	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
+	get_tree().change_scene_to_file("res://Scenes/loading.tscn")

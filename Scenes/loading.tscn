@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b17rn8ctmrn1h"]
+
+[ext_resource type="Script" path="res://Scripts/loading.gd" id="1_utdql"]
+[ext_resource type="VideoStream" path="res://Assets/earth-preview.ogv" id="2_0xh80"]
+
+[node name="loading" type="Node2D"]
+script = ExtResource("1_utdql")
+
+[node name="loading_transition" type="VideoStreamPlayer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.901089, 0.901089)
+stream = ExtResource("2_0xh80")

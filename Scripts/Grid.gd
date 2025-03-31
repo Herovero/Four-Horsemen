@@ -50,7 +50,8 @@ var is_enemy_active = true
 var current_battle_stage = 1
 var current_turn: String = "hero" # Turn states: "hero" or "enemy"
 var current_target = null  # Track the currently targeted enemy
-var bodyguard_hp: int = 4  # Maximum bodyguard HP
+var bodyguard_max_hp = BODYGUARD_MAX_HP[Global.difficulty]
+var bodyguard_hp = bodyguard_max_hp  # Maximum bodyguard HP
 var bodyguard_sprites = []  # Array to hold the sprite references
 var bodyguard_sprite_scene = preload("res://Scenes/Dots/bodyguard.tscn")  # Path to your bodyguard sprite scene
 
@@ -77,7 +78,7 @@ var destroy_timer = Timer.new()
 var collapse_timer = Timer.new()
 var refill_timer = Timer.new()
 var match_timer = Timer.new()
-var match_time_limit = 7 # Time limit in seconds
+var match_time_limit = MATCH_TIME_LIMITS[Global.difficulty] # Time limit in seconds
 var time_remaining = match_time_limit # Remaining time counter
 var match_timer_running = false # To check if the timer is active
 var display_score_timer = Timer.new()
@@ -97,9 +98,23 @@ var matches_being_destroyed = false
 var sprite_destroyed_count  ={
 	"fries" = 0,
 	"bomb" = 0,
-	"body_guard" = 4,
+	"body_guard" = 0,
 	"virus" = 0,
 	"pudding" = 0
+}
+
+const BODYGUARD_MAX_HP = {
+	"Skill_issue": 8,
+	"Midwest": 6,
+	"Tryhard": 4,
+	"Gigachad": 4
+}
+
+const MATCH_TIME_LIMITS = {
+	"Skill_issue": 10,
+	"Midwest": 7,
+	"Tryhard": 7,
+	"Gigachad": 5
 }
 
 func update_sprite_destroyed_count(current_color):
@@ -108,7 +123,6 @@ func update_sprite_destroyed_count(current_color):
 		"green": "bomb",
 		"pink": "fries",
 		"red": "virus",
-		"yellow": "body_guard"
 	}
 	if current_color in color_map:
 		sprite_destroyed_count[color_map[current_color]] += 1
@@ -537,10 +551,10 @@ func spawn_battle_enemies(stage: int):
 	match stage:
 		2:
 			var _enemy1 = spawn_bat(Vector2(200, 300))
-			#var _enemy2 = spawn_bat(Vector2(400, 300))
+			var _enemy2 = spawn_ghoul(Vector2(400, 300))
 		3:
 			var _enemy1 = spawn_ghoul(Vector2(200, 300))
-			#var _enemy2 = spawn_ghoul(Vector2(400, 300))
+			var _enemy2 = spawn_zombie(Vector2(400, 300))
 		4:
 			var _enemy1 = spawn_zombie(Vector2(100, 300))
 			var _enemy2 = spawn_ghoul(Vector2(300, 300))
@@ -621,7 +635,7 @@ func _on_enemy_phase_animation_finished(_anim_name: String):
 		if bodyguard_hp > 0:
 			bodyguard_hp -= 1
 			update_bodyguard_display()
-			print("%s attacked! Bodyguard HP: %d" % [enemy.name, bodyguard_hp])
+			print("%s attacked! Bodyguard HP: %d/%d" % [enemy.name, bodyguard_hp, bodyguard_max_hp])
 			
 			# Call the enemy's attack animation
 			if enemy.has_method("zombie_attack"):
@@ -845,7 +859,7 @@ func _ready() -> void:
 		add_child(audio_player)  # Add the player to the scene if not already added
 	
 	# Initialize bodyguard sprites
-	for i in range(4):  # Max HP is 4
+	for i in range(bodyguard_max_hp):  # Max HP is 4
 		var sprite = bodyguard_sprite_scene.instantiate()
 		bodyguard_container.add_child(sprite)
 		bodyguard_sprites.append(sprite)
@@ -868,7 +882,7 @@ func _ready() -> void:
 	
 	# Spawn enemies
 	var _enemy1 = spawn_zombie(Vector2(200, 300))
-	var _enemy2 = spawn_zombie(Vector2(400, 300))
+	var _enemy2 = spawn_bat(Vector2(400, 300))
 	
 	if zombies.size() > 0:
 		damage_zombie(zombies[0], 0, "pudding")
@@ -1170,13 +1184,13 @@ func destroy_matches():
 	destroyed_count = 0
 
 	var matches_to_destroy = []  # Store the matched groups
-	var visited = []  # To track visited dots so they are not part of multiple groups
+	var visited = []  # To track visited dots
 
 	# Collect all the matched groups
 	for i in range(width):
 		for j in range(height):
 			if all_dots[i][j] != null and all_dots[i][j].matched and not is_visited(i, j, visited):
-				var group = get_matched_group(i, j, visited)  # Get the group of matched dots
+				var group = get_matched_group(i, j, visited)
 				if group:
 					matches_to_destroy.append(group)
 					for dot in group:
@@ -1185,11 +1199,8 @@ func destroy_matches():
 	if matches_to_destroy.size() > 0:
 		was_matched = true
 
-	# Destroy the groups one by one
-	var first_match = true  # Flag to track the first match
-
+	var first_match = true
 	for group in matches_to_destroy:
-		# Trigger combo count, sound, and label updates immediately
 		combo_count += 1
 		update_combo_label()
 		play_combo_sound(combo_count)
@@ -1197,58 +1208,68 @@ func destroy_matches():
 		if not first_match:
 			pass
 		else:
-			first_match = false  # After the first match, disable the first match condition
+			first_match = false
 
-		# Play animations for all dots in the group simultaneously
+		# Count yellow (bodyguard) dots in this group
+		var yellow_count = 0
 		for dot in group:
-			update_sprite_destroyed_count(dot.color)  # Update count for destroyed color
+			if dot.color == "yellow":
+				yellow_count += 1
+
+		# Process all dots in the group
+		for dot in group:
+			# Update counts for all colors except bodyguard (we'll handle that separately)
+			if dot.color != "yellow":
+				update_sprite_destroyed_count(dot.color)
 			
-			# Check if the count reaches the threshold of 4 and trigger animations
-			var color_map = {
-				"blue": "pudding",
-				"green": "bomb",
-				"pink": "fries",
-				"red": "virus",
-				"yellow": "body_guard"
-			}
-			# Trigger special animations under certain requirements
-			#if dot.color in color_map and sprite_destroyed_count[color_map[dot.color]] == 4:
-				#number_of_destroy(dot.color)
-			#elif dot.color in color_map and sprite_destroyed_count[color_map[dot.color]] >= 5:
-				#number_of_destroy2(dot.color)
-			
-			# Play animation for the current dot
+			# Play destruction animation
 			var anim_player = dot.get_node_or_null("AnimationPlayer")
 			if anim_player:
 				anim_player.play("disappear")
+
+		# Special handling for bodyguard matches
+		if yellow_count > 0:
+			var hp_increase = 1  # Default for 3 matches
+			if yellow_count >= 7:
+				hp_increase = 8
+			elif yellow_count >= 6:
+				hp_increase = 5
+			elif yellow_count >= 5:
+				hp_increase = 3
+			elif yellow_count >= 4:
+				hp_increase = 2
 			
-			# Update the bodyguard HP if a bodyguard dot is destroyed
-			if dot.color == "yellow":
-				# Make sure bodyguard HP does not exceed 4
-				if sprite_destroyed_count["body_guard"] < 4:
-					sprite_destroyed_count["body_guard"] += 1
-				bodyguard_hp = min(sprite_destroyed_count["body_guard"], 4)
-				#label_bodyguard.text = "Bodyguard HP: %d" % bodyguard_hp
+			# Calculate new HP (capped at 4)
+			var new_hp = min(bodyguard_hp + hp_increase, bodyguard_max_hp)
+			
+			# Only update if we actually gained HP
+			if new_hp > bodyguard_hp:
+				# Play gain animation for each HP gained
+				'''for i in range(bodyguard_hp, new_hp):
+					if i < bodyguard_sprites.size():
+						var sprite = bodyguard_sprites[i]
+						sprite.visible = true
+						var anim = sprite.get_node("AnimationPlayer")
+						if anim:
+							anim.play("gain_hp")
+							await anim.animation_finished'''
+				bodyguard_hp = new_hp
+				sprite_destroyed_count["body_guard"] = bodyguard_hp
+				print("Bodyguard HP increased to: ", bodyguard_hp, "/", bodyguard_max_hp)  # Debug print
+
+		update_labels()
+
+		# Wait for animations
+		await get_tree().create_timer(0.5).timeout
 		
-		update_labels()  # Update any other labels, such as score or time
-		
-		# Wait for the animation to finish for the entire group
-		var max_animation_time = 0.5  # Adjust this to match the duration of your "disappear" animation
-		await get_tree().create_timer(max_animation_time).timeout
-		# After the animation, queue_free the dot
+		# Destroy dots
 		for dot in group:
 			if dot != null:
 				destroyed_count += 1
-				dot.queue_free()  # Destroy the dot
-		
-		# Check if collapse should happen now
-		if !matches_being_destroyed:
-			collapse_timer.start()  # Make sure the collapse timer is started
-			break  # Avoid further operations until collapse is triggered
+				dot.queue_free()
 
-	# If any matches were destroyed, start the column collapse and refill processes
 	if was_matched:
-		collapse_columns()  # Start collapsing columns after matches are destroyed
+		collapse_columns()
 		collapse_timer.start()
 
 	matches_being_destroyed = false

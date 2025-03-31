@@ -13,6 +13,27 @@ var fries_hp: float = 0
 signal ghoul_destroyed
 
 func _ready():
+	match Global.difficulty:
+		"Skill_issue":
+			pudding_hp = 3
+			bomb_hp = 0
+			virus_hp = 1
+			fries_hp = 2
+		"Midwest":
+			pudding_hp = 5
+			bomb_hp = 1
+			virus_hp = 2
+			fries_hp = 4
+		"Tryhard":
+			pudding_hp = 7
+			bomb_hp = 2
+			virus_hp = 3
+			fries_hp = 6
+		"Gigachad":
+			pudding_hp = 11
+			bomb_hp = 4
+			virus_hp = 6
+			fries_hp = 9
 	ghoul_label.bbcode_enabled = true
 	update_ghoul_label()
 	# Connect the animation_finished signal

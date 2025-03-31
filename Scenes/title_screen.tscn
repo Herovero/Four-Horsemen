@@ -489,6 +489,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1194, 180)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../skill_issue_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1194, 410)]
+}
 
 [sub_resource type="Animation" id="Animation_w3p0d"]
 resource_name = "injustice"
@@ -502,7 +514,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1194, 180), Vector2(600, 180)]
+"values": [Vector2(1194, 50), Vector2(600, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../skill_issue_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1194, 410), Vector2(660, 410)]
 }
 
 [sub_resource type="Animation" id="Animation_a7rnn"]
@@ -517,7 +541,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(600, 180), Vector2(1194, 180)]
+"values": [Vector2(600, 50), Vector2(1194, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../skill_issue_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(660, 410), Vector2(1194, 410)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f3bll"]
@@ -539,7 +575,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(600, 180), Vector2(1194, 180)]
+"values": [Vector2(600, 50), Vector2(1194, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../midwest_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(600, 410), Vector2(1194, 410)]
 }
 
 [sub_resource type="Animation" id="Animation_y348k"]
@@ -554,7 +602,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1194, 180), Vector2(600, 180)]
+"values": [Vector2(1194, 50), Vector2(600, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../midwest_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1194, 410), Vector2(600, 410)]
 }
 
 [sub_resource type="Animation" id="Animation_gnwx1"]
@@ -569,7 +629,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1194, 180)]
+"values": [Vector2(1194, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../midwest_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1194, 410)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lh0ht"]
@@ -591,7 +663,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1200, 172)]
+"values": [Vector2(1200, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../tryhard_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1194, 410)]
 }
 
 [sub_resource type="Animation" id="Animation_ujfmx"]
@@ -606,7 +690,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1200, 172), Vector2(570, 172)]
+"values": [Vector2(1200, 50), Vector2(570, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../tryhard_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1194, 410), Vector2(660, 410)]
 }
 
 [sub_resource type="Animation" id="Animation_eta0t"]
@@ -621,7 +717,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(570, 172), Vector2(1200, 172)]
+"values": [Vector2(570, 50), Vector2(1200, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../tryhard_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(660, 410), Vector2(1194, 410)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cu1gd"]
@@ -643,7 +751,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1194, 180), Vector2(550, 180)]
+"values": [Vector2(1194, 50), Vector2(560, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../gigachad_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1194, 410), Vector2(660, 410)]
 }
 
 [sub_resource type="Animation" id="Animation_p0mde"]
@@ -658,7 +778,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(550, 180), Vector2(1194, 180)]
+"values": [Vector2(560, 50), Vector2(1194, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../gigachad_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(660, 410), Vector2(1194, 410)]
 }
 
 [sub_resource type="Animation" id="Animation_3fwgg"]
@@ -673,7 +805,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1194, 180)]
+"values": [Vector2(1194, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../gigachad_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1194, 410)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bw77s"]
@@ -778,10 +922,23 @@ pivot_offset = Vector2(50.6716, 8.92923)
 texture_normal = ExtResource("9_olgtr")
 texture_hover = ExtResource("10_urgkc")
 
+[node name="skill_issue_label" type="Label" parent="."]
+offset_left = 1194.0
+offset_top = 410.0
+offset_right = 2642.0
+offset_bottom = 827.0
+theme_override_colors/font_color = Color(0, 0.766667, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 25
+text = "- Leaders have more bodyguards
+- All enemies have less HPs
+- Match time limit is increased
+"
+
 [node name="injustice" type="VideoStreamPlayer" parent="."]
-offset_left = 600.0
+offset_left = 1194.0
 offset_top = 180.0
-offset_right = 2520.0
+offset_right = 3114.0
 offset_bottom = 1268.0
 scale = Vector2(0.266618, 0.266618)
 stream = ExtResource("11_6l4xw")
@@ -810,11 +967,24 @@ pivot_offset = Vector2(29.7422, 8.66661)
 texture_normal = ExtResource("11_mvb3n")
 texture_hover = ExtResource("12_0c3un")
 
+[node name="midwest_label" type="Label" parent="."]
+offset_left = 1194.0
+offset_top = 410.0
+offset_right = 2642.0
+offset_bottom = 827.0
+theme_override_colors/font_color = Color(0, 0.766667, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 25
+text = "- Leaders have fair amount of bodyguards
+- All enemies have regular HPs
+- Match time limit is standard
+"
+
 [node name="midwest" type="VideoStreamPlayer" parent="."]
 offset_left = 1194.0
-offset_top = 180.0
+offset_top = 50.0
 offset_right = 2474.0
-offset_bottom = 900.0
+offset_bottom = 770.0
 scale = Vector2(0.397896, 0.397896)
 stream = ExtResource("14_14i8s")
 loop = true
@@ -841,11 +1011,24 @@ pivot_offset = Vector2(29.7422, 8.66661)
 texture_normal = ExtResource("13_neh77")
 texture_hover = ExtResource("14_50nms")
 
+[node name="tryhard_label" type="Label" parent="."]
+offset_left = 1194.0
+offset_top = 410.0
+offset_right = 2642.0
+offset_bottom = 827.0
+theme_override_colors/font_color = Color(0, 0.766667, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 25
+text = "- Leaders have less bodyguards
+- All enemies have slightly more hps
+- Match time limit is standard
+"
+
 [node name="sweaty_gamer" type="VideoStreamPlayer" parent="."]
 offset_left = 1200.0
-offset_top = 172.0
+offset_top = 50.0
 offset_right = 2368.0
-offset_bottom = 892.0
+offset_bottom = 770.0
 scale = Vector2(0.467364, 0.467364)
 stream = ExtResource("16_4wbxw")
 volume_db = -10.0
@@ -873,11 +1056,24 @@ pivot_offset = Vector2(29.7422, 8.66661)
 texture_normal = ExtResource("15_aciea")
 texture_hover = ExtResource("16_n7q6y")
 
+[node name="gigachad_label" type="Label" parent="."]
+offset_left = 1194.0
+offset_top = 410.0
+offset_right = 2642.0
+offset_bottom = 827.0
+theme_override_colors/font_color = Color(0, 0.766667, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 25
+text = "- Leaders have less bodyguards
+- All enemies have way more HPs
+- Match time limit is decreased
+"
+
 [node name="gigachad" type="VideoStreamPlayer" parent="."]
-offset_left = 550.0
-offset_top = 180.0
-offset_right = 1830.0
-offset_bottom = 1268.0
+offset_left = 1194.0
+offset_top = 50.0
+offset_right = 2474.0
+offset_bottom = 1138.0
 scale = Vector2(0.466334, 0.466334)
 stream = ExtResource("20_jtkrk")
 volume_db = -15.0

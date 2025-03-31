@@ -14,6 +14,27 @@ var fries_hp: float = 0
 signal bat_destroyed
 
 func _ready():
+	match Global.difficulty:
+		"Skill_issue":
+			pudding_hp = 1
+			bomb_hp = 1
+			virus_hp = 4
+			fries_hp = 0
+		"Midwest":
+			pudding_hp = 3
+			bomb_hp = 3
+			virus_hp = 5
+			fries_hp = 1
+		"Tryhard":
+			pudding_hp = 4
+			bomb_hp = 4
+			virus_hp = 8
+			fries_hp = 2
+		"Gigachad":
+			pudding_hp = 7
+			bomb_hp = 7
+			virus_hp = 12
+			fries_hp = 4
 	bat_label.bbcode_enabled = true
 	update_bat_label()
 	# Connect the animation_finished signal

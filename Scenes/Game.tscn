@@ -2269,7 +2269,7 @@ theme_override_font_sizes/font_size = 30
 [node name="bodyguard_container" type="HBoxContainer" parent="."]
 offset_left = -21.0
 offset_top = 393.0
-offset_right = 139.0
+offset_right = 179.0
 offset_bottom = 433.0
 
 [node name="Node2D" type="Node2D" parent="."]

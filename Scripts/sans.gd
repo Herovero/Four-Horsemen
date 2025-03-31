@@ -14,6 +14,27 @@ var fries_hp: float = 0.01
 signal sans_destroyed
 
 func _ready():
+	match Global.difficulty:
+		"Skill_issue":
+			pudding_hp = 5
+			bomb_hp = 8
+			virus_hp = 8
+			fries_hp = 5
+		"Midwest":
+			pudding_hp = 8
+			bomb_hp = 12
+			virus_hp = 12
+			fries_hp = 8
+		"Tryhard":
+			pudding_hp = 10
+			bomb_hp = 16
+			virus_hp = 16
+			fries_hp = 10
+		"Gigachad":
+			pudding_hp = 15
+			bomb_hp = 25
+			virus_hp = 25
+			fries_hp = 15
 	sans_label.bbcode_enabled = true
 	update_sans_label()
 	# Connect the animation_finished signal

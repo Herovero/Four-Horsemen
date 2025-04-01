@@ -1,0 +1,418 @@
+[gd_scene load_steps=19 format=3 uid="uid://bhulkbskytbe4"]
+
+[ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_hb66y"]
+[ext_resource type="Texture2D" uid="uid://dkgrfk4k517v5" path="res://Assets/game over.png" id="1_lecgu"]
+[ext_resource type="Texture2D" uid="uid://cj6ii27jqjjcd" path="res://Assets/game text.png" id="2_1yoeh"]
+[ext_resource type="Texture2D" uid="uid://d84o7yfbg56d" path="res://Assets/over text.png" id="2_7vxj8"]
+[ext_resource type="AudioStream" uid="uid://c75qu2no5ocit" path="res://SFX/大悲咒.MP3" id="2_p2ote"]
+[ext_resource type="Texture2D" uid="uid://dkuolcgnlltlx" path="res://Background/black screen.jpg" id="2_wu3b1"]
+[ext_resource type="Texture2D" uid="uid://dpghnp3ap1rm8" path="res://Assets/continue_.png" id="4_v21bn"]
+[ext_resource type="Texture2D" uid="uid://dudmjibelexi" path="res://Sprites/Yes button1.png" id="6_s4rr3"]
+[ext_resource type="Texture2D" uid="uid://c3n2tvhopmkp6" path="res://Sprites/Yes button2.png" id="7_3jqqr"]
+[ext_resource type="Texture2D" uid="uid://bml2umt20kv83" path="res://Sprites/No button1.png" id="8_ucqe6"]
+[ext_resource type="Texture2D" uid="uid://b10d5vsab62xo" path="res://Sprites/No button2.png" id="9_mh0qb"]
+[ext_resource type="VideoStream" path="res://Assets/We_ll-be-right-back.ogv" id="12_bfef6"]
+[ext_resource type="VideoStream" path="res://Assets/flat-earth-bad-ending.ogv" id="13_uj0li"]
+
+[sub_resource type="Animation" id="Animation_xhnl0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("black_screen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dabeizhou:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("game_text:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(76, 467)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("game_text:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("over_text:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(76, 467)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("over_text:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("continue_text:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(76, 667)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Yes_button:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 200)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("No_button:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(820, 200)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("We\'ll be right back:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("dabeizhou:volume_db")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("To be continued:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_yk7pt"]
+resource_name = "game_over"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("black_screen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dabeizhou:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("game_text:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5, 2.3, 3.5, 3.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-180, 467), Vector2(76, 467), Vector2(76, 467), Vector2(76, 667)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("game_text:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5708, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("over_text:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5, 2.3, 3.5, 3.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1180, 1020), Vector2(76, 467), Vector2(76, 467), Vector2(76, 667)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("over_text:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.5, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5708, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("continue_text:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3.73333, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(76, 667), Vector2(76, 467)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Yes_button:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(4.33333, 4.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-350, 200), Vector2(50, 200)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("No_button:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(4.33333, 4.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1220, 200), Vector2(820, 200)]
+}
+
+[sub_resource type="Animation" id="Animation_nv3kf"]
+resource_name = "no_button"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("To be continued:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dabeizhou:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+
+[sub_resource type="Animation" id="Animation_4i34e"]
+resource_name = "yes_button"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("We\'ll be right back:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dabeizhou:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qaquk"]
+_data = {
+"RESET": SubResource("Animation_xhnl0"),
+"game_over": SubResource("Animation_yk7pt"),
+"no_button": SubResource("Animation_nv3kf"),
+"yes_button": SubResource("Animation_4i34e")
+}
+
+[node name="Game_Over" type="Node2D"]
+script = ExtResource("1_hb66y")
+
+[node name="funeral" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.600178, 0.600178)
+texture = ExtResource("1_lecgu")
+
+[node name="game_text" type="TextureRect" parent="."]
+offset_left = -180.0
+offset_top = 467.0
+offset_right = 1150.0
+offset_bottom = 702.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_1yoeh")
+
+[node name="over_text" type="TextureRect" parent="."]
+offset_left = 1180.0
+offset_top = 1020.0
+offset_right = 2510.0
+offset_bottom = 1255.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_7vxj8")
+
+[node name="continue_text" type="TextureRect" parent="."]
+offset_left = 76.0
+offset_top = 667.0
+offset_right = 1406.0
+offset_bottom = 902.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_v21bn")
+
+[node name="black_screen" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_wu3b1")
+
+[node name="dabeizhou" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_p2ote")
+
+[node name="game_over_animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qaquk")
+}
+autoplay = "game_over"
+
+[node name="Yes_button" type="TextureButton" parent="."]
+offset_left = -350.0
+offset_top = 200.0
+offset_right = -313.0
+offset_bottom = 217.0
+scale = Vector2(8, 8)
+texture_normal = ExtResource("6_s4rr3")
+texture_hover = ExtResource("7_3jqqr")
+
+[node name="No_button" type="TextureButton" parent="."]
+offset_left = 1220.0
+offset_top = 200.0
+offset_right = 1256.0
+offset_bottom = 217.0
+scale = Vector2(8, 8)
+texture_normal = ExtResource("8_ucqe6")
+texture_hover = ExtResource("9_mh0qb")
+
+[node name="We\'ll be right back" type="VideoStreamPlayer" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1088.0
+scale = Vector2(0.6, 0.6)
+stream = ExtResource("12_bfef6")
+
+[node name="To be continued" type="VideoStreamPlayer" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.6, 0.6)
+stream = ExtResource("13_uj0li")
+
+[connection signal="pressed" from="Yes_button" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="No_button" to="." method="_on_no_button_pressed"]

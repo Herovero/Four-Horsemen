@@ -1,8 +1,9 @@
-[gd_scene load_steps=101 format=3 uid="uid://bn68vxvojvert"]
+[gd_scene load_steps=105 format=3 uid="uid://bn68vxvojvert"]
 
 [ext_resource type="Script" path="res://Scripts/Grid.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://d12hsv3vihms0" path="res://Background/game background stage.png" id="1_ccvu5"]
 [ext_resource type="Texture2D" uid="uid://di1jqvvohfeer" path="res://Background/distortion world.jpg" id="1_onmvx"]
+[ext_resource type="Texture2D" uid="uid://dkuolcgnlltlx" path="res://Background/black screen.jpg" id="1_rk5ua"]
 [ext_resource type="Texture2D" uid="uid://do1trrd35reag" path="res://Assets/trump.png" id="2_ar7mw"]
 [ext_resource type="Texture2D" uid="uid://cnu372wsbrkcs" path="res://Background/judgement hall with sans.png" id="3_axs6r"]
 [ext_resource type="AudioStream" uid="uid://ihy7t4spn85t" path="res://SFX/move sound effect.MP3" id="3_cq0i5"]
@@ -52,6 +53,43 @@
 [ext_resource type="Texture2D" uid="uid://wvg4cvi6eyqv" path="res://Assets/battle05.png" id="41_ws65f"]
 [ext_resource type="VideoStream" path="res://Assets/spinning-slot-pokemon.ogv" id="42_7di08"]
 [ext_resource type="VideoStream" path="res://Assets/spinning-slot-undertale_1.ogv" id="47_a08my"]
+
+[sub_resource type="Animation" id="Animation_ybw2t"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("black_screen:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wonnk"]
+resource_name = "game_over"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("black_screen:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jsiou"]
+_data = {
+"RESET": SubResource("Animation_ybw2t"),
+"game_over": SubResource("Animation_wonnk")
+}
 
 [sub_resource type="Animation" id="Animation_yxto0"]
 length = 0.001
@@ -2195,8 +2233,24 @@ _data = {
 
 [node name="Hero4" type="Node" parent="."]
 
+[node name="black_screen" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 3
+offset_left = -89.0
+offset_top = -45.0
+offset_right = 1191.0
+offset_bottom = 675.0
+texture = ExtResource("1_rk5ua")
+
+[node name="game_over_transition" type="AnimationPlayer" parent="black_screen"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_jsiou")
+}
+
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
+self_modulate = Color(1, 1, 1, 0)
+z_index = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

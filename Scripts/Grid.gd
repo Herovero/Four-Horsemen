@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var game_over_transition = $"../black_screen/game_over_transition"
 @onready var bgm = $"../bgm"
 @onready var giratina_theme = $"../giratina_theme"
 @onready var sans_theme = $"../sans_theme"
@@ -663,11 +664,28 @@ func _on_enemy_phase_animation_finished(_anim_name: String):
 				enemy.sans_attack()  # Trigger attack animation
 				await enemy.get_node("sans_animation").animation_finished  # Wait for the animation to finish
 				print("Sans attack animation finished.")
+				
+			# Check HP again after each attack in case multiple enemies would kill you
+			if bodyguard_hp <= 0:
+				game_over()
+				return  # Exit immediately when game over
 		else:
 			print("Game Over!")
 			return  # Exit if the game is over
 			
 	switch_turn()
+
+func game_over():
+	print("Game Over!")
+	can_touch_input = false  # Disable all player input
+	
+	# Stop all music and sounds
+	bgm.stop()
+	giratina_theme.stop()
+	sans_theme.stop()
+	game_over_transition.play("game_over")
+	await get_tree().create_timer(2).timeout
+	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 
 # Function to spawn zombies
 func spawn_zombie(zombie_position: Vector2):

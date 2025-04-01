@@ -563,8 +563,8 @@ _data = {
 "injustice2": SubResource("Animation_a7rnn")
 }
 
-[sub_resource type="Animation" id="Animation_7rp46"]
-resource_name = "midwest2"
+[sub_resource type="Animation" id="Animation_gnwx1"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -572,10 +572,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(600, 50), Vector2(1194, 50)]
+"values": [Vector2(1194, 50)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -584,10 +584,10 @@ tracks/1/path = NodePath("../midwest_label:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(600, 410), Vector2(1194, 410)]
+"values": [Vector2(1194, 410)]
 }
 
 [sub_resource type="Animation" id="Animation_y348k"]
@@ -617,8 +617,8 @@ tracks/1/keys = {
 "values": [Vector2(1194, 410), Vector2(600, 410)]
 }
 
-[sub_resource type="Animation" id="Animation_gnwx1"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_7rp46"]
+resource_name = "midwest2"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -626,10 +626,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1194, 50)]
+"values": [Vector2(600, 50), Vector2(1194, 50)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -638,10 +638,10 @@ tracks/1/path = NodePath("../midwest_label:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1194, 410)]
+"values": [Vector2(600, 410), Vector2(1194, 410)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lh0ht"]
@@ -739,6 +739,33 @@ _data = {
 "sweaty_gamer2": SubResource("Animation_eta0t")
 }
 
+[sub_resource type="Animation" id="Animation_3fwgg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1194, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../gigachad_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1194, 410)]
+}
+
 [sub_resource type="Animation" id="Animation_hbif6"]
 resource_name = "gigachad"
 tracks/0/type = "value"
@@ -791,33 +818,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(660, 410), Vector2(1194, 410)]
-}
-
-[sub_resource type="Animation" id="Animation_3fwgg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1194, 50)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../gigachad_label:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1194, 410)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bw77s"]

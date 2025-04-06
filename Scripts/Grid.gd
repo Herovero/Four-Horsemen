@@ -130,6 +130,10 @@ func update_sprite_destroyed_count(current_color):
 
 func update_labels():
 	print("Sprite counts before update:", sprite_destroyed_count)
+	label_pudding.show()
+	label_bomb.show()
+	label_virus.show()
+	label_fries.show()
 	label_fries.text = "%d" %sprite_destroyed_count["fries"]
 	label_bomb.text = "%d" %sprite_destroyed_count["bomb"]
 	label_virus.text = "%d" %sprite_destroyed_count["virus"]
@@ -182,6 +186,10 @@ func heroes_attack():
 		var all_enemies = zombies + bats + ghouls + giratinas + sans  # Combine all enemies into one list
 		# Sort enemies by their x-position (left to right)
 		all_enemies.sort_custom(func(a, b): return a.position.x < b.position.x)
+		# Check if we still have enemies after sorting
+		if all_enemies.size() == 0:
+			reset_labels()
+			return
 		# Calculate the number of enemies
 		var num_enemies = all_enemies.size()
 		if num_enemies == 0:
@@ -283,6 +291,10 @@ func heroes_attack():
 
 # Individual hero attack with animation
 func attack_hero(hero_name: String, target, damage_multiplier: float = 1.0) -> void:
+	# Check if target is still valid before proceeding
+	if not is_instance_valid(target) or not is_enemy(target):
+		print("Target is no longer valid, skipping attack")
+		return
 	if hero_name in hero_damage and hero_damage[hero_name] > 0:
 		var damage_amount = hero_damage[hero_name] * damage_multiplier
 		print("%s attacks dealing %d damage (multiplier: %.2f)" % [hero_name, damage_amount, damage_multiplier])
@@ -317,6 +329,11 @@ func attack_hero(hero_name: String, target, damage_multiplier: float = 1.0) -> v
 				elif int(label_fries.text) >= 5:
 					trump_attack.play_animation_trump2()
 					await trump_attack.animation_finished
+					
+		# Check again if target is still valid after animation
+		if not is_instance_valid(target) or not is_enemy(target):
+			print("Target died during animation, skipping attack")
+			return
 		
 		# Attack the target
 		if target in zombies:
@@ -443,6 +460,11 @@ func reset_labels() -> void:
 	label_bomb.text = "0"
 	label_virus.text = "0"
 	label_fries.text = "0"
+	label_pudding.hide()
+	label_bomb.hide()
+	label_virus.hide()
+	label_fries.hide()
+	combo_label.text = ""
 
 	# Reset hero_damage values
 	hero_damage["Hero1"] = 0

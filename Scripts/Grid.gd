@@ -186,10 +186,6 @@ func heroes_attack():
 		var all_enemies = zombies + bats + ghouls + giratinas + sans  # Combine all enemies into one list
 		# Sort enemies by their x-position (left to right)
 		all_enemies.sort_custom(func(a, b): return a.position.x < b.position.x)
-		# Check if we still have enemies after sorting
-		if all_enemies.size() == 0:
-			reset_labels()
-			return
 		# Calculate the number of enemies
 		var num_enemies = all_enemies.size()
 		if num_enemies == 0:

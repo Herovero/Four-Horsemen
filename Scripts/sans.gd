@@ -2,10 +2,10 @@ extends Node2D
 
 # Variables
 #var hp: int = 30
-var pudding_hp: float = 0.01
-var bomb_hp: float = 0.01
-var virus_hp: float = 0.01
-var fries_hp: float = 0.01
+var pudding_hp: float = 0
+var bomb_hp: float = 0
+var virus_hp: float = 0
+var fries_hp: float = 1
 
 @onready var sans_label = $sans_labels
 @onready var sans_animation = $sans_animation
@@ -16,10 +16,14 @@ signal sans_destroyed
 func _ready():
 	match Global.difficulty:
 		"Skill_issue":
-			pudding_hp = 5
-			bomb_hp = 8
-			virus_hp = 8
-			fries_hp = 5
+			#pudding_hp = 5
+			#bomb_hp = 8
+			#virus_hp = 8
+			#fries_hp = 5
+			pudding_hp = 99
+			bomb_hp = 99
+			virus_hp = 99
+			fries_hp = 99
 		"Midwest":
 			pudding_hp = 8
 			bomb_hp = 12

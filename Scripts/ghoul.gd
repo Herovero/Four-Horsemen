@@ -15,10 +15,14 @@ signal ghoul_destroyed
 func _ready():
 	match Global.difficulty:
 		"Skill_issue":
-			pudding_hp = 3
+			#pudding_hp = 3
+			#bomb_hp = 0
+			#virus_hp = 1
+			#fries_hp = 2
+			pudding_hp = 0
 			bomb_hp = 0
 			virus_hp = 1
-			fries_hp = 2
+			fries_hp = 0
 		"Midwest":
 			pudding_hp = 5
 			bomb_hp = 1

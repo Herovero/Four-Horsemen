@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://be1dgbmuoxlxs"]
+[gd_scene load_steps=47 format=3 uid="uid://be1dgbmuoxlxs"]
 
 [ext_resource type="Script" path="res://Scripts/title_screen.gd" id="1_cn5yt"]
 [ext_resource type="VideoStream" path="res://Background/Main-Menu_2.ogv" id="1_xd5ud"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bu4oy8vecwsh1" path="res://Sprites/Credits.png" id="7_wiqt5"]
 [ext_resource type="Texture2D" uid="uid://ciw1t8ni0jdfe" path="res://Sprites/Credits2.png" id="8_6uwyh"]
 [ext_resource type="Texture2D" uid="uid://dytgccxlvfsqs" path="res://Sprites/settings.png" id="9_8hoga"]
+[ext_resource type="VideoStream" path="res://Assets/Four-Horsemen-credit_1.ogv" id="9_l8vbs"]
 [ext_resource type="Texture2D" uid="uid://rmerntbcl84" path="res://Sprites/Skill issue button1.png" id="9_olgtr"]
 [ext_resource type="Texture2D" uid="uid://cxxnalk7w270" path="res://Sprites/settings2.png" id="10_14q46"]
 [ext_resource type="Texture2D" uid="uid://cy8sly56n4oxc" path="res://Sprites/Skill issue button2.png" id="10_urgkc"]
@@ -194,6 +195,30 @@ tracks/13/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("credits:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("screen:paused")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_guse0"]
@@ -468,9 +493,37 @@ tracks/8/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_85ic7"]
+resource_name = "switch2credits"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("credits:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("screen:paused")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ishyh"]
 _data = {
 "RESET": SubResource("Animation_smyuu"),
+"switch2credits": SubResource("Animation_85ic7"),
 "switch2difficulties": SubResource("Animation_guse0"),
 "switch2title": SubResource("Animation_5nm1d")
 }
@@ -881,6 +934,14 @@ scale = Vector2(5, 5)
 texture_normal = ExtResource("7_wiqt5")
 texture_hover = ExtResource("8_6uwyh")
 
+[node name="credits" type="VideoStreamPlayer" parent="."]
+visible = false
+z_index = 1
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.600557, 0.600557)
+stream = ExtResource("9_l8vbs")
+
 [node name="settings_icon" type="TextureButton" parent="."]
 offset_left = 967.0
 offset_top = 536.0
@@ -889,6 +950,16 @@ offset_bottom = 552.0
 scale = Vector2(5, 5)
 texture_normal = ExtResource("9_8hoga")
 texture_hover = ExtResource("10_14q46")
+
+[node name="version_label" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 608.0
+offset_right = 156.0
+offset_bottom = 677.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "v0.9.1"
 
 [node name="transition" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1086,6 +1157,7 @@ libraries = {
 
 [connection signal="mouse_entered" from="start_button" to="." method="_on_start_button_mouse_entered"]
 [connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="credit_icon" to="." method="_on_credit_icon_pressed"]
 [connection signal="mouse_entered" from="skill_issue_button" to="." method="_on_skill_issue_button_mouse_entered"]
 [connection signal="mouse_exited" from="skill_issue_button" to="." method="_on_skill_issue_button_mouse_exited"]
 [connection signal="pressed" from="skill_issue_button" to="." method="_on_skill_issue_button_pressed"]

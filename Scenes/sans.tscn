@@ -1,4 +1,4 @@
-[gd_scene load_steps=262 format=3 uid="uid://sili2mjo1ts"]
+[gd_scene load_steps=272 format=3 uid="uid://sili2mjo1ts"]
 
 [ext_resource type="Script" path="res://Scripts/sans.gd" id="1_44wnc"]
 [ext_resource type="Texture2D" uid="uid://ytq88klqnnvl" path="res://Assets/sans/sans-fight-export1.png" id="2_2yqtj"]
@@ -246,8 +246,17 @@
 [ext_resource type="Texture2D" uid="uid://c8d4rk6jhieho" path="res://Assets/sans text box/should be burning in hell/undertale_text_box (3)-export45.png" id="238_nqm15"]
 [ext_resource type="Texture2D" uid="uid://dkuolcgnlltlx" path="res://Background/black screen.jpg" id="239_d25to"]
 [ext_resource type="AudioStream" uid="uid://cxvn223u1nlwe" path="res://SFX/sans_voice.MP3" id="240_ep418"]
+[ext_resource type="Texture2D" uid="uid://dghhq67wvxgoc" path="res://Assets/white rectangle.png" id="240_mtyow"]
 [ext_resource type="Texture2D" uid="uid://b8b8f4coujiau" path="res://Sprites/Undertale.png" id="241_erbwa"]
+[ext_resource type="Texture2D" uid="uid://de08t0psvbvs4" path="res://Sprites/Gaster Blaster/GasterBlaster1.png" id="241_remqp"]
+[ext_resource type="Texture2D" uid="uid://bi2ub68wdsixj" path="res://Sprites/Gaster Blaster/GasterBlaster2.png" id="242_jn073"]
+[ext_resource type="Texture2D" uid="uid://sccucv2tf78t" path="res://Sprites/Gaster Blaster/GasterBlaster3.png" id="243_axe15"]
 [ext_resource type="AudioStream" uid="uid://3dhmwlr5jptx" path="res://SFX/heart encounter.MP3" id="244_da8ee"]
+[ext_resource type="Texture2D" uid="uid://x42b10dymd0p" path="res://Sprites/Gaster Blaster/GasterBlaster4.png" id="244_xog7k"]
+[ext_resource type="Texture2D" uid="uid://0ibghq6oqrdl" path="res://Sprites/Gaster Blaster/GasterBlaster5.png" id="245_hpqum"]
+[ext_resource type="Texture2D" uid="uid://weewapaw62wv" path="res://Sprites/Gaster Blaster/GasterBlaster6.png" id="246_n3q6d"]
+[ext_resource type="Texture2D" uid="uid://c2xffuqc1p78b" path="res://Sprites/Gaster Blaster/GasterBlaster7.png" id="247_8djfr"]
+[ext_resource type="AudioStream" uid="uid://cjsp0plus6okb" path="res://SFX/Undertale gaster blaster.MP3" id="248_gujo5"]
 
 [sub_resource type="Animation" id="Animation_caf6a"]
 length = 0.001
@@ -326,43 +335,43 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("attack:playing")
+tracks/6/path = NodePath("sans_labels:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("sans_labels:modulate")
+tracks/7/path = NodePath("sans_chatbox:frame")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("sans_chatbox:frame")
+tracks/8/path = NodePath("sans_voice:playing")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [false]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("sans_voice:playing")
+tracks/9/path = NodePath("sans_chatbox:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -374,55 +383,55 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("sans_chatbox:visible")
+tracks/10/path = NodePath("sans_chatbox2:frame")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [0]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("sans_chatbox2:frame")
+tracks/11/path = NodePath("sans_chatbox2:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [false]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("sans_chatbox2:visible")
+tracks/12/path = NodePath("sans_chatbox3:frame")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [0]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("sans_chatbox3:frame")
+tracks/13/path = NodePath("sans_chatbox3:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [false]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("sans_chatbox3:visible")
+tracks/14/path = NodePath("black screen:visible")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -434,7 +443,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("black screen:visible")
+tracks/15/path = NodePath("sans_chatbox4:visible")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -446,31 +455,31 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("sans_chatbox4:visible")
+tracks/16/path = NodePath("sans_chatbox4:frame")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [0]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("sans_chatbox4:frame")
+tracks/17/path = NodePath("heart:visible")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [false]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("heart:visible")
+tracks/18/path = NodePath("heart encounter:playing")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
@@ -482,38 +491,134 @@ tracks/18/keys = {
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("heart encounter:playing")
+tracks/19/path = NodePath("heart:position")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(-314, -13)]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("heart:position")
+tracks/20/path = NodePath("sans_idle_sprites:visible")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-314, -13)]
+"update": 1,
+"values": [false]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("sans_idle_sprites:visible")
+tracks/21/path = NodePath("GasterBlaster:rotation")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("GasterBlaster:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-700, 0)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("blaster_sound:playing")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("GasterBlaster:frame")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("GasterBlaster:animation")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"open"]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("white_rectangle:position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-165, 388)]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("white_rectangle:scale")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.569999, 0.082)]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("white_rectangle:visible")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("white_rectangle:modulate")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_pmmmh"]
@@ -546,30 +651,114 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_c2khg"]
 resource_name = "attack"
-length = 0.5
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sans_idle_sprites:offset")
+tracks/0/path = NodePath("GasterBlaster:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 40), Vector2(0, 0)]
+"values": [-1.5708, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("attack:playing")
+tracks/1/path = NodePath("GasterBlaster:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-700, 0), Vector2(-165, -100), Vector2(-165, -100), Vector2(-165, -400)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("blaster_sound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GasterBlaster:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.333333, 0.433333, 0.533333, 0.633333, 0.7, 0.766667, 0.833333, 0.9, 0.966667, 1.03333, 1.1, 1.16667, 1.23333, 1.3, 1.36667, 1.43333, 1.5, 1.56667, 1.63333, 1.7, 1.76667, 1.83333, 1.9, 1.96667, 2.03333, 2.1, 2.16667, 2.23333, 2.3, 2.36667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GasterBlaster:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.666667, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [&"open", &"open", &"shoot"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("white_rectangle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.7, 0.8, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-165, 132), Vector2(-165, 332), Vector2(-165, 84)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("white_rectangle:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.7, 0.8, 0.933333, 1.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.25, 0.036), Vector2(0.569999, 0.082), Vector2(0.569999, 0.082), Vector2(0.66, 0.01)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("white_rectangle:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("white_rectangle:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.933333, 1.76667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_h0eg1"]
@@ -1653,6 +1842,40 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_381be"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("241_remqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("242_jn073")
+}, {
+"duration": 1.0,
+"texture": ExtResource("243_axe15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("244_xog7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("245_hpqum")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("246_n3q6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("247_8djfr")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 25.0
+}]
+
 [node name="Sans" type="Node2D"]
 script = ExtResource("1_44wnc")
 
@@ -1660,7 +1883,6 @@ script = ExtResource("1_44wnc")
 libraries = {
 "": SubResource("AnimationLibrary_1msum")
 }
-autoplay = "chatbox"
 
 [node name="sans_idle_sprites" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -1670,6 +1892,7 @@ autoplay = "default"
 frame_progress = 0.179085
 
 [node name="sans_chatbox" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(0, -150)
 sprite_frames = SubResource("SpriteFrames_3t3d2")
 animation = &"1"
@@ -1692,6 +1915,23 @@ position = Vector2(0, -150)
 sprite_frames = SubResource("SpriteFrames_b76hw")
 animation = &"4"
 
+[node name="white_rectangle" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-165, 388)
+rotation = 1.5708
+scale = Vector2(0.569999, 0.082)
+texture = ExtResource("240_mtyow")
+
+[node name="GasterBlaster" type="AnimatedSprite2D" parent="."]
+position = Vector2(-700, 0)
+rotation = -1.5708
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_381be")
+animation = &"open"
+
+[node name="blaster_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("248_gujo5")
+
 [node name="black screen" type="TextureRect" parent="."]
 visible = false
 offset_left = -1691.0
@@ -1703,14 +1943,15 @@ texture = ExtResource("239_d25to")
 
 [node name="heart" type="TextureRect" parent="."]
 visible = false
-offset_left = -30.0
+offset_left = -314.0
 offset_top = -13.0
-offset_right = 2470.0
+offset_right = 2186.0
 offset_bottom = 1394.0
 scale = Vector2(0.022128, 0.022128)
 texture = ExtResource("241_erbwa")
 
 [node name="sans_labels" type="RichTextLabel" parent="."]
+visible = false
 offset_left = -38.0
 offset_top = -238.0
 offset_right = 112.0

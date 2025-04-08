@@ -3,6 +3,7 @@ extends Node2D
 @onready var start_button = $start_button
 @onready var exit_button = $exit_button
 @onready var credit_icon = $credit_icon
+@onready var credits = $credits
 @onready var transition = $transition
 @onready var skill_issue_transition = $injustice/skill_issue_transition
 @onready var sweaty_gamer_transition = $sweaty_gamer/sweaty_gamer_transition
@@ -31,6 +32,9 @@ func _on_start_button_pressed():
 
 func _on_exit_button_pressed():
 	get_tree().quit()
+
+func _on_credit_icon_pressed():
+	get_tree().change_scene_to_file("res://Scenes/credits.tscn")
 
 func _input(event):
 	if switched2difficulties == true and event.is_action_pressed("ui_cancel"):  # ESC key default action

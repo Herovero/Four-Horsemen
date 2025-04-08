@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjsp0plus6okb"
+path="res://.godot/imported/Undertale gaster blaster.MP3-a67b6cc67ce4517a6d7b46f3de959600.mp3str"
+
+[deps]
+
+source_file="res://SFX/Undertale gaster blaster.MP3"
+dest_files=["res://.godot/imported/Undertale gaster blaster.MP3-a67b6cc67ce4517a6d7b46f3de959600.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

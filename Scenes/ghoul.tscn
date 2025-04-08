@@ -10,10 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://cclb8751xb65e" path="res://Assets/ghoul/ghoul-export5.png" id="6_csnha"]
 [ext_resource type="Texture2D" uid="uid://rnsqiuwgkd20" path="res://Assets/ghoul/ghoul-export6.png" id="7_yg36v"]
 [ext_resource type="AudioStream" uid="uid://cedtntmwbcyux" path="res://SFX/Squeaky Toy Sound Effect.mp3" id="7_yy2eu"]
-[ext_resource type="AudioStream" uid="uid://c2vdavqfehx5i" path="res://SFX/Taco Bell Bong - Sound Effect (HD).mp3" id="8_es87q"]
 [ext_resource type="Texture2D" uid="uid://drph51op7c0cq" path="res://Assets/ghoul/ghoul-export7.png" id="8_j0n61"]
 [ext_resource type="Texture2D" uid="uid://bge64t1ffbh5g" path="res://Assets/ghoul/ghoul-export8.png" id="9_uu8kl"]
 [ext_resource type="AudioStream" uid="uid://c4k7lmto0w403" path="res://SFX/Ghoul noise.MP3" id="11_xdamc"]
+[ext_resource type="AudioStream" uid="uid://fc7qffeu7kbc" path="res://SFX/flightreact scream.MP3" id="14_xh40a"]
 
 [sub_resource type="Animation" id="Animation_caf6a"]
 length = 0.001
@@ -411,7 +411,7 @@ stream = ExtResource("7_yy2eu")
 volume_db = 15.036
 
 [node name="dead" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_es87q")
+stream = ExtResource("14_xh40a")
 volume_db = 5.098
 
 [node name="Camera2D" type="Camera2D" parent="."]

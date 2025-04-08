@@ -17,14 +17,14 @@ signal zombie_destroyed
 func _ready():
 	match Global.difficulty:
 		"Skill_issue":
-			#pudding_hp = 0
-			#bomb_hp = 3
-			#virus_hp = 0
-			#fries_hp = 3
 			pudding_hp = 0
-			bomb_hp = 0
+			bomb_hp = 3
 			virus_hp = 0
-			fries_hp = 1
+			fries_hp = 3
+			#pudding_hp = 0
+			#bomb_hp = 0
+			#virus_hp = 0
+			#fries_hp = 1
 		"Midwest":
 			pudding_hp = 2
 			bomb_hp = 4

@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsp3irigcvhyc"]
+
+[ext_resource type="Script" path="res://Scripts/settings.gd" id="1_ki8ne"]
+[ext_resource type="Script" path="res://Scripts/volume_slider.gd" id="1_lpd86"]
+[ext_resource type="Texture2D" uid="uid://dkuolcgnlltlx" path="res://Background/black screen.jpg" id="2_eb5ld"]
+[ext_resource type="FontFile" uid="uid://clg5yxaemtrnq" path="res://Font/Pixeled.ttf" id="2_qlth5"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ki8ne")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 0
+offset_left = -56.0
+offset_top = -32.0
+offset_right = 1224.0
+offset_bottom = 688.0
+texture = ExtResource("2_eb5ld")
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 1
+offset_left = 476.0
+offset_top = 273.0
+offset_right = 626.0
+offset_bottom = 296.0
+scale = Vector2(3, 3)
+min_value = -40.0
+max_value = 10.0
+script = ExtResource("1_lpd86")
+
+[node name="volume_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 257.0
+offset_right = 597.0
+offset_bottom = 348.0
+theme_override_fonts/font = ExtResource("2_qlth5")
+theme_override_font_sizes/font_size = 30
+text = "VOLUME :"
+
+[node name="resolution_rabel" type="Label" parent="."]
+offset_left = 237.0
+offset_top = 360.0
+offset_right = 597.0
+offset_bottom = 451.0
+theme_override_fonts/font = ExtResource("2_qlth5")
+theme_override_font_sizes/font_size = 30
+text = "RESOLUTION :"
+
+[node name="Resolution_button" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 565.0
+offset_top = 356.0
+offset_right = 917.0
+offset_bottom = 448.0
+theme_override_fonts/font = ExtResource("2_qlth5")
+theme_override_font_sizes/font_size = 30
+selected = 2
+item_count = 3
+popup/item_0/text = "1920x1080"
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1152x648"
+popup/item_2/id = 2
+
+[node name="volume_label2" type="Label" parent="."]
+offset_left = 397.0
+offset_top = 136.0
+offset_right = 757.0
+offset_bottom = 227.0
+theme_override_fonts/font = ExtResource("2_qlth5")
+theme_override_font_sizes/font_size = 30
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[connection signal="item_selected" from="Resolution_button" to="." method="_on_resolution_button_item_selected"]

@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var start_button = $start_button
 @onready var exit_button = $exit_button
+@onready var settings = $Settings
 @onready var credit_icon = $credit_icon
 @onready var credits = $credits
 @onready var transition = $transition
@@ -16,10 +17,12 @@ extends Node2D
 @onready var gigachad = $gigachad
 
 var switched2difficulties = false
+var showed_settings = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_button.connect("pressed", _on_start_button_pressed)
+	settings.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -33,6 +36,10 @@ func _on_start_button_pressed():
 func _on_exit_button_pressed():
 	get_tree().quit()
 
+func _on_settings_icon_pressed():
+	settings.show()
+	showed_settings = true
+
 func _on_credit_icon_pressed():
 	get_tree().change_scene_to_file("res://Scenes/credits.tscn")
 
@@ -40,6 +47,8 @@ func _input(event):
 	if switched2difficulties == true and event.is_action_pressed("ui_cancel"):  # ESC key default action
 		transition.play("switch2title")
 		switched2difficulties = false
+	elif showed_settings == true and event.is_action_pressed("ui_cancel"):
+		settings.hide()
 	
 func _on_skill_issue_button_mouse_entered():
 	injustice.play()

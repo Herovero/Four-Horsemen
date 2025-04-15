@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://be1dgbmuoxlxs"]
+[gd_scene load_steps=48 format=3 uid="uid://be1dgbmuoxlxs"]
 
 [ext_resource type="Script" path="res://Scripts/title_screen.gd" id="1_cn5yt"]
 [ext_resource type="VideoStream" path="res://Background/Main-Menu_2.ogv" id="1_xd5ud"]
@@ -18,6 +18,7 @@
 [ext_resource type="VideoStream" path="res://Assets/Sounds-like-Skill-Issue.ogv" id="11_6l4xw"]
 [ext_resource type="Texture2D" uid="uid://bp2jyefri43ib" path="res://Sprites/Midwest button1.png" id="11_mvb3n"]
 [ext_resource type="Texture2D" uid="uid://boe0drr5grdh4" path="res://Sprites/Midwest button2.png" id="12_0c3un"]
+[ext_resource type="PackedScene" uid="uid://bsp3irigcvhyc" path="res://Scenes/settings.tscn" id="12_28l0w"]
 [ext_resource type="Texture2D" uid="uid://dgb4gy7j8sopv" path="res://Sprites/Tryhard button1.png" id="13_neh77"]
 [ext_resource type="VideoStream" path="res://Assets/Mid.ogv" id="14_14i8s"]
 [ext_resource type="Texture2D" uid="uid://cvr2mwteim214" path="res://Sprites/Tryhard button2.png" id="14_50nms"]
@@ -219,6 +220,33 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_85ic7"]
+resource_name = "switch2credits"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("credits:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("screen:paused")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_guse0"]
@@ -488,33 +516,6 @@ tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_85ic7"]
-resource_name = "switch2credits"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("credits:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("screen:paused")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -951,6 +952,8 @@ scale = Vector2(5, 5)
 texture_normal = ExtResource("9_8hoga")
 texture_hover = ExtResource("10_14q46")
 
+[node name="Settings" parent="." instance=ExtResource("12_28l0w")]
+
 [node name="version_label" type="Label" parent="."]
 offset_left = 16.0
 offset_top = 608.0
@@ -959,7 +962,7 @@ offset_bottom = 677.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 20
-text = "v0.9.1"
+text = "v0.9.1.1"
 
 [node name="transition" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1158,6 +1161,7 @@ libraries = {
 [connection signal="mouse_entered" from="start_button" to="." method="_on_start_button_mouse_entered"]
 [connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="credit_icon" to="." method="_on_credit_icon_pressed"]
+[connection signal="pressed" from="settings_icon" to="." method="_on_settings_icon_pressed"]
 [connection signal="mouse_entered" from="skill_issue_button" to="." method="_on_skill_issue_button_mouse_entered"]
 [connection signal="mouse_exited" from="skill_issue_button" to="." method="_on_skill_issue_button_mouse_exited"]
 [connection signal="pressed" from="skill_issue_button" to="." method="_on_skill_issue_button_pressed"]

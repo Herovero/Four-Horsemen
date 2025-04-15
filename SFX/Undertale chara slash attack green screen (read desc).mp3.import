@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dponwicuvhcg2"
+path="res://.godot/imported/Undertale chara slash attack green screen (read desc).mp3-c44f7c2187f17d7e81f4077689c6fe6d.mp3str"
+
+[deps]
+
+source_file="res://SFX/Undertale chara slash attack green screen (read desc).mp3"
+dest_files=["res://.godot/imported/Undertale chara slash attack green screen (read desc).mp3-c44f7c2187f17d7e81f4077689c6fe6d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

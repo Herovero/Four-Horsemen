@@ -105,6 +105,7 @@ var sprite_destroyed_count  ={
 }
 
 const BODYGUARD_MAX_HP = {
+	"Debug": 8,
 	"Skill_issue": 8,
 	"Midwest": 6,
 	"Tryhard": 4,
@@ -112,6 +113,7 @@ const BODYGUARD_MAX_HP = {
 }
 
 const MATCH_TIME_LIMITS = {
+	"Debug": 10,
 	"Skill_issue": 10,
 	"Midwest": 7,
 	"Tryhard": 7,
@@ -201,32 +203,32 @@ func heroes_attack():
 					if not hero_animation_played:
 						match hero_name:
 							"Hero1":
-								if int(label_pudding.text) == 4:
-									putin_attack.play_animation_putin()
-									await putin_attack.animation_finished
-								elif int(label_pudding.text) >= 5:
+								if int(label_pudding.text) >= 7:
 									putin_attack.play_animation_putin2()
 									await putin_attack.animation_finished
+								elif int(label_pudding.text) >= 4:
+									putin_attack.play_animation_putin()
+									await putin_attack.animation_finished
 							"Hero2":
-								if int(label_bomb.text) == 4:
-									kim_attack.play_animation_kim()
-									await kim_attack.animation_finished
-								elif int(label_bomb.text) >= 5:
+								if int(label_bomb.text) >= 7:
 									kim_attack.play_animation_kim2()
 									await kim_attack.animation_finished
+								elif int(label_bomb.text) >= 4:
+									kim_attack.play_animation_kim()
+									await kim_attack.animation_finished
 							"Hero3":
-								if int(label_virus.text) == 4:
-									xi_attack.play_animation_xi()
-									await xi_attack.animation_finished
-								elif int(label_virus.text) >= 5:
+								if int(label_virus.text) >= 7:
 									xi_attack.play_animation_xi2()
 									await xi_attack.animation_finished
+								elif int(label_virus.text) >= 4:
+									xi_attack.play_animation_xi()
+									await xi_attack.animation_finished
 							"Hero4":
-								if int(label_fries.text) == 4:
-									trump_attack.play_animation_trump()
-									await trump_attack.animation_finished
-								elif int(label_fries.text) >= 5:
+								if int(label_fries.text) >= 7:
 									trump_attack.play_animation_trump2()
+									await trump_attack.animation_finished
+								elif int(label_fries.text) >= 4:
+									trump_attack.play_animation_trump()
 									await trump_attack.animation_finished
 						hero_animation_played = true
 					
@@ -298,32 +300,32 @@ func attack_hero(hero_name: String, target, damage_multiplier: float = 1.0) -> v
 		# Play hero animation first
 		match hero_name:
 			"Hero1":
-				if int(label_pudding.text) == 4:
-					putin_attack.play_animation_putin()
-					await putin_attack.animation_finished
-				elif int(label_pudding.text) >= 5:
+				if int(label_pudding.text) >= 7:
 					putin_attack.play_animation_putin2()
 					await putin_attack.animation_finished
+				elif int(label_pudding.text) >= 4:
+					putin_attack.play_animation_putin()
+					await putin_attack.animation_finished
 			"Hero2":
-				if int(label_bomb.text) == 4:
-					kim_attack.play_animation_kim()
-					await kim_attack.animation_finished
-				elif int(label_bomb.text) >= 5:
+				if int(label_bomb.text) >= 7:
 					kim_attack.play_animation_kim2()
 					await kim_attack.animation_finished
+				elif int(label_bomb.text) >= 4:
+					kim_attack.play_animation_kim()
+					await kim_attack.animation_finished
 			"Hero3":
-				if int(label_virus.text) == 4:
-					xi_attack.play_animation_xi()
-					await xi_attack.animation_finished
-				elif int(label_virus.text) >= 5:
+				if int(label_virus.text) >= 7:
 					xi_attack.play_animation_xi2()
 					await xi_attack.animation_finished
+				elif int(label_virus.text) >= 4:
+					xi_attack.play_animation_xi()
+					await xi_attack.animation_finished
 			"Hero4":
-				if int(label_fries.text) == 4:
-					trump_attack.play_animation_trump()
-					await trump_attack.animation_finished
-				elif int(label_fries.text) >= 5:
+				if int(label_fries.text) >= 7:
 					trump_attack.play_animation_trump2()
+					await trump_attack.animation_finished
+				elif int(label_fries.text) >= 4:
+					trump_attack.play_animation_trump()
 					await trump_attack.animation_finished
 					
 		# Check again if target is still valid after animation

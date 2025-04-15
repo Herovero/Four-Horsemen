@@ -15,15 +15,16 @@ signal sans_destroyed
 
 func _ready():
 	match Global.difficulty:
-		"Skill_issue":
-			#pudding_hp = 5
-			#bomb_hp = 8
-			#virus_hp = 8
-			#fries_hp = 5
+		"Debug":
 			pudding_hp = 99
 			bomb_hp = 99
 			virus_hp = 99
 			fries_hp = 99
+		"Skill_issue":
+			pudding_hp = 5
+			bomb_hp = 8
+			virus_hp = 8
+			fries_hp = 5
 		"Midwest":
 			pudding_hp = 8
 			bomb_hp = 12

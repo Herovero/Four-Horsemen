@@ -15,6 +15,11 @@ signal giratina_destroyed
 
 func _ready():
 	match Global.difficulty:
+		"Debug":
+			pudding_hp = 5
+			bomb_hp = 8
+			virus_hp = 8
+			fries_hp = 5
 		"Skill_issue":
 			pudding_hp = 5
 			bomb_hp = 8

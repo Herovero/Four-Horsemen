@@ -15,15 +15,16 @@ signal bat_destroyed
 
 func _ready():
 	match Global.difficulty:
+		"Debug":
+			pudding_hp = 0
+			bomb_hp = 1
+			virus_hp = 0
+			fries_hp = 0
 		"Skill_issue":
 			pudding_hp = 1
 			bomb_hp = 1
 			virus_hp = 4
 			fries_hp = 0
-			#pudding_hp = 0
-			#bomb_hp = 1
-			#virus_hp = 0
-			#fries_hp = 0
 		"Midwest":
 			pudding_hp = 3
 			bomb_hp = 3

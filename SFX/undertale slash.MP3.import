@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://clf82a50l3vvk"
+path="res://.godot/imported/undertale slash.MP3-0e98113faf44ca9ebdc5f61f7b515cbb.mp3str"
+
+[deps]
+
+source_file="res://SFX/undertale slash.MP3"
+dest_files=["res://.godot/imported/undertale slash.MP3-0e98113faf44ca9ebdc5f61f7b515cbb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
